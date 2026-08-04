@@ -213,12 +213,15 @@ const reviews = [
       title: "Zarządzanie najmem",
       short: "Docieramy do inwestorów, którzy chcą oddać zarządzanie najmem.",
       tagline: "Docieramy do inwestorów, którzy chcą oddać zarządzanie najmem.",
-      pain: "Właściciele wynajmowanych mieszkań nie mają czasu na najemców, płatności i usterki.",
-      solution: "System docierający do właścicieli-inwestorów z jasną ofertą: zdejmij z siebie zarządzanie najmem, przychód zostaje pasywny.",
-      scope: [
-        "Landing page skierowany do inwestorów i właścicieli wielu mieszkań",
-        "Kampania targetowana na profil inwestora",
-        "Przekaz oparty na rezultacie: przychód bez zaangażowania"
+      jakDziala: [
+        "Tworzymy kampanię w Meta Ads kierowaną na formularz kontaktowy — nie na landing page. Dzięki temu zbieramy zapytania od właścicieli chcących oddać swoją nieruchomość w zarządzanie.",
+        "Kampania na formularz sprawdza się w tym systemie lepiej niż na landing page — dla klienta to niższy koszt startu bez inwestycji w dedykowaną stronę, co przy produkcie o niższej wartości transakcyjnej, jakim jest zarządzanie najmem, ma duże znaczenie."
+      ],
+      coRobimy: [
+        "Tworzymy kreacje, treści i nagłówki, wdrażamy, zarządzamy i optymalizujemy kampanię w Meta Ads",
+        "Wdrażamy automatyzacje SMS i e-mail oraz powiadomienia na Slacku i w CRM",
+        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca",
+        "Zapewniamy doradztwo — stały kontakt i wsparcie"
       ]
     },
     {
