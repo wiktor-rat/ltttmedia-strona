@@ -1143,6 +1143,38 @@ p {
   margin-top: 3px;
 }
 
+.process-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 15.5px;
+  color: var(--navy);
+}
+
+.process-number {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--blue-pale);
+  color: var(--blue);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.process-note {
+  color: var(--muted);
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 4px;
+}
+
 /* ---------- Modal ---------- */
 .modal-overlay {
   position: fixed;

@@ -286,12 +286,25 @@ const reviews = [
       title: "Strony Internetowe i Landing Page",
       short: "Strona, która sprzedaje — nie tylko wygląda dobrze.",
       tagline: "Strona, która sprzedaje — nie tylko wygląda dobrze.",
-      pain: "Obecna strona nie generuje leadów, jest przestarzała albo nie odzwierciedla jakości Twojego biura.",
-      solution: "Budujemy stronę lub landing page na własnym kodzie, zaprojektowane pod konwersję.",
-      scope: [
-        "Projekt i wdrożenie na własnym kodzie",
-        "Integracja formularza z systemem obsługi leadów",
-        "Abonament utrzymania: nadzór techniczny i drobne poprawki"
+      jakDziala: [
+        "Budujemy strony i landing page na własnym kodzie — bez gotowych szablonów. Oferujemy dwa warianty: pełną stronę firmową, dopasowaną indywidualnie do liczby podstron i potrzeb klienta, oraz prosty landing page jednostronicowy (one page), zaprojektowany typowo pod konwersję z kampanii reklamowych — w formie lejka, żeby klient się zgłosił."
+      ],
+      proces: [
+        "Ustalamy z klientem, czego potrzebuje i jak ma wyglądać strona",
+        "Budujemy wstępny szkic strony i układu sekcji",
+        "Klient przesyła potrzebne materiały (zdjęcia, treści itp.)",
+        "Budujemy gotową wersję roboczą strony",
+        "Dograjmy kwestie treści i materiałów, aby wszystko się zgadzało",
+        "Czas na finalne poprawki i korekty",
+        "Stawiamy stronę na domenie klienta"
+      ],
+      procesNote: "Landing page przechodzi przez podobny, ale uproszczony proces.",
+      cena: "Jednorazowa opłata za budowę strony (wycena indywidualna — zależy od liczby podstron i zakresu, patrz widełki cenowe w naszym cenniku wewnętrznym) + abonament miesięczny za utrzymanie strony: 99 zł netto/mies + opcjonalny abonament umożliwiający wprowadzanie zmian na życzenie klienta, lub 50 zł netto za pojedynczą zmianę elementu na stronie.",
+      coRobimy: [
+        "Projektujemy i wdrażamy stronę lub landing page na własnym kodzie",
+        "Prowadzimy klienta przez pełny proces — od ustalenia potrzeb po wdrożenie na domenie",
+        "Budujemy landing page w wariancie uproszczonym, pod konwersję z kampanii",
+        "Zapewniamy abonament utrzymania i opcję zmian na życzenie"
       ]
     },
     {
@@ -406,6 +419,36 @@ const reviews = [
       })
       .join("");
 
+    // Sekcja procesu (numerowana lista) — tylko dla systemów, które ją mają
+    // zdefiniowaną w danych (obecnie System 08), reszta szablonu bez zmian.
+    var procesHtml = "";
+    if (service.proces && service.proces.length) {
+      var procesItems = service.proces
+        .map(function (step, index) {
+          return (
+            "<li><span class=\"process-number\">" +
+            (index + 1) +
+            "</span><span>" +
+            step +
+            "</span></li>"
+          );
+        })
+        .join("");
+      procesHtml =
+        '<div class="service-block">' +
+        "<h3>Proces budowy strony</h3>" +
+        '<ol class="process-list">' +
+        procesItems +
+        "</ol>" +
+        (service.procesNote ? '<p class="process-note">' + service.procesNote + "</p>" : "") +
+        "</div>";
+    }
+
+    // Sekcja ceny — tylko dla systemów, które ją mają zdefiniowaną (obecnie System 08).
+    var cenaHtml = service.cena
+      ? '<div class="service-block"><h3>Cena</h3><p>' + service.cena + "</p></div>"
+      : "";
+
     var html =
       '<p class="service-tagline">' +
       service.tagline +
@@ -414,6 +457,8 @@ const reviews = [
       "<h3>Jak działa system</h3>" +
       jakDzialaHtml +
       "</div>" +
+      procesHtml +
+      cenaHtml +
       '<div class="service-block">' +
       "<h3>Co robimy</h3>" +
       '<ul class="scope-list">' +
