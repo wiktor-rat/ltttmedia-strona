@@ -51,6 +51,41 @@ const reviews = [
     rating: 5,
     date: "miesiąc temu",
     text: "Każdemu kto się zastanawia, nie traćcie czasu tylko podejmujcie współpracę z Wiktorem! Jesteśmy więcej niż zadowoleni, ilość leadów jaką wygenerowali świetna, kontakt na bieżąco również świetny. Odpowiedzi na każde nasze pytanie, czy zmiany błyskawiczne! Polecam, polecam, polecam! :)"
+  },
+  {
+    name: "Artur Buchowicz",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "11 miesięcy temu",
+    text: "Długo zastanawiałem się co napisać o współpracy z LTTT MEDIA.. I w sumie wypada napisać samą prawdę! Dzięki współpracy przez 1 miesiąc mam pracy na kilka miesięcy, LTTT Media pozyskało dla mnie ponad 60 leadów od klientów chętnych do współpracy w zakresie sprzedaży swoich nieruchomości. Tym samym wyniki kampanii przerosły moje oczekiwania wielokrotnie, zaskoczyły mnie pozytywnie i ze 100% pewnością polecam Firmę Wiktora Rataja do działań marketingowych w sieci i na portalach internetowych! 6 gwiazdek na 5 możliwych! ;) Polecam!"
+  },
+  {
+    name: "Łukasz Leibasz",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "6 miesięcy temu",
+    text: "Zdecydowanie polecam współpracę z LTTT MEDIA. To co cenię sobie najbardziej to zaangażowanie i kreatywne podejście do prowadzonych kampanii reklamowych. Bardzo dobry kontakt i mega profesjonalizm :)"
+  },
+  {
+    name: "Marcin Zawistowski",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "7 miesięcy temu",
+    text: "LTTT MEDIA Agencja marketingowa to profesjonalny i kreatywny zespół, który realnie wspiera rozwój biznesu. Współpraca przebiega sprawnie, a efekty są widoczne – kampanie są dobrze dopasowane do grupy docelowej, a komunikacja z klientem bardzo dobra. Z pełnym przekonaniem polecam LTTT MEDIA każdemu, kto szuka rzetelnej agencji marketingowej! 💼🚀"
+  },
+  {
+    name: "Wojciech Kołakowski",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "6 miesięcy temu",
+    text: "Gorąco polecam współpracę z LTTT media! Po 2 latach przepalania budżetu z innymi agencjami, dopiero LTTT pokazało jak się powinno robić reklamy w social mediacjach!"
+  },
+  {
+    name: "Prospera Nieruchomości",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "6 miesięcy temu",
+    text: "Polecamy serdecznie współpracę! Bardzo rzetelny firma, kontakt zawsze na czas (a nawet przed czasem ;)) Wiktor przesympatyczny i wywiązuje się w 100% z założonych planów."
   }
   // kolejne opinie — dodawaj tutaj (docelowo 14)
 ];
