@@ -708,6 +708,18 @@ p {
   padding: 0 4px 22px;
 }
 
+.faq-answer a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(47, 95, 224, 0.35);
+  text-underline-offset: 2px;
+}
+
+.faq-answer a:hover {
+  color: var(--blue-hover);
+}
+
 /* ---------- Contact ---------- */
 .contact-grid {
   display: grid;
