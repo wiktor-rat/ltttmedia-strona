@@ -258,7 +258,7 @@ const reviews = [
       id: 8,
       code: "System 08",
       icon: "monitor",
-      title: "Strony i LP",
+      title: "Strony Internetowe i Landing Page",
       short: "Strona, która sprzedaje — nie tylko wygląda dobrze.",
       tagline: "Strona, która sprzedaje — nie tylko wygląda dobrze.",
       pain: "Obecna strona nie generuje leadów, jest przestarzała albo nie odzwierciedla jakości Twojego biura.",
