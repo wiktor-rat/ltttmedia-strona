@@ -231,12 +231,15 @@ const reviews = [
       title: "Rekrutacja agentów",
       short: "Kandydaci na agentów trafiają prosto do rozmowy rekrutacyjnej.",
       tagline: "Kandydaci na agentów trafiają prosto do rozmowy rekrutacyjnej.",
-      pain: "Rekrutacja przez portale pracy przyciąga niewłaściwych kandydatów albo nie przyciąga nikogo.",
-      solution: "System pozyskiwania kandydatów na agentów nieruchomości, prowadzący zainteresowanych prosto do rozmowy z Twoim biurem.",
-      scope: [
-        "Landing page rekrutacyjny (employer branding biura)",
-        "Kampania targetowana na osoby rozważające zmianę pracy",
-        "Formularz kwalifikujący kandydatów przed rozmową"
+      jakDziala: [
+        "Rekrutacja przez kampanie w Meta Ads to skuteczny sposób na dotarcie do dobrych kandydatów — docieramy do osób, które aktywnie nie szukają pracy na portalach, ale są otwarte na dobrą ofertę.",
+        "Tworzymy kampanię w Meta Ads — najlepiej w formie wideo — i zbieramy zapytania od potencjalnych kandydatów przez formularz Meta."
+      ],
+      coRobimy: [
+        "Tworzymy kreacje, treści i nagłówki, wdrażamy, zarządzamy i optymalizujemy kampanię w Meta Ads",
+        "Wdrażamy automatyzacje SMS i e-mail oraz powiadomienia na Slacku i w CRM",
+        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca",
+        "Zapewniamy doradztwo — stały kontakt i wsparcie"
       ]
     },
     {
