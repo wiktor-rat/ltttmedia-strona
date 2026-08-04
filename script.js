@@ -1,13 +1,19 @@
-// Wstaw tu docelowe ID filmów YouTube (fragment z adresu po "v=" lub "youtu.be/")
+// ID filmów YouTube (fragment z adresu po "v=" lub "youtu.be/").
+// Kolejność celowa: [0] = drugie najważniejsze wideo (po lewej od głównego),
+// [1] = główne wideo — wyśrodkowane domyślnie po wejściu na stronę (patrz FEATURED_VIDEO_INDEX),
+// [2] = trzecie najważniejsze wideo (po prawej od głównego), reszta dalej w karuzeli.
 const videoIds = [
-  "WSTAW_ID_1",
-  "WSTAW_ID_2",
-  "WSTAW_ID_3",
-  "WSTAW_ID_4",
-  "WSTAW_ID_5",
-  "WSTAW_ID_6",
-  "WSTAW_ID_7"
+  "Zzghsi8MwtU",
+  "9SzxkG5YioY",
+  "_yhVZ27_udU",
+  "XNaKz0Yq-ak",
+  "cVmIVW5q2AI",
+  "RBxBoc_0NgA",
+  "5kpnEq59mkg"
 ];
+
+// Indeks (0-based) w tablicy videoIds, który ma być wyśrodkowany domyślnie po wejściu na podstronę.
+const FEATURED_VIDEO_INDEX = 1;
 
 // Opinie klientów (podstrona Wyniki) — dopisuj kolejne obiekty na końcu tablicy
 const reviews = [
@@ -346,6 +352,10 @@ const reviews = [
     var pageKey = HASH_TO_PAGE[hash] || "home";
     showPage(pageKey);
     window.scrollTo(0, 0);
+
+    if (pageKey === "results") {
+      window.requestAnimationFrame(centerFeaturedVideoCard);
+    }
   }
 
   /* ==========================================================
@@ -514,6 +524,21 @@ const reviews = [
       .join("");
   }
 
+  function centerFeaturedVideoCard() {
+    var carousel = document.getElementById("videoCarousel");
+    if (!carousel) return;
+
+    var featured = carousel.children[FEATURED_VIDEO_INDEX];
+    if (!featured) return;
+
+    var carouselRect = carousel.getBoundingClientRect();
+    var cardRect = featured.getBoundingClientRect();
+    var cardLeftWithinCarousel = cardRect.left - carouselRect.left + carousel.scrollLeft;
+
+    var target = cardLeftWithinCarousel + cardRect.width / 2 - carousel.clientWidth / 2;
+    carousel.scrollLeft = Math.max(0, target);
+  }
+
   function renderReviewCarousel() {
     var el = document.getElementById("reviewCarousel");
     if (!el) return;
@@ -600,6 +625,11 @@ const reviews = [
     initCarouselArrows();
 
     window.addEventListener("hashchange", route);
+    window.addEventListener("resize", function () {
+      if (window.location.hash.replace(/^#/, "") === "wyniki") {
+        centerFeaturedVideoCard();
+      }
+    });
     route();
   });
 })();

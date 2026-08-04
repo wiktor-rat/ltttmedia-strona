@@ -987,7 +987,7 @@ p {
 
 .video-card {
   flex: 0 0 60%;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   border-radius: var(--radius-card);
   overflow: hidden;
   aspect-ratio: 16 / 9;
