@@ -18,27 +18,41 @@ const FEATURED_VIDEO_INDEX = 1;
 // Opinie klientów (podstrona Wyniki) — dopisuj kolejne obiekty na końcu tablicy
 const reviews = [
   {
-    name: "Imię Nazwisko",
-    company: "Nazwa firmy",
+    name: "Biuro Nieruchomości RE/MAX Impact",
+    company: "Opinia z Google",
     rating: 5,
-    date: "miesiąc rok",
-    text: "PLACEHOLDER — podmień na realną opinię."
+    date: "7 miesięcy temu",
+    text: "Zdecydowanie polecamy współpracę z LTTT Media! To świetnie zorganizowany zespół specjalistów, w pełni skoncentrowany na rozwiązaniach. Pełni energii i pozytywnego nastawienia, co realnie przekłada się na osiągane rezultaty. Skupiają się na celach i potrzebach klientów, wykazując przy tym ogromną cierpliwość i wyrozumiałość — cechy dziś naprawdę rzadko spotykane. Skuteczność oraz wysoka jakość obsługi klienta to ich najmocniejsze strony."
   },
   {
-    name: "Imię Nazwisko",
-    company: "Nazwa firmy",
+    name: "Gabriela",
+    company: "Opinia z Google",
     rating: 5,
-    date: "miesiąc rok",
-    text: "PLACEHOLDER — podmień na realną opinię."
+    date: "6 miesięcy temu",
+    text: "Polecam :) Współpracuję z agencją od kilku miesięcy. Bardzo doceniam ich zaangażowanie w to, by kampania rzeczywiście przynosiła wymierne rezultaty. Szybki kontakt, jasne i uczciwe warunki współpracy, trzymanie ręki na pulsie i stała optymalizacja kampanii, by nie przepalać budżetu, a także regularne dodawanie nowych kreacji — to mocne strony agencji. Polecam współpracę :)"
   },
   {
-    name: "Imię Nazwisko",
-    company: "Nazwa firmy",
+    name: "Szymon Marczynski",
+    company: "Soma Nieruchomości",
     rating: 5,
-    date: "miesiąc rok",
-    text: "PLACEHOLDER — podmień na realną opinię."
+    date: "4 miesiące temu",
+    text: "Jesteśmy bardzo zadowoleni ze współpracy reklamowej. Od pierwszego kontaktu z Nikodemem wszystko przebiegało sprawnie i profesjonalnie. Po rozpoczęciu współpracy opiekę nad projektem przejął Wiktor, który czuwa nad wszystkimi działaniami. Na dalszym etapie współpraca jest również prowadzona przez Dorotę. Całość przebiega bardzo dobrze i jesteśmy zadowoleni z efektów."
+  },
+  {
+    name: "Przemysław Podolak",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "6 miesięcy temu",
+    text: "LTTT Media to agencja, która stawia na konkrety i realne efekty, a nie puste obietnice. Wiktor dba o wszystko od A do Z, a kontakt z nim jest bardzo dobry i bezproblemowy. Duży plus za gotowe scenariusze do reklam oraz estetyczne, dopracowane grafiki. Współpraca przebiega sprawnie, wszystko jest jasno tłumaczone i dopasowane do potrzeb klienta. Polecam serdecznie."
+  },
+  {
+    name: "Wiktoria Lakoma",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "miesiąc temu",
+    text: "Każdemu kto się zastanawia, nie traćcie czasu tylko podejmujcie współpracę z Wiktorem! Jesteśmy więcej niż zadowoleni, ilość leadów jaką wygenerowali świetna, kontakt na bieżąco również świetny. Odpowiedzi na każde nasze pytanie, czy zmiany błyskawiczne! Polecam, polecam, polecam! :)"
   }
-  // kolejne opinie — dodawaj tutaj
+  // kolejne opinie — dodawaj tutaj (docelowo 14)
 ];
 
 (function () {
