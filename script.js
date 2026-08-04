@@ -191,12 +191,16 @@ const reviews = [
       title: "Klienci kupujący",
       short: "Baza zakwalifikowanych kupujących gotowa na Twoją następną ofertę.",
       tagline: "Baza zakwalifikowanych kupujących gotowa na Twoją następną ofertę.",
-      pain: "Masz oferty do sprzedania, ale dotarcie do kupującego jest przypadkowe.",
-      solution: "Kampania kierująca na formularz, gdzie klient wpisuje parametry poszukiwanego mieszkania — każde zgłoszenie trafia od razu do bazy z tagami wg preferencji.",
-      scope: [
-        "Formularz parametrów mieszkania (lokalizacja, metraż, budżet)",
-        "Kampania Meta/Google targetowana na aktywnie szukających",
-        "Segmentacja bazy pod nowe oferty wchodzące do sprzedaży"
+      jakDziala: [
+        "Kampania Meta Ads kieruje ruch osób poszukujących mieszkania na dedykowany landing page. Tam klient wypełnia dokładne parametry, które go interesują — lokalizację, metraż, liczbę pokoi, budżet i ewentualny termin zakupu — i wysyła zapytanie.",
+        "Po wypełnieniu formularza klient może od razu przejrzeć dostępne oferty biura. Mając go w bazie kupujących, biuro może zaproponować dopasowane oferty przez system wymiany ofert (MLS) albo poszukać nieruchomości indywidualnie.",
+        "Skupiamy się wyłącznie na kampanii Meta Ads, która generuje duży ruch i dociera do nowych odbiorców jeszcze nieznających biura."
+      ],
+      coRobimy: [
+        "Budujemy landing page z formularzem parametrów poszukiwanego mieszkania",
+        "Prowadzimy i optymalizujemy kampanię Meta Ads pod jakość wypełnień, nie tylko liczbę kliknięć",
+        "Wdrażamy automatyzację: każdy formularz trafia na Slacka i do arkusza CRM",
+        "Wysyłamy klientowi automatyczne potwierdzenie wysłania zapytania"
       ]
     },
     {
