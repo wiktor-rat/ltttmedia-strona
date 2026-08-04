@@ -156,13 +156,17 @@ const reviews = [
       title: "Klienci sprzedający",
       short: "Stały dopływ ofert na wyłączność — bez losowości i zimnych telefonów.",
       tagline: "Stały dopływ ofert na wyłączność — bez losowości i zimnych telefonów.",
-      pain: "Agenci polują na oferty ręcznie. Wyniki są nieprzewidywalne — raz jest dobrze, raz cisza.",
-      solution: "Budujemy system, który dociera do właścicieli myślących o sprzedaży, zanim zadzwonią do konkurencji — i prowadzi ich do podpisania umowy na wyłączność.",
-      scope: [
-        "Dedykowany landing page budujący wiarygodność firmy",
-        "Kampanie Meta Ads + Google Ads",
-        "Kwalifikacja leada i natychmiastowe powiadomienie agenta",
-        "Cotygodniowy raport leadów i konwersji"
+      jakDziala: [
+        "Wykorzystujemy kampanie w Meta Ads i Google Ads do generowania leadów. Ruch z kampanii Meta kierujemy na dedykowany landing page, który buduje wiarygodność firmy — dzięki temu klient sprzedający może w pełni zapoznać się z ofertą biura i zostawić kontakt lub zadzwonić bezpośrednio.",
+        "Gdy klient zostawia dane, trafiają one od razu do automatyzacji: klient otrzymuje SMS potwierdzający, Twój zespół dostaje powiadomienie na Slacku, a lead automatycznie uzupełnia się w arkuszu, który pełni rolę CRM.",
+        "Kampania Google Ads przechwytuje ruch z wysoką intencją zakupową — najlepiej działa skierowana na główną stronę www klienta lub na stronę dedykowaną klientom sprzedającym."
+      ],
+      coRobimy: [
+        "Wdrażamy landing page",
+        "Tworzymy kreacje, treści i nagłówki, wdrażamy, zarządzamy i optymalizujemy kampanie w Meta Ads i Google Ads",
+        "Wdrażamy automatyzacje SMS i e-mail oraz powiadomienia na Slacku i w CRM",
+        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca",
+        "Zapewniamy doradztwo — stały kontakt i wsparcie"
       ]
     },
     {
@@ -343,6 +347,23 @@ const reviews = [
     }
   }
 
+  var PLAY_ICON_SVG =
+    '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>';
+
+  // "jakDziala"/"coRobimy" to docelowe pola treści. Dla systemów, które mają
+  // jeszcze tylko stare pola (pain/solution/scope), budujemy z nich
+  // prowizoryczną treść w nowym układzie, do czasu dostarczenia finalnych opisów.
+  function getJakDzialaParagraphs(service) {
+    if (service.jakDziala) {
+      return Array.isArray(service.jakDziala) ? service.jakDziala : [service.jakDziala];
+    }
+    return [service.pain, service.solution].filter(Boolean);
+  }
+
+  function getCoRobimyItems(service) {
+    return service.coRobimy || service.scope || [];
+  }
+
   function renderServiceDetail(id) {
     var service = SERVICES.filter(function (s) {
       return s.id === Number(id);
@@ -355,7 +376,13 @@ const reviews = [
     document.getElementById("service-code").textContent = service.code;
     document.getElementById("service-title").textContent = service.title;
 
-    var scopeItems = service.scope
+    var jakDzialaHtml = getJakDzialaParagraphs(service)
+      .map(function (paragraph) {
+        return "<p>" + paragraph + "</p>";
+      })
+      .join("");
+
+    var coRobimyHtml = getCoRobimyItems(service)
       .map(function (item) {
         return "<li>" + CHECK_SVG + "<span>" + item + "</span></li>";
       })
@@ -365,27 +392,21 @@ const reviews = [
       '<p class="service-tagline">' +
       service.tagline +
       "</p>" +
-      '<div class="service-columns">' +
-      "<div>" +
       '<div class="service-block">' +
-      "<h3>Ból</h3><p>" +
-      service.pain +
-      "</p>" +
+      "<h3>Jak działa system</h3>" +
+      jakDzialaHtml +
+      "</div>" +
+      '<div class="video-placeholder">' +
+      '<div class="video-placeholder-icon">' +
+      PLAY_ICON_SVG +
+      "</div>" +
+      "<p>Wideo objaśniające — wkrótce</p>" +
       "</div>" +
       '<div class="service-block">' +
-      "<h3>Rozwiązanie</h3><p>" +
-      service.solution +
-      "</p>" +
-      "</div>" +
-      "</div>" +
-      "<div>" +
-      '<div class="service-block">' +
-      "<h3>Co wchodzi w skład</h3>" +
+      "<h3>Co robimy</h3>" +
       '<ul class="scope-list">' +
-      scopeItems +
+      coRobimyHtml +
       "</ul>" +
-      "</div>" +
-      "</div>" +
       "</div>" +
       '<button type="button" class="btn btn-primary btn-primary--lg" id="askOfferBtn">Zapytaj o ofertę</button>';
 

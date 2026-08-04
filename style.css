@@ -1110,11 +1110,9 @@ p {
   margin-bottom: 48px;
 }
 
-.service-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 48px;
+.service-block {
+  max-width: 760px;
+  margin-bottom: 40px;
 }
 
 .service-block h3 {
@@ -1122,13 +1120,52 @@ p {
   margin-bottom: 10px;
 }
 
-.service-block + .service-block {
-  margin-top: 32px;
-}
-
 .service-block p {
   color: var(--muted);
   font-size: 15.5px;
+  margin-bottom: 14px;
+}
+
+.service-block p:last-child {
+  margin-bottom: 0;
+}
+
+.video-placeholder {
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto 40px;
+  background: var(--bg);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--muted);
+}
+
+.video-placeholder-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--blue-pale);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-placeholder-icon svg {
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+}
+
+.video-placeholder p {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .scope-list li {
@@ -1278,11 +1315,6 @@ p {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 36px;
-  }
-
-  .service-columns {
-    grid-template-columns: 1fr;
-    gap: 8px;
   }
 }
 
