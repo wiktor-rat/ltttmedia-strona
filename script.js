@@ -531,12 +531,7 @@ const reviews = [
     var featured = carousel.children[FEATURED_VIDEO_INDEX];
     if (!featured) return;
 
-    var carouselRect = carousel.getBoundingClientRect();
-    var cardRect = featured.getBoundingClientRect();
-    var cardLeftWithinCarousel = cardRect.left - carouselRect.left + carousel.scrollLeft;
-
-    var target = cardLeftWithinCarousel + cardRect.width / 2 - carousel.clientWidth / 2;
-    carousel.scrollLeft = Math.max(0, target);
+    scrollCarouselToCard(carousel, featured, false);
   }
 
   function renderReviewCarousel() {
@@ -587,15 +582,80 @@ const reviews = [
       .join("");
   }
 
+  function getCarouselAlignment(carousel) {
+    var firstCard = carousel.children[0];
+    if (!firstCard) return "start";
+    return getComputedStyle(firstCard).scrollSnapAlign || "start";
+  }
+
+  function findNearestCardIndex(carousel) {
+    var alignment = getCarouselAlignment(carousel);
+    var carouselRect = carousel.getBoundingClientRect();
+    var reference =
+      alignment === "center" ? carouselRect.left + carousel.clientWidth / 2 : carouselRect.left;
+
+    var cards = carousel.children;
+    var nearestIndex = 0;
+    var nearestDist = Infinity;
+
+    for (var i = 0; i < cards.length; i++) {
+      var rect = cards[i].getBoundingClientRect();
+      var point = alignment === "center" ? rect.left + rect.width / 2 : rect.left;
+      var dist = Math.abs(point - reference);
+      if (dist < nearestDist) {
+        nearestDist = dist;
+        nearestIndex = i;
+      }
+    }
+
+    return nearestIndex;
+  }
+
+  function scrollCarouselToCard(carousel, card, smooth) {
+    var alignment = getCarouselAlignment(carousel);
+    var carouselRect = carousel.getBoundingClientRect();
+    var cardRect = card.getBoundingClientRect();
+    var cardLeftWithinCarousel = cardRect.left - carouselRect.left + carousel.scrollLeft;
+
+    var target =
+      alignment === "center"
+        ? cardLeftWithinCarousel + cardRect.width / 2 - carousel.clientWidth / 2
+        : cardLeftWithinCarousel;
+
+    target = Math.max(0, Math.min(target, carousel.scrollWidth - carousel.clientWidth));
+
+    if (smooth) {
+      carousel.scrollTo({ left: target, behavior: "smooth" });
+    } else {
+      carousel.scrollLeft = target;
+    }
+  }
+
+  // Karuzela zapętlona: strzałka za ostatnią/przed pierwszą kartą
+  // przeskakuje (bez animacji) na przeciwny koniec. Granice wykrywane
+  // po surowej pozycji scrolla (nie po "najbliższej karcie"), bo przy
+  // małej liczbie kart bywa jednocześnie widocznych kilka na raz.
   function scrollCarouselByCard(carousel, direction) {
-    var card = carousel.querySelector(":scope > *");
-    if (!card) return;
+    var cards = carousel.children;
+    if (!cards.length) return;
 
-    var styles = getComputedStyle(carousel);
-    var gap = parseFloat(styles.columnGap || styles.gap) || 0;
-    var amount = card.getBoundingClientRect().width + gap;
+    var epsilon = 2;
+    var maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    var atStart = carousel.scrollLeft <= epsilon;
+    var atEnd = carousel.scrollLeft >= maxScroll - epsilon;
 
-    carousel.scrollBy({ left: direction * amount, behavior: "smooth" });
+    if (direction === 1 && atEnd) {
+      scrollCarouselToCard(carousel, cards[0], false);
+      return;
+    }
+    if (direction === -1 && atStart) {
+      scrollCarouselToCard(carousel, cards[cards.length - 1], false);
+      return;
+    }
+
+    var currentIndex = findNearestCardIndex(carousel);
+    var nextIndex = Math.max(0, Math.min(cards.length - 1, currentIndex + direction));
+    scrollCarouselToCard(carousel, cards[nextIndex], true);
   }
 
   function initCarouselArrows() {
