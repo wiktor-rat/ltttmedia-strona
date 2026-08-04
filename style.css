@@ -734,6 +734,47 @@ p {
   margin-top: 12px;
 }
 
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.social-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.company-info {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.company-info p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 .contact-cards {
   display: flex;
   flex-direction: column;
