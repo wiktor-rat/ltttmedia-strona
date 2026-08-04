@@ -921,13 +921,14 @@ p {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--border);
+  color: var(--blue);
   padding-top: 22px;
 }
 
 .step-arrow svg {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
+  stroke-width: 2.4px;
 }
 
 .page-cta {
