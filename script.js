@@ -176,12 +176,15 @@ const reviews = [
       title: "Wynajmujący",
       short: "Właściciele mieszkań na wynajem trafiają prosto do Ciebie — nie do konkurencji.",
       tagline: "Właściciele mieszkań na wynajem trafiają prosto do Ciebie — nie do konkurencji.",
-      pain: "Właściciel mieszkania na wynajem szuka najemcy sam albo idzie do pierwszego biura, jakie znajdzie.",
-      solution: "System kierujący właścicieli mieszkań do wynajęcia prosto do Twojego biura — z jasnym przekazem: oddaj nam proces, znajdziemy sprawdzonego najemcę.",
-      scope: [
-        "Landing page z przekazem dopasowanym do wynajmujących",
-        "Kampania targetowana na inwestorów i właścicieli drugich mieszkań",
-        "Kwalifikacja leada przed przekazaniem do agenta"
+      jakDziala: [
+        "Tworzymy kampanię w Meta Ads kierowaną na formularz kontaktowy — nie na landing page. Dzięki temu zbieramy zapytania od osób chcących wynająć swoją nieruchomość bez konieczności inwestowania przez klienta w budowę dedykowanej strony.",
+        "Kampania na formularz sprawdza się w tym systemie lepiej niż na landing page — dla klienta to niższy koszt startu, a dla właściciela mieszkania mniejsze tarcie przy zostawieniu kontaktu."
+      ],
+      coRobimy: [
+        "Tworzymy kreacje, treści i nagłówki, wdrażamy, zarządzamy i optymalizujemy kampanię w Meta Ads",
+        "Wdrażamy automatyzacje SMS i e-mail oraz powiadomienia na Slacku i w CRM",
+        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca",
+        "Zapewniamy doradztwo — stały kontakt i wsparcie"
       ]
     },
     {
