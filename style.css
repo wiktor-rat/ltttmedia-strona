@@ -257,10 +257,10 @@ p {
 
 .logo-main {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 900;
   font-size: 20px;
   color: var(--navy);
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
 }
 
 .logo-sub {
@@ -268,7 +268,8 @@ p {
   font-weight: 700;
   font-size: 10.5px;
   color: var(--blue);
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .main-nav {
