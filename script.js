@@ -562,6 +562,13 @@ const reviews = [
       modalFormWrap.style.display = "none";
       formSuccess.style.display = "block";
     });
+
+    var servicesAskBtn = document.getElementById("servicesAskBtn");
+    if (servicesAskBtn) {
+      servicesAskBtn.addEventListener("click", function () {
+        openModal();
+      });
+    }
   }
 
   /* ==========================================================
