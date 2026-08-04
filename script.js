@@ -333,12 +333,18 @@ const reviews = [
       title: "Google Ads",
       short: "Bądź widoczny dokładnie w momencie, gdy klient Cię szuka.",
       tagline: "Bądź widoczny dokładnie w momencie, gdy klient Cię szuka.",
-      pain: "Klienci szukający agenta, dewelopera czy wykonawcy w Google trafiają do konkurencji, która jest widoczna wyżej w wynikach.",
-      solution: "Kampania w wyszukiwarce Google, która pojawia się dokładnie wtedy, gdy potencjalny klient aktywnie szuka Twoich usług — niezależnie od segmentu, jaki obsługujesz.",
-      scope: [
-        "Kampania Google Ads dopasowana do słów kluczowych Twojej branży i lokalizacji",
-        "Optymalizacja pod jakość i koszt kliknięcia",
-        "Raportowanie konwersji"
+      jakDziala: [
+        "Pełny pakiet Google Ads łączy kilka rodzajów kampanii, które razem pokrywają różne etapy decyzji klienta — od kogoś, kto już Cię zna, po kogoś, kto dopiero szuka.",
+        "Kampania w sieci wyszukiwania na frazy brandowe zbiera tani i ciepły ruch od osób, które już widziały Twoje reklamy lub zostały polecone — to też ochrona przed konkurencją, która mogłaby licytować Twoją markę i przechwytywać Twoich klientów sprzed nosa. Kampania na Mapach Google wspiera lokalną widoczność. Kampania na frazy generyczne (np. „biuro nieruchomości Wrocław”, „zarządzanie najmem Wrocław”) dociera do zimniejszego ruchu, który jest jednak bardziej zdecydowany niż odbiorcy z social mediów.",
+        "Kampania Performance Max łączy sieć wyszukiwania z siecią display — dodajemy do niej grafiki i wideo, żeby algorytm Google Ads sam znalazł najefektywniejsze miejsca do pozyskiwania klientów i generowania konwersji. Po zebraniu odpowiedniej ilości danych, tam gdzie to możliwe, uruchamiamy dodatkowo kampanię remarketingową do osób, które odwiedziły stronę i były zainteresowane ofertą, ale nie zostawiły kontaktu."
+      ],
+      coRobimy: [
+        "Konfigurujemy i prowadzimy kampanię brandową w sieci wyszukiwania",
+        "Konfigurujemy i prowadzimy kampanię na Mapach Google",
+        "Konfigurujemy i prowadzimy kampanię na frazy generyczne dopasowane do Twojej branży i lokalizacji",
+        "Budujemy i optymalizujemy kampanię Performance Max (grafiki, wideo, komponenty tekstowe)",
+        "Uruchamiamy kampanię remarketingową, gdy zbierzemy wystarczające dane",
+        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca"
       ]
     }
   ];
