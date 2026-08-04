@@ -473,11 +473,8 @@ p {
 }
 
 /* ---------- Testimonials ---------- */
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  gap: 24px;
-  align-items: stretch;
+.video-row {
+  margin-bottom: 24px;
 }
 
 .video-tile {
@@ -1001,8 +998,8 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .testimonial-grid {
-    grid-template-columns: 1fr;
+  .video-row {
+    grid-template-columns: 1fr 1fr;
   }
 
   .about-teaser {

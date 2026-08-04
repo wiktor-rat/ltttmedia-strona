@@ -408,31 +408,32 @@
   /* ==========================================================
      Wideo case study (YouTube, ładowane dopiero po kliknięciu)
      ========================================================== */
-  function initVideoTile() {
-    var tile = document.getElementById("videoTile");
-    if (!tile) return;
+  function initVideoTiles() {
+    var tiles = document.querySelectorAll(".js-video-tile");
 
-    var videoId = tile.getAttribute("data-youtube-id");
-    if (!videoId) return;
+    tiles.forEach(function (tile) {
+      var videoId = tile.getAttribute("data-youtube-id");
+      if (!videoId) return;
 
-    tile.style.backgroundImage =
-      "linear-gradient(160deg, rgba(11,24,48,0.65) 0%, rgba(19,35,69,0.75) 100%), url('https://img.youtube.com/vi/" +
-      videoId +
-      "/hqdefault.jpg')";
+      tile.style.backgroundImage =
+        "linear-gradient(160deg, rgba(11,24,48,0.65) 0%, rgba(19,35,69,0.75) 100%), url('https://img.youtube.com/vi/" +
+        videoId +
+        "/hqdefault.jpg')";
 
-    tile.addEventListener("click", function () {
-      if (tile.classList.contains("is-playing")) return;
+      tile.addEventListener("click", function () {
+        if (tile.classList.contains("is-playing")) return;
 
-      var iframe = document.createElement("iframe");
-      iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0";
-      iframe.title = "Case study LTTT MEDIA — wideo";
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-      iframe.allowFullscreen = true;
+        var iframe = document.createElement("iframe");
+        iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0";
+        iframe.title = "Case study LTTT MEDIA — wideo";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
 
-      tile.innerHTML = "";
-      tile.style.backgroundImage = "none";
-      tile.classList.add("is-playing");
-      tile.appendChild(iframe);
+        tile.innerHTML = "";
+        tile.style.backgroundImage = "none";
+        tile.classList.add("is-playing");
+        tile.appendChild(iframe);
+      });
     });
   }
 
@@ -444,7 +445,7 @@
     initMobileNav();
     initFaq();
     initModal();
-    initVideoTile();
+    initVideoTiles();
 
     window.addEventListener("hashchange", route);
     route();
