@@ -314,12 +314,16 @@ const reviews = [
       title: "Wykończenia wnętrz",
       short: "Klienci szukający wykończenia mieszkania pod klucz trafiają prosto do Ciebie.",
       tagline: "Klienci szukający wykończenia mieszkania pod klucz trafiają prosto do Ciebie.",
-      pain: "Firmy wykończeniowe polegają głównie na poleceniach i przypadkowych zapytaniach — trudno o stały, przewidywalny napływ zleceń.",
-      solution: "System kierujący do Ciebie osoby planujące wykończenie lub remont mieszkania, zanim jeszcze zaczną szukać wykonawcy przez znajomych.",
-      scope: [
-        "Landing page prezentujący realizacje i zakres usług",
-        "Kampania Meta/Google targetowana na świeżych właścicieli mieszkań i osoby planujące remont",
-        "Kwalifikacja leada (zakres prac, budżet, termin) przed przekazaniem"
+      jakDziala: [
+        "Kampania Meta Ads kieruje ruch bezpośrednio na stronę www klienta — w tym segmencie sprawdza się to lepiej niż osobny landing page, bo strona firmy wykończeniowej pokazuje realizacje i portfolio, które budują zaufanie skuteczniej niż strona kampanijna.",
+        "Uzupełniamy to o Google Ads, żeby przechwytywać ruch z wysoką intencją — osoby aktywnie szukające firmy do wykończenia mieszkania, nie tylko przewijające social media."
+      ],
+      coRobimy: [
+        "Tworzymy kreacje, treści i nagłówki, wdrażamy, zarządzamy i optymalizujemy kampanie w Meta Ads i Google Ads",
+        "Kierujemy ruch na stronę www klienta (lub dedykowaną podstronę, jeśli klient jej potrzebuje)",
+        "Wdrażamy automatyzacje SMS i e-mail oraz powiadomienia na Slacku i w CRM",
+        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca",
+        "Zapewniamy doradztwo — stały kontakt i wsparcie"
       ]
     },
     {
