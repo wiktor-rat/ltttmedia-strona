@@ -268,11 +268,15 @@ const reviews = [
       title: "Nieruchomości za granicą",
       short: "Docieramy do wąskiej grupy zainteresowanej rynkiem zagranicznym.",
       tagline: "Docieramy do wąskiej grupy zainteresowanej rynkiem zagranicznym.",
-      pain: "Grupa docelowa jest specyficzna i trudna do dotarcia standardowymi kanałami reklamowymi.",
-      solution: "Dedykowany system targetowany na konkretną grupę zainteresowaną zakupem nieruchomości za granicą.",
-      scope: [
-        "Zakres ustalany indywidualnie po weryfikacji popytu",
-        "Konsultacja wstępna zamiast gotowego pakietu"
+      jakDziala: [
+        "Wykorzystujemy kampanie w Meta Ads z materiałem wideo, który przyciąga największe zainteresowanie w tym segmencie.",
+        "Leady zbieramy przez formularz Meta — to najszybsza i najprostsza forma wypełnienia dla klienta, który jest już zainteresowany."
+      ],
+      coRobimy: [
+        "Tworzymy kreacje, treści i nagłówki, wdrażamy, zarządzamy i optymalizujemy kampanię w Meta Ads",
+        "Wdrażamy automatyzacje SMS i e-mail oraz powiadomienia na Slacku i w CRM",
+        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca",
+        "Zapewniamy doradztwo — stały kontakt i wsparcie"
       ]
     },
     {
