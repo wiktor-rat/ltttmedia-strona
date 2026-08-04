@@ -347,9 +347,6 @@ const reviews = [
     }
   }
 
-  var PLAY_ICON_SVG =
-    '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>';
-
   // "jakDziala"/"coRobimy" to docelowe pola treści. Dla systemów, które mają
   // jeszcze tylko stare pola (pain/solution/scope), budujemy z nich
   // prowizoryczną treść w nowym układzie, do czasu dostarczenia finalnych opisów.
@@ -395,12 +392,6 @@ const reviews = [
       '<div class="service-block">' +
       "<h3>Jak działa system</h3>" +
       jakDzialaHtml +
-      "</div>" +
-      '<div class="video-placeholder">' +
-      '<div class="video-placeholder-icon">' +
-      PLAY_ICON_SVG +
-      "</div>" +
-      "<p>Wideo objaśniające — wkrótce</p>" +
       "</div>" +
       '<div class="service-block">' +
       "<h3>Co robimy</h3>" +
