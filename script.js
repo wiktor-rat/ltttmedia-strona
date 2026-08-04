@@ -86,8 +86,36 @@ const reviews = [
     rating: 5,
     date: "6 miesięcy temu",
     text: "Polecamy serdecznie współpracę! Bardzo rzetelny firma, kontakt zawsze na czas (a nawet przed czasem ;)) Wiktor przesympatyczny i wywiązuje się w 100% z założonych planów."
+  },
+  {
+    name: "Marek Ozimek",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "4 miesiące temu",
+    text: "Polecam. Świetna agencja. Dobra skuteczność!"
+  },
+  {
+    name: "Aron Półtorak",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "6 miesięcy temu",
+    text: "Polecam! Profesjonalna obsługa, skuteczne działanie. Dokładnie tego oczekiwałem i w LTTT to dostałem."
+  },
+  {
+    name: "Biuro WRO",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "7 miesięcy temu",
+    text: "Fantastyczny zespół ludzi. Zaangażowanie, które realnie przynosi rezultaty, oraz pełen profesjonalizm na każdym etapie współpracy. Fenomenalny kontakt — szybkie odpowiedzi na pytania i natychmiastowe rozwiązywanie problemów. Do tego indywidualne podejście do klienta. Gorąco polecam!"
+  },
+  {
+    name: "Anna B",
+    company: "Opinia z Google",
+    rating: 5,
+    date: "9 miesięcy temu",
+    text: "Polecam z całego serca firmę LTTT Media! Dzięki nim udało mi się rozpocząć prowadzenie biura nieruchomości bez jakiejkolwiek bazy klientów. Wpada dużo leadów, które zamieniam w umowy na wyłączność. Jestem bardzo zadowolona. Ponadto pomagają mi na każdym kroku rozwijać mój biznes, aby cały czas iść do przodu. Polecam firmę każdemu."
   }
-  // kolejne opinie — dodawaj tutaj (docelowo 14)
+  // 14 opinii — komplet
 ];
 
 (function () {
