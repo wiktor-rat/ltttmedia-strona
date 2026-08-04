@@ -141,7 +141,11 @@ const reviews = [
     globe:
       '<circle cx="12" cy="12" r="9"></circle><line x1="3" y1="12" x2="21" y2="12"></line><path d="M12 3c3 3.3 3 14.7 0 18-3-3.3-3-14.7 0-18Z"></path>',
     monitor:
-      '<rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>'
+      '<rect x="3" y="4" width="18" height="13" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>',
+    paintRoller:
+      '<rect x="2" y="3" width="14" height="6" rx="1"></rect><line x1="9" y1="9" x2="9" y2="13"></line><path d="M9 13h7a3 3 0 0 1 3 3v4"></path>',
+    searchTarget:
+      '<circle cx="10" cy="10" r="6.5"></circle><circle cx="10" cy="10" r="2.5"></circle><line x1="20" y1="20" x2="14.6" y2="14.6"></line>'
   };
 
   var SERVICES = [
@@ -263,6 +267,36 @@ const reviews = [
         "Projekt i wdrożenie na własnym kodzie",
         "Integracja formularza z systemem obsługi leadów",
         "Abonament utrzymania: nadzór techniczny i drobne poprawki"
+      ]
+    },
+    {
+      id: 9,
+      code: "System 09",
+      icon: "paintRoller",
+      title: "Wykończenia wnętrz",
+      short: "Klienci szukający wykończenia mieszkania pod klucz trafiają prosto do Ciebie.",
+      tagline: "Klienci szukający wykończenia mieszkania pod klucz trafiają prosto do Ciebie.",
+      pain: "Firmy wykończeniowe polegają głównie na poleceniach i przypadkowych zapytaniach — trudno o stały, przewidywalny napływ zleceń.",
+      solution: "System kierujący do Ciebie osoby planujące wykończenie lub remont mieszkania, zanim jeszcze zaczną szukać wykonawcy przez znajomych.",
+      scope: [
+        "Landing page prezentujący realizacje i zakres usług",
+        "Kampania Meta/Google targetowana na świeżych właścicieli mieszkań i osoby planujące remont",
+        "Kwalifikacja leada (zakres prac, budżet, termin) przed przekazaniem"
+      ]
+    },
+    {
+      id: 10,
+      code: "System 10",
+      icon: "searchTarget",
+      title: "Google Ads",
+      short: "Bądź widoczny dokładnie w momencie, gdy klient Cię szuka.",
+      tagline: "Bądź widoczny dokładnie w momencie, gdy klient Cię szuka.",
+      pain: "Klienci szukający agenta, dewelopera czy wykonawcy w Google trafiają do konkurencji, która jest widoczna wyżej w wynikach.",
+      solution: "Kampania w wyszukiwarce Google, która pojawia się dokładnie wtedy, gdy potencjalny klient aktywnie szuka Twoich usług — niezależnie od segmentu, jaki obsługujesz.",
+      scope: [
+        "Kampania Google Ads dopasowana do słów kluczowych Twojej branży i lokalizacji",
+        "Optymalizacja pod jakość i koszt kliknięcia",
+        "Raportowanie konwersji"
       ]
     }
   ];
