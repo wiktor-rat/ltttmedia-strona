@@ -249,12 +249,16 @@ const reviews = [
       title: "Inwestycje deweloperskie",
       short: "Stały dopływ zainteresowanych kupujących na Twoją inwestycję.",
       tagline: "Stały dopływ zainteresowanych kupujących na Twoją inwestycję.",
-      pain: "Ogólne kampanie nie dają wystarczającej liczby kwalifikowanych leadów na konkretną inwestycję.",
-      solution: "Dedykowany system promocji inwestycji, z lejkiem dopasowanym do etapu: przedsprzedaż, budowa, gotowe do odbioru.",
-      scope: [
-        "Landing page dedykowany inwestycji (wizualizacje, plan mieszkań)",
-        "Kampania Meta/Google z remarketingiem",
-        "Wycena indywidualna dopasowana do skali inwestycji"
+      jakDziala: [
+        "Budujemy pełny proces sprzedażowy dla dewelopera poprzez kampanie w Meta Ads i Google Ads.",
+        "Kampanie Meta mają dwa cele naraz — zbieranie zapytań przez formularz FB i kierowanie ruchu na stronę inwestycji — dzięki czemu zbieramy zapytania na dwa sposoby jednocześnie: im więcej punktów kontaktu, tym lepiej.",
+        "Dodatkowo wykorzystujemy Google Ads do przechwytywania osób z wysoką intencją zakupową, które aktywnie poszukują nieruchomości z rynku pierwotnego."
+      ],
+      coRobimy: [
+        "Tworzymy kreacje, treści i nagłówki, wdrażamy, zarządzamy i optymalizujemy kampanie w Meta Ads i Google Ads",
+        "Wdrażamy automatyzacje SMS i e-mail oraz powiadomienia na Slacku i w CRM",
+        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca",
+        "Zapewniamy doradztwo — stały kontakt i wsparcie"
       ]
     },
     {
