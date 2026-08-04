@@ -826,9 +826,8 @@ p {
 .site-footer .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
+  justify-content: center;
+  text-align: center;
 }
 
 /* ---------- Pages / subpages ---------- */
@@ -1110,10 +1109,5 @@ p {
 
   .section {
     padding: 64px 0;
-  }
-
-  .site-footer .container {
-    flex-direction: column;
-    text-align: center;
   }
 }
