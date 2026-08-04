@@ -741,25 +741,22 @@ p {
 }
 
 .social-link {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  color: var(--white);
+  width: 40px;
+  height: 40px;
+  color: rgba(255, 255, 255, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  transition: color 0.15s ease, transform 0.15s ease;
 }
 
 .social-link svg {
-  width: 20px;
-  height: 20px;
+  width: 34px;
+  height: 34px;
 }
 
 .social-link:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.55);
+  color: var(--white);
   transform: translateY(-1px);
 }
 
