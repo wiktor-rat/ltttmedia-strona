@@ -575,14 +575,6 @@ p {
   font-size: 13.5px;
 }
 
-.section-note {
-  text-align: center;
-  color: var(--muted);
-  font-style: italic;
-  font-size: 13.5px;
-  margin-top: 32px;
-}
-
 /* ---------- About teaser / stats ---------- */
 .about-teaser {
   display: grid;
