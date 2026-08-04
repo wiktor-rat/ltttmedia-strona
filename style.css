@@ -938,6 +938,149 @@ p {
   border-top: 1px solid var(--border);
 }
 
+/* ---------- Carousels (Wyniki: case studies + opinie) ---------- */
+.carousel-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.carousel-arrow:hover {
+  background: var(--bg);
+  transform: translateY(-1px);
+}
+
+.carousel-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.video-card {
+  flex: 0 0 60%;
+  scroll-snap-align: start;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+  box-shadow: var(--shadow-card);
+}
+
+.video-card iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.review-card {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 22px 22px 24px;
+  position: relative;
+}
+
+.review-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-right: 24px;
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--blue-pale);
+  color: var(--blue);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.review-name {
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--navy);
+}
+
+.review-company {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.review-google-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.review-google-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.review-card .stars {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.review-date {
+  color: var(--muted);
+  font-size: 12.5px;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  font-size: 14.5px;
+  color: var(--navy);
+  line-height: 1.55;
+}
+
+.review-text--placeholder {
+  color: var(--blue-hover);
+  font-weight: 600;
+  font-style: italic;
+}
+
 /* Service detail */
 .service-tagline {
   font-size: 20px;
@@ -1193,5 +1336,17 @@ p {
 
   .step-arrow {
     display: none;
+  }
+
+  .carousel-arrow {
+    display: none;
+  }
+
+  .video-card {
+    flex-basis: 85%;
+  }
+
+  .review-card {
+    flex-basis: 85%;
   }
 }
