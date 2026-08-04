@@ -1,19 +1,20 @@
 // ID filmów YouTube (fragment z adresu po "v=" lub "youtu.be/").
-// Kolejność celowa: [0] = drugie najważniejsze wideo (po lewej od głównego),
-// [1] = główne wideo — wyśrodkowane domyślnie po wejściu na stronę (patrz FEATURED_VIDEO_INDEX),
-// [2] = trzecie najważniejsze wideo (po prawej od głównego), reszta dalej w karuzeli.
+// Kolejność celowa (główne wideo na środku — po 3 pozostałe z każdej strony):
+// [2] = drugie najważniejsze wideo (po lewej od głównego),
+// [3] = główne wideo — wyśrodkowane domyślnie po wejściu na stronę (patrz FEATURED_VIDEO_INDEX),
+// [4] = trzecie najważniejsze wideo (po prawej od głównego), reszta rozłożona po obu stronach.
 const videoIds = [
+  "XNaKz0Yq-ak",
+  "cVmIVW5q2AI",
   "Zzghsi8MwtU",
   "9SzxkG5YioY",
   "_yhVZ27_udU",
-  "XNaKz0Yq-ak",
-  "cVmIVW5q2AI",
   "RBxBoc_0NgA",
   "5kpnEq59mkg"
 ];
 
 // Indeks (0-based) w tablicy videoIds, który ma być wyśrodkowany domyślnie po wejściu na podstronę.
-const FEATURED_VIDEO_INDEX = 1;
+const FEATURED_VIDEO_INDEX = 3;
 
 // Opinie klientów (podstrona Wyniki) — dopisuj kolejne obiekty na końcu tablicy
 const reviews = [
@@ -431,7 +432,7 @@ const reviews = [
     window.scrollTo(0, 0);
 
     if (pageKey === "results") {
-      window.requestAnimationFrame(centerFeaturedVideoCard);
+      window.requestAnimationFrame(centerResultsCarousels);
     }
   }
 
@@ -601,14 +602,21 @@ const reviews = [
       .join("");
   }
 
-  function centerFeaturedVideoCard() {
-    var carousel = document.getElementById("videoCarousel");
+  function centerCarouselOnIndex(carouselId, index) {
+    var carousel = document.getElementById(carouselId);
     if (!carousel) return;
 
-    var featured = carousel.children[FEATURED_VIDEO_INDEX];
-    if (!featured) return;
+    var card = carousel.children[index];
+    if (!card) return;
 
-    scrollCarouselToCard(carousel, featured, false);
+    scrollCarouselToCard(carousel, card, false);
+  }
+
+  function centerResultsCarousels() {
+    centerCarouselOnIndex("videoCarousel", FEATURED_VIDEO_INDEX);
+    // Startowa pozycja pośrodku listy opinii, żeby przewijanie w lewo i w prawo
+    // odsłaniało z grubsza tyle samo kart w obie strony.
+    centerCarouselOnIndex("reviewCarousel", Math.floor(reviews.length / 2));
   }
 
   function renderReviewCarousel() {
@@ -764,7 +772,7 @@ const reviews = [
     window.addEventListener("hashchange", route);
     window.addEventListener("resize", function () {
       if (window.location.hash.replace(/^#/, "") === "wyniki") {
-        centerFeaturedVideoCard();
+        centerResultsCarousels();
       }
     });
     route();
