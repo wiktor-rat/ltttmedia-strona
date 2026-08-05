@@ -489,20 +489,21 @@
     <div id="modalFormWrap">
       <h3 id="offerModalTitle">Zapytaj o ofertę</h3>
       <p class="modal-sub">Zostaw kontakt — odezwiemy się z propozycją systemu dopasowanego do Twojego biura.</p>
-      <form id="offerForm">
+      <form id="offerForm" novalidate>
         <div class="form-field">
           <label for="offerName">Imię i nazwisko</label>
-          <input type="text" id="offerName" name="offerName" required>
+          <input type="text" id="offerName" name="offerName">
         </div>
         <div class="form-field">
           <label for="offerOffice">Nazwa biura</label>
-          <input type="text" id="offerOffice" name="offerOffice" required>
+          <input type="text" id="offerOffice" name="offerOffice">
         </div>
         <div class="form-field">
           <label for="offerContact">Telefon lub e-mail</label>
-          <input type="text" id="offerContact" name="offerContact" required>
+          <input type="text" id="offerContact" name="offerContact">
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Wyślij zapytanie</button>
+        <p class="form-error-message" id="formErrorMessage" role="alert"></p>
+        <button type="submit" class="btn btn-primary btn-block" id="offerSubmitBtn">Wyślij zapytanie</button>
       </form>
     </div>
     <div class="form-success" id="formSuccess">

@@ -602,10 +602,16 @@ const reviews = [
   /* ==========================================================
      Modal "Zapytaj o ofertę"
      ========================================================== */
+  var ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/19282604/46ifpja/";
+  var CONTACT_PHONE_DISPLAY = "+48 511 205 230";
+
   var modalOverlay, offerForm, formSuccess, modalFormWrap;
+  var currentModalSystem = "Zapytanie ogólne";
 
   function openModal(serviceTitle) {
     if (!modalOverlay) return;
+    currentModalSystem = serviceTitle || "Zapytanie ogólne";
+
     var title = document.getElementById("offerModalTitle");
     if (title) {
       title.textContent = serviceTitle
@@ -615,6 +621,7 @@ const reviews = [
     modalFormWrap.style.display = "block";
     formSuccess.style.display = "none";
     offerForm.reset();
+    clearModalFormErrors();
     modalOverlay.classList.add("is-open");
     document.body.style.overflow = "hidden";
   }
@@ -623,6 +630,76 @@ const reviews = [
     if (!modalOverlay) return;
     modalOverlay.classList.remove("is-open");
     document.body.style.overflow = "";
+  }
+
+  function clearModalFormErrors() {
+    document.getElementById("offerName").classList.remove("is-invalid");
+    document.getElementById("offerContact").classList.remove("is-invalid");
+    var errorEl = document.getElementById("formErrorMessage");
+    errorEl.textContent = "";
+    errorEl.classList.remove("is-visible");
+  }
+
+  function validateModalForm() {
+    var nameInput = document.getElementById("offerName");
+    var contactInput = document.getElementById("offerContact");
+    var valid = true;
+
+    if (!nameInput.value.trim()) {
+      nameInput.classList.add("is-invalid");
+      valid = false;
+    }
+    if (!contactInput.value.trim()) {
+      contactInput.classList.add("is-invalid");
+      valid = false;
+    }
+    return valid;
+  }
+
+  function showModalError(message) {
+    var errorEl = document.getElementById("formErrorMessage");
+    errorEl.textContent = message;
+    errorEl.classList.add("is-visible");
+  }
+
+  function submitModal(e) {
+    e.preventDefault();
+    clearModalFormErrors();
+
+    if (!validateModalForm()) return;
+
+    var submitBtn = document.getElementById("offerSubmitBtn");
+    var payload = {
+      name: document.getElementById("offerName").value.trim(),
+      company: document.getElementById("offerOffice").value.trim(),
+      contact: document.getElementById("offerContact").value.trim(),
+      system: currentModalSystem
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Wysyłanie...";
+
+    fetch(ZAPIER_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error("Zapier webhook responded with an error");
+
+        modalFormWrap.style.display = "none";
+        formSuccess.style.display = "block";
+        window.setTimeout(closeModal, 2500);
+      })
+      .catch(function () {
+        showModalError(
+          "Nie udało się wysłać, spróbuj ponownie lub zadzwoń pod " + CONTACT_PHONE_DISPLAY + "."
+        );
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Wyślij zapytanie";
+      });
   }
 
   function initModal() {
@@ -645,10 +722,13 @@ const reviews = [
       }
     });
 
-    offerForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      modalFormWrap.style.display = "none";
-      formSuccess.style.display = "block";
+    offerForm.addEventListener("submit", submitModal);
+
+    document.getElementById("offerName").addEventListener("input", function () {
+      this.classList.remove("is-invalid");
+    });
+    document.getElementById("offerContact").addEventListener("input", function () {
+      this.classList.remove("is-invalid");
     });
 
     var servicesAskBtn = document.getElementById("servicesAskBtn");
