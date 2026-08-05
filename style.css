@@ -1329,7 +1329,7 @@ p {
     background: var(--white);
     border-bottom: 1px solid var(--border);
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 4px;
     padding: 12px 24px 20px;
     display: none;
@@ -1343,6 +1343,7 @@ p {
     width: 100%;
     padding: 12px 0;
     border-bottom: 1px solid var(--border);
+    text-align: right;
   }
 
   .main-nav .mobile-nav-cta {
