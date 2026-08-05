@@ -37,6 +37,8 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -975,6 +977,7 @@ p {
 
 .carousel {
   display: flex;
+  align-items: flex-start;
   gap: 20px;
   flex: 1;
   overflow-x: auto;
