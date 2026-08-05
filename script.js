@@ -634,7 +634,8 @@ const reviews = [
 
   function clearModalFormErrors() {
     document.getElementById("offerName").classList.remove("is-invalid");
-    document.getElementById("offerContact").classList.remove("is-invalid");
+    document.getElementById("offerPhone").classList.remove("is-invalid");
+    document.getElementById("offerEmail").classList.remove("is-invalid");
     var errorEl = document.getElementById("formErrorMessage");
     errorEl.textContent = "";
     errorEl.classList.remove("is-visible");
@@ -642,15 +643,19 @@ const reviews = [
 
   function validateModalForm() {
     var nameInput = document.getElementById("offerName");
-    var contactInput = document.getElementById("offerContact");
+    var phoneInput = document.getElementById("offerPhone");
+    var emailInput = document.getElementById("offerEmail");
     var valid = true;
 
     if (!nameInput.value.trim()) {
       nameInput.classList.add("is-invalid");
       valid = false;
     }
-    if (!contactInput.value.trim()) {
-      contactInput.classList.add("is-invalid");
+
+    // Wymagany jest telefon LUB e-mail — przynajmniej jeden z dwóch.
+    if (!phoneInput.value.trim() && !emailInput.value.trim()) {
+      phoneInput.classList.add("is-invalid");
+      emailInput.classList.add("is-invalid");
       valid = false;
     }
     return valid;
@@ -672,7 +677,8 @@ const reviews = [
     var payload = {
       name: document.getElementById("offerName").value.trim(),
       company: document.getElementById("offerOffice").value.trim(),
-      contact: document.getElementById("offerContact").value.trim(),
+      phone: document.getElementById("offerPhone").value.trim(),
+      email: document.getElementById("offerEmail").value.trim(),
       system: currentModalSystem
     };
 
@@ -681,7 +687,12 @@ const reviews = [
 
     fetch(ZAPIER_WEBHOOK_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      // Celowo "text/plain" zamiast "application/json": ten drugi wywołuje
+      // preflight CORS (OPTIONS), którego Zapier Catch Hook nie obsługuje
+      // poprawnie z poziomu przeglądarki — request nigdy nie dochodzi.
+      // "text/plain" to "simple request" (bez preflightu), a Zapier i tak
+      // poprawnie sparsuje treść jako JSON niezależnie od nagłówka.
+      headers: { "Content-Type": "text/plain" },
       body: JSON.stringify(payload)
     })
       .then(function (response) {
@@ -727,8 +738,15 @@ const reviews = [
     document.getElementById("offerName").addEventListener("input", function () {
       this.classList.remove("is-invalid");
     });
-    document.getElementById("offerContact").addEventListener("input", function () {
-      this.classList.remove("is-invalid");
+    // Telefon i e-mail dzielą regułę "przynajmniej jedno z dwóch", więc
+    // wypełnienie któregokolwiek czyści stan błędu na obu polach.
+    document.getElementById("offerPhone").addEventListener("input", function () {
+      document.getElementById("offerPhone").classList.remove("is-invalid");
+      document.getElementById("offerEmail").classList.remove("is-invalid");
+    });
+    document.getElementById("offerEmail").addEventListener("input", function () {
+      document.getElementById("offerPhone").classList.remove("is-invalid");
+      document.getElementById("offerEmail").classList.remove("is-invalid");
     });
 
     var servicesAskBtn = document.getElementById("servicesAskBtn");
