@@ -36,6 +36,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -45,6 +46,7 @@ body {
   background: var(--white);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 img,
@@ -182,7 +184,8 @@ p {
   padding: 13px 26px;
   border: 2px solid transparent;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-  white-space: nowrap;
+  text-align: center;
+  max-width: 100%;
 }
 
 .btn-primary {
@@ -295,6 +298,10 @@ p {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.main-nav .mobile-nav-cta {
+  display: none;
 }
 
 .nav-toggle {
@@ -1338,6 +1345,14 @@ p {
     border-bottom: 1px solid var(--border);
   }
 
+  .main-nav .mobile-nav-cta {
+    display: inline-flex;
+    width: auto;
+    margin-top: 16px;
+    border-bottom: none;
+    padding: 13px 26px;
+  }
+
   .nav-toggle {
     display: flex;
   }
@@ -1395,5 +1410,32 @@ p {
 
   .review-card {
     flex-basis: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .subhero h1 {
+    font-size: 24px;
+  }
+
+  .section-head h2 {
+    font-size: 22px;
+  }
+
+  .page-content h2 {
+    font-size: 20px;
+  }
+
+  .hero-pill {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
   }
 }
