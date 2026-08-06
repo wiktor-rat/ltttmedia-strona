@@ -495,7 +495,8 @@ const reviews = [
     home: "home",
     "o-nas": "about",
     wyniki: "results",
-    uslugi: "services"
+    uslugi: "services",
+    "polityka-prywatnosci": "privacy"
   };
 
   var pages = document.querySelectorAll(".page");
