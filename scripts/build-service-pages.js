@@ -33,7 +33,7 @@ function page(s) {
     ? `<div class="service-block"><h3>Proces budowy strony</h3><ol class="process-list">${s.proces.map((p, i) => `<li><span class="process-number">${i + 1}</span><span>${p}</span></li>`).join("")}</ol>${s.procesNote ? `<p class="process-note">${s.procesNote}</p>` : ""}</div>`
     : "";
   const cena = s.cena ? `<div class="service-block"><h3>Cena</h3><p>${s.cena}</p></div>` : "";
-  const others = SERVICES.filter((o) => o.id !== s.id)
+  const others = SERVICES.filter((o) => o.id !== s.id && !o.hidden)
     .map((o) => `<li><a href="/uslugi/${o.slug}/">${o.title}</a></li>`)
     .join("");
   const ld = {
@@ -99,8 +99,6 @@ function page(s) {
     <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna">
       <a href="/#o-nas">O nas</a>
       <a href="/#wyniki">Wyniki</a>
-      <a href="/uslugi/seller-access/"${s.slug === "seller-access" ? ' class="is-active"' : ""}>Seller Access</a>
-      <a href="/uslugi/silnik-sprzedazy-inwestycji/"${s.slug === "silnik-sprzedazy-inwestycji" ? ' class="is-active"' : ""}>Dla deweloperów</a>
       <a href="/#uslugi">Usługi</a>
       <a href="/#faq">FAQ</a>
       <a href="/#kontakt">Kontakt</a>
@@ -143,16 +141,17 @@ function page(s) {
 
 SERVICES.forEach((s) => {
   const dir = path.join(root, "uslugi", s.slug);
+  if (s.hidden) { fs.rmSync(dir, { recursive: true, force: true }); return; }
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, "index.html"), page(s));
 });
 
 const today = new Date().toISOString().slice(0, 10);
-const urls = [["/", "1.0"], ...SERVICES.map((s) => [`/uslugi/${s.slug}/`, s.id === 1 || s.id === 6 ? "0.9" : "0.7"])];
+const urls = [["/", "1.0"], ...SERVICES.filter((s) => !s.hidden).map((s) => [`/uslugi/${s.slug}/`, "0.7"])];
 fs.writeFileSync(
   path.join(root, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     urls.map(([u, p]) => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod><priority>${p}</priority></url>`).join("\n") +
     `\n</urlset>\n`
 );
-console.log("Wygenerowano " + SERVICES.length + " stron usług i sitemap.xml");
+console.log("Wygenerowano " + SERVICES.filter((s) => !s.hidden).length + " stron usług i sitemap.xml");
