@@ -83,6 +83,7 @@ function page(s) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
+<script src="/consent.js" defer></script>
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 </head>
 <body>
@@ -129,6 +130,7 @@ function page(s) {
   <div class="container">
     <span>© 2026 LTTT MEDIA | Lead To The Top Sp. z o.o.</span>
     <a href="/#polityka-prywatnosci" class="footer-link">Polityka prywatności</a>
+    <button type="button" class="footer-link" data-cookie-settings>Ustawienia cookies</button>
   </div>
 </footer>
 <script>
