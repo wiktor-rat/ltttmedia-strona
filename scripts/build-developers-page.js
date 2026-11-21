@@ -134,20 +134,10 @@ const html = `<!DOCTYPE html>
 <div class="top-banner">Partner w rozwoju Twojej firmy</div>
 <header class="site-header">
   <div class="container">
-    <a href="/" class="logo" aria-label="LTTT MEDIA — strona główna">
+    <a href="/" class="logo" aria-label="LTTT MEDIA">
       <span class="logo-main">LTTT MEDIA</span>
       <span class="logo-sub">LEAD TO THE TOP</span>
     </a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Otwórz menu nawigacji"><span></span><span></span><span></span></button>
-    <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna">
-      <a href="/#o-nas">O nas</a>
-      <a href="/#wyniki">Wyniki</a>
-      <a href="/silnik-sprzedazy-inwestycji/" class="is-active" aria-current="page">Dla deweloperów</a>
-      <a href="/#uslugi">Usługi</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/#kontakt">Kontakt</a>
-      <a href="#rozmowa" class="btn btn-primary mobile-nav-cta">Umów rozmowę →</a>
-    </nav>
     <div class="header-actions"><a href="#rozmowa" class="btn btn-primary">Umów rozmowę →</a></div>
   </div>
 </header>
@@ -255,7 +245,6 @@ const html = `<!DOCTYPE html>
   </div>
 </footer>
 <script>
-(function(){var t=document.getElementById("navToggle"),n=document.getElementById("mainNav");if(t&&n){t.addEventListener("click",function(){var o=n.classList.toggle("is-open");t.setAttribute("aria-expanded",o?"true":"false");});}})();
 (function(){
   // TODO: podstaw adres wysyłki (webhook albo formularz z naszego CRM). Puste = tryb "wkrótce".
   var FORM_ENDPOINT = "";
