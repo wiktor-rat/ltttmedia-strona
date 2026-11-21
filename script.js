@@ -151,9 +151,10 @@ const reviews = [
   var SERVICES = [
     {
       id: 1,
-      code: "System 01",
+      code: "Usługa 01",
       icon: "house",
-      title: "Klienci sprzedający",
+      slug: "seller-access",
+      title: "Seller Access: pozyskiwanie ofert na wyłączność",
       short: "Stały dopływ ofert na wyłączność — bez losowości i zimnych telefonów.",
       tagline: "Stały dopływ ofert na wyłączność — bez losowości i zimnych telefonów.",
       jakDziala: [
@@ -171,9 +172,10 @@ const reviews = [
     },
     {
       id: 2,
-      code: "System 02",
+      code: "Usługa 02",
       icon: "key",
-      title: "Wynajmujący",
+      slug: "pozyskiwanie-wynajmujacych",
+      title: "Pozyskiwanie właścicieli mieszkań na wynajem",
       short: "Właściciele mieszkań na wynajem trafiają prosto do Ciebie — nie do konkurencji.",
       tagline: "Właściciele mieszkań na wynajem trafiają prosto do Ciebie — nie do konkurencji.",
       jakDziala: [
@@ -189,9 +191,10 @@ const reviews = [
     },
     {
       id: 3,
-      code: "System 03",
+      code: "Usługa 03",
       icon: "search",
-      title: "Klienci kupujący",
+      slug: "pozyskiwanie-kupujacych",
+      title: "Pozyskiwanie kupujących nieruchomości",
       short: "Baza zakwalifikowanych kupujących gotowa na Twoją następną ofertę.",
       tagline: "Baza zakwalifikowanych kupujących gotowa na Twoją następną ofertę.",
       jakDziala: [
@@ -208,9 +211,10 @@ const reviews = [
     },
     {
       id: 4,
-      code: "System 04",
+      code: "Usługa 04",
       icon: "apartments",
-      title: "Zarządzanie najmem",
+      slug: "zarzadzanie-najmem-leady",
+      title: "Pozyskiwanie zleceń na zarządzanie najmem",
       short: "Docieramy do inwestorów, którzy chcą oddać zarządzanie najmem.",
       tagline: "Docieramy do inwestorów, którzy chcą oddać zarządzanie najmem.",
       jakDziala: [
@@ -226,9 +230,10 @@ const reviews = [
     },
     {
       id: 5,
-      code: "System 05",
+      code: "Usługa 05",
       icon: "userPlus",
-      title: "Rekrutacja agentów",
+      slug: "rekrutacja-agentow",
+      title: "Rekrutacja agentów nieruchomości",
       short: "Kandydaci na agentów trafiają prosto do rozmowy rekrutacyjnej.",
       tagline: "Kandydaci na agentów trafiają prosto do rozmowy rekrutacyjnej.",
       jakDziala: [
@@ -244,28 +249,32 @@ const reviews = [
     },
     {
       id: 6,
-      code: "System 06",
+      code: "Usługa 06",
       icon: "skyscraper",
-      title: "Inwestycje deweloperskie",
-      short: "Stały dopływ zainteresowanych kupujących na Twoją inwestycję.",
-      tagline: "Stały dopływ zainteresowanych kupujących na Twoją inwestycję.",
+      slug: "silnik-sprzedazy-inwestycji",
+      title: "Silnik Sprzedaży Inwestycji dla deweloperów",
+      short: "Marketing i pełna opieka nad zapytaniami dla inwestycji, która już się sprzedaje.",
+      tagline: "Reklamy, strona inwestycji i obsługa każdego zapytania aż do rozmowy handlowca. Dla deweloperów, którzy chcą sprzedawać szybciej.",
       jakDziala: [
-        "Budujemy pełny proces sprzedażowy dla dewelopera poprzez kampanie w Meta Ads i Google Ads.",
-        "Kampanie Meta mają dwa cele naraz — zbieranie zapytań przez formularz FB i kierowanie ruchu na stronę inwestycji — dzięki czemu zbieramy zapytania na dwa sposoby jednocześnie: im więcej punktów kontaktu, tym lepiej.",
-        "Dodatkowo wykorzystujemy Google Ads do przechwytywania osób z wysoką intencją zakupową, które aktywnie poszukują nieruchomości z rynku pierwotnego."
+        "Silnik Sprzedaży Inwestycji to usługa dla deweloperów, którzy już sprzedają inwestycję i chcą sprzedawać ją szybciej. Łączy reklamy, stronę inwestycji i obsługę każdego zapytania aż do rozmowy z handlowcem.",
+        "Kampanie Meta Ads budują popyt na inwestycję, a Google Ads przechwytuje osoby, które już szukają mieszkania z rynku pierwotnego. Zapytania trafiają na stronę inwestycji i do naszego CRM, gdzie są oceniane, a zespół sprzedaży dostaje alert i SMS.",
+        "System działa obok Waszego CRM i zespołu sprzedaży. Wynik widać w raporcie od reklamy do rezerwacji, a dyrektor sprzedaży dostaje jednostronicowe podsumowanie dla zarządu."
       ],
       coRobimy: [
-        "Tworzymy kreacje, treści i nagłówki, wdrażamy, zarządzamy i optymalizujemy kampanie w Meta Ads i Google Ads",
-        "Wdrażamy automatyzacje SMS i e-mail oraz powiadomienia na Slacku i w CRM",
-        "Raportujemy wyniki — raz w tygodniu i na koniec miesiąca",
-        "Zapewniamy doradztwo — stały kontakt i wsparcie"
+        "Przygotowujemy plan na pierwsze 30 dni dla Waszej inwestycji",
+        "Prowadzimy kampanie Meta Ads i Google Ads: kreacje, treści, optymalizacja",
+        "Budujemy stronę inwestycji, która zbiera zapytania",
+        "Wdrażamy w naszym CRM ocenę zapytań, alerty, SMS-y i follow-upy aż do rozmowy handlowca",
+        "Raportujemy od reklamy do rezerwacji i spotykamy się z Wami raz w miesiącu",
+        "Zapewniamy jednego opiekuna, który odpowiada w ciągu 24 godzin"
       ]
     },
     {
       id: 7,
-      code: "System 07",
+      code: "Usługa 07",
       icon: "globe",
-      title: "Nieruchomości za granicą",
+      slug: "nieruchomosci-za-granica",
+      title: "Pozyskiwanie klientów na nieruchomości za granicą",
       short: "Docieramy do wąskiej grupy zainteresowanej rynkiem zagranicznym.",
       tagline: "Docieramy do wąskiej grupy zainteresowanej rynkiem zagranicznym.",
       jakDziala: [
@@ -281,9 +290,10 @@ const reviews = [
     },
     {
       id: 8,
-      code: "System 08",
+      code: "Usługa 08",
       icon: "monitor",
-      title: "Strony Internetowe i Landing Page",
+      slug: "strony-i-landing-page",
+      title: "Strony internetowe i landing page dla branży nieruchomości",
       short: "Strona, która sprzedaje — nie tylko wygląda dobrze.",
       tagline: "Strona, która sprzedaje — nie tylko wygląda dobrze.",
       jakDziala: [
@@ -309,9 +319,10 @@ const reviews = [
     },
     {
       id: 9,
-      code: "System 09",
+      code: "Usługa 09",
       icon: "paintRoller",
-      title: "Wykończenia wnętrz",
+      slug: "wykonczenia-wnetrz",
+      title: "Pozyskiwanie klientów na wykończenia wnętrz",
       short: "Klienci szukający wykończenia mieszkania pod klucz trafiają prosto do Ciebie.",
       tagline: "Klienci szukający wykończenia mieszkania pod klucz trafiają prosto do Ciebie.",
       jakDziala: [
@@ -328,9 +339,10 @@ const reviews = [
     },
     {
       id: 10,
-      code: "System 10",
+      code: "Usługa 10",
       icon: "searchTarget",
-      title: "Google Ads",
+      slug: "google-ads",
+      title: "Google Ads dla branży nieruchomości",
       short: "Bądź widoczny dokładnie w momencie, gdy klient Cię szuka.",
       tagline: "Bądź widoczny dokładnie w momencie, gdy klient Cię szuka.",
       jakDziala: [
@@ -362,9 +374,9 @@ const reviews = [
 
   function serviceCardHTML(service) {
     return (
-      '<a class="card service-card" href="#usluga/' +
-      service.id +
-      '" data-nav-link data-service="' +
+      '<a class="card service-card" href="/uslugi/' +
+      service.slug +
+      '/" data-service="' +
       service.id +
       '">' +
       iconBadge(service.icon) +
@@ -384,7 +396,9 @@ const reviews = [
     var allGrid = document.getElementById("all-services-grid");
 
     if (homeGrid) {
-      homeGrid.innerHTML = SERVICES.slice(0, 4).map(serviceCardHTML).join("");
+      homeGrid.innerHTML = [1, 6, 2, 3].map(function (id) {
+        return SERVICES.filter(function (s) { return s.id === id; })[0];
+      }).map(serviceCardHTML).join("");
     }
     if (allGrid) {
       allGrid.innerHTML = SERVICES.map(serviceCardHTML).join("");
@@ -544,6 +558,13 @@ const reviews = [
 
     if (hash.indexOf("usluga/") === 0) {
       var serviceId = hash.split("/")[1];
+      var target = SERVICES.filter(function (s) {
+        return s.id === Number(serviceId);
+      })[0];
+      if (target) {
+        window.location.replace("/uslugi/" + target.slug + "/");
+        return;
+      }
       renderServiceDetail(serviceId);
       showPage("service-detail");
       window.scrollTo(0, 0);
