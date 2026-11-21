@@ -151,6 +151,7 @@ const reviews = [
   var SERVICES = [
     {
       id: 1,
+      hidden: true,
       code: "Usługa 01",
       icon: "house",
       slug: "seller-access",
@@ -249,6 +250,7 @@ const reviews = [
     },
     {
       id: 6,
+      hidden: true,
       code: "Usługa 06",
       icon: "skyscraper",
       slug: "silnik-sprzedazy-inwestycji",
@@ -396,12 +398,11 @@ const reviews = [
     var allGrid = document.getElementById("all-services-grid");
 
     if (homeGrid) {
-      homeGrid.innerHTML = [1, 6, 2, 3].map(function (id) {
-        return SERVICES.filter(function (s) { return s.id === id; })[0];
-      }).map(serviceCardHTML).join("");
+      homeGrid.innerHTML = SERVICES.filter(function (s) { return !s.hidden; })
+        .slice(0, 4).map(serviceCardHTML).join("");
     }
     if (allGrid) {
-      allGrid.innerHTML = SERVICES.map(serviceCardHTML).join("");
+      allGrid.innerHTML = SERVICES.filter(function (s) { return !s.hidden; }).map(serviceCardHTML).join("");
     }
   }
 
@@ -561,6 +562,10 @@ const reviews = [
       var target = SERVICES.filter(function (s) {
         return s.id === Number(serviceId);
       })[0];
+      if (target && target.hidden) {
+        window.location.replace("/");
+        return;
+      }
       if (target) {
         window.location.replace("/uslugi/" + target.slug + "/");
         return;
