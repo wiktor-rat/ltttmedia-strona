@@ -393,24 +393,16 @@ const reviews = [
     );
   }
 
-  var DEV_CARD =
-    '<a class="card service-card" href="/silnik-sprzedazy-inwestycji/">' +
-    iconBadge(SERVICES[5].icon) +
-    "<h3>Silnik Sprzedaży Inwestycji dla deweloperów</h3>" +
-    "<p>Reklamy Meta i Google oraz opieka nad każdym zapytaniem aż do rozmowy handlowca. Dla deweloperów mieszkaniowych, którzy chcą sprzedawać szybciej.</p>" +
-    '<span class="card-link">Dowiedz się więcej →</span>' +
-    "</a>";
-
   function renderServiceGrids() {
     var homeGrid = document.getElementById("home-services-grid");
     var allGrid = document.getElementById("all-services-grid");
 
     if (homeGrid) {
       homeGrid.innerHTML = SERVICES.filter(function (s) { return !s.hidden; })
-        .slice(0, 3).map(serviceCardHTML).join("") + DEV_CARD;
+        .slice(0, 4).map(serviceCardHTML).join("");
     }
     if (allGrid) {
-      allGrid.innerHTML = DEV_CARD + SERVICES.filter(function (s) { return !s.hidden; }).map(serviceCardHTML).join("");
+      allGrid.innerHTML = SERVICES.filter(function (s) { return !s.hidden; }).map(serviceCardHTML).join("");
     }
   }
 
