@@ -99,6 +99,7 @@ function page(s) {
     <nav class="main-nav" id="mainNav" aria-label="Nawigacja główna">
       <a href="/#o-nas">O nas</a>
       <a href="/#wyniki">Wyniki</a>
+      <a href="/silnik-sprzedazy-inwestycji/">Dla deweloperów</a>
       <a href="/#uslugi">Usługi</a>
       <a href="/#faq">FAQ</a>
       <a href="/#kontakt">Kontakt</a>
@@ -147,7 +148,7 @@ SERVICES.forEach((s) => {
 });
 
 const today = new Date().toISOString().slice(0, 10);
-const urls = [["/", "1.0"], ...SERVICES.filter((s) => !s.hidden).map((s) => [`/uslugi/${s.slug}/`, "0.7"])];
+const urls = [["/", "1.0"], ["/silnik-sprzedazy-inwestycji/", "0.9"], ...SERVICES.filter((s) => !s.hidden).map((s) => [`/uslugi/${s.slug}/`, "0.7"])];
 fs.writeFileSync(
   path.join(root, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
