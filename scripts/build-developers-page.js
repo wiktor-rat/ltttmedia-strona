@@ -30,11 +30,11 @@ const DELIV = [
 ];
 
 const STEPS = [
-  ["Rozmowa diagnozująca", "20–30 minut, online. Sprawdzamy, gdzie hamuje sprzedaż inwestycji: ruch, oferta, strona czy obsługa zapytań. Nie przygotowujesz żadnych materiałów."", "20–30 minut"],
-  ["Plan pierwszych 30 dni", "Dostajesz plan jako krótkie nagranie wideo e-mailem: co zmieniamy, w jakiej kolejności i jak to wpłynie na zapytania. Możesz go przesłać zarządowi."", "do 3 dni roboczych od rozmowy"],
-  ["Oferta i krótka umowa", "Dopiero po akceptacji planu wysyłamy jedną ofertę z ceną, zakresem, harmonogramem i zasadami wyjścia."", "1–2 dni robocze od akceptacji planu"],
-  ["Wdrożenie", "Zbieramy dostępy, analizujemy dane, konfigurujemy nasz CRM, formularze i pomiar, ustalamy dzień startowy."", "ok. 7–10 dni roboczych"],
-  ["Start kampanii i pierwszy raport", "Uruchamiamy reklamy Meta i Google oraz obsługę każdego zapytania. Po ok. 30 dniach dostajesz pierwszy raport od reklamy do rezerwacji."", "ok. 30 dni do pierwszego raportu"],
+  ["Rozmowa diagnozująca", "20–30 minut, online. Sprawdzamy, gdzie hamuje sprzedaż inwestycji: ruch, oferta, strona czy obsługa zapytań. Nie przygotowujesz żadnych materiałów.", "20–30 minut"],
+  ["Plan pierwszych 30 dni", "Dostajesz plan jako krótkie nagranie wideo e-mailem: co zmieniamy, w jakiej kolejności i jak to wpłynie na zapytania. Możesz go przesłać zarządowi.", "do 3 dni roboczych od rozmowy"],
+  ["Oferta i krótka umowa", "Dopiero po akceptacji planu wysyłamy jedną ofertę z ceną, zakresem, harmonogramem i zasadami wyjścia.", "1–2 dni robocze od akceptacji planu"],
+  ["Wdrożenie", "Zbieramy dostępy, analizujemy dane, konfigurujemy nasz CRM, formularze i pomiar, ustalamy dzień startowy.", "ok. 7–10 dni roboczych"],
+  ["Start kampanii i pierwszy raport", "Uruchamiamy reklamy Meta i Google oraz obsługę każdego zapytania. Po ok. 30 dniach dostajesz pierwszy raport od reklamy do rezerwacji.", "ok. 30 dni do pierwszego raportu"],
 ];
 
 const PRICE = [
