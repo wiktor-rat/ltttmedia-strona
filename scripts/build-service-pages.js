@@ -126,8 +126,9 @@ function page(s) {
 </main>
 <footer class="site-footer">
   <div class="container">
-    <span>© 2026 LTTT MEDIA | Lead To The Top Media Sp. z o.o.</span>
+    <span>© 2026 LTTT MEDIA | Lead To The Top Media Sp.&nbsp;z&nbsp;o.o.</span>
     <a href="/#polityka-prywatnosci" class="footer-link">Polityka prywatności</a>
+    <a href="https://pl.linkedin.com/in/wiktor-rataj-66a68a34b" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn: Wiktor Rataj</a>
     <button type="button" class="footer-link" data-cookie-settings>Ustawienia cookies</button>
   </div>
 </footer>
