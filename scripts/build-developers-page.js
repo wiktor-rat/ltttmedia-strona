@@ -85,9 +85,6 @@ const FAQ = [
   ["Jak szybko zobaczę pierwsze efekty?", "Po rozmowie diagnozującej dostajesz plan pierwszych 30 dni, po wdrożeniu startujemy z kampanią, a pierwszy raport masz po ok. 30 dniach od startu. Dokładne terminy podajemy w planie dla Twojej inwestycji."],
   ["Czy musimy zmieniać nasz CRM i ile pracy spadnie na handlowców?", "Nie musisz zmieniać swojego CRM. Zapytania obsługujemy w naszym CRM i przekazujemy handlowcom z oceną i alertem. Handlowcy rozmawiają z osobami z realną szansą zakupu, a nie przepisują kontaktów ręcznie."],
   ["Jak wygląda rezygnacja ze współpracy?", "Umowa jest krótka: minimum 3 miesiące, potem miesięczne wypowiedzenie. Konta reklamowe i dane zostają u Ciebie, a kontakty z naszego CRM można wyeksportować. Po okresie minimalnym nie ma kar."],
-  ["Czym różnicie się od zwykłej agencji marketingowej?", "Działamy tylko w branży nieruchomości i odpowiadamy nie tylko za reklamy, ale za całą drogę zapytania do rozmowy handlowca. Raport kończy się na rezerwacji, nie na koszcie leada."],
-  ["Dla jakiego dewelopera jest Silnik Sprzedaży Inwestycji?", "Dla deweloperów mieszkaniowych z własnym działem sprzedaży, inwestycją od ok. 80 lokali, którzy sprzedali ok. 20–40% lokali i chcą przyspieszyć sprzedaż."],
-  ["Jak zacząć współpracę?", "Umów rozmowę diagnozującą (20–30 minut, online, bezpłatna). Potem dostajesz plan pierwszych 30 dni, a ofertę wysyłamy dopiero po jego akceptacji."],
 ];
 
 const ld = {
