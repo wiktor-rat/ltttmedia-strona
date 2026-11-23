@@ -13,8 +13,9 @@ const TOP_BANNER = "Partner w sprzedaży Twojej inwestycji";
 const H1 = "LTTT MEDIA pomaga deweloperom mieszkaniowym szybciej sprzedawać lokale poprzez reklamy Meta i Google oraz obsługę każdego zapytania.";
 const LEAD = "Dla deweloperów z własnym działem sprzedaży i inwestycją od ok. 80 lokali. Po 30 dniach widzisz w jednym raporcie, ile zapytań, spotkań i rezerwacji dały reklamy i ile to kosztowało.";
 
-// Wideo w hero. Wklej link YouTube (np. https://www.youtube.com/watch?v=XXXX lub https://youtu.be/XXXX)
-// albo adres pliku .mp4. Puste = szare miejsce na wideo z ikoną odtwarzania.
+// Wideo w hero. Wklej link Vimeo (np. https://vimeo.com/123456789, a dla filmu niepublicznego
+// https://vimeo.com/123456789/abcdef1234), link YouTube albo adres pliku .mp4.
+// Puste = ramka z ikoną odtwarzania.
 // TODO: podstaw link do wideo.
 const HERO_VIDEO = "";
 // Proporcje ramki: "16 / 9" (poziome) albo "9 / 16" (pionowe, np. rolka z telefonu).
@@ -124,12 +125,15 @@ const ld = {
 };
 
 const ytId = (u) => { const m = String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/); return m ? m[1] : ""; };
+const vimeo = (u) => { const m = String(u).match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([0-9a-f]+))?(?:.*[?&]h=([0-9a-f]+))?/i); return m ? { id: m[1], h: m[2] || m[3] || "" } : null; };
 const heroVideo = () => {
   const label = "Wideo: jak działa Silnik Sprzedaży Inwestycji";
   if (!HERO_VIDEO) return `<div class="lp-video-ph" role="img" aria-label="${esc(label)}"><span class="lp-video-play" aria-hidden="true"></span></div>`;
   if (/\.mp4(\?|$)/i.test(HERO_VIDEO)) return `<video src="${esc(HERO_VIDEO)}" controls playsinline preload="metadata" aria-label="${esc(label)}"></video>`;
+  const vm = vimeo(HERO_VIDEO);
+  if (vm) return `<iframe src="https://player.vimeo.com/video/${vm.id}?${vm.h ? "h=" + vm.h + "&amp;" : ""}dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="${esc(label)}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
   const id = ytId(HERO_VIDEO);
-  if (!id) throw new Error("HERO_VIDEO: nie rozpoznano linku YouTube ani pliku .mp4");
+  if (!id) throw new Error("HERO_VIDEO: nie rozpoznano linku Vimeo, YouTube ani pliku .mp4");
   return `<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${esc(label)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 };
 
