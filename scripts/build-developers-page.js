@@ -67,7 +67,7 @@ const PRICE_EXTRA = [
   ["Na życzenie", "Wizyty naszego zespołu na inwestycji (dzień startowy, wspólny przegląd): wycena osobno, wraz z dojazdem."],
 ];
 const PRICE_TERMS = [
-  ["Umowa", "Minimum 3 miesiące, potem miesięczne wypowiedzenie. Konta reklamowe i dane zostają u dewelopera, kontakty z naszego CRM można wyeksportować, a po okresie minimalnym nie ma kar za zakończenie współpracy."],
+  ["Umowa", "Minimum 3 miesiące. Po tym czasie możesz zrezygnować, a przy przedłużeniu współpracy obowiązuje miesięczny okres wypowiedzenia. Konta reklamowe i dane zostają u dewelopera, a kontakty z naszego CRM można wyeksportować."],
   ["Czy się zwróci?", "Policzymy to na liczbach Waszej inwestycji w planie 30 dni: ile dodatkowo trzeba sprzedać lokali, żeby pakiet się zwrócił, przy wartości jednego lokalu u Was."],
 ];
 
@@ -84,7 +84,7 @@ const FAQ = [
   ["Czy gwarantujecie sprzedaż lokali?", "Nie obiecujemy liczby sprzedanych lokali, bo zależy od ceny, lokalizacji i pracy handlowców. Gwarantujemy przejrzystość: raport od reklamy do rezerwacji pokazuje, co działa, a gdy coś nie działa, mówimy to wprost."],
   ["Jak szybko zobaczę pierwsze efekty?", "Po rozmowie diagnozującej dostajesz plan pierwszych 30 dni, po wdrożeniu startujemy z kampanią, a pierwszy raport masz po ok. 30 dniach od startu. Dokładne terminy podajemy w planie dla Twojej inwestycji."],
   ["Czy musimy zmieniać nasz CRM i ile pracy spadnie na handlowców?", "Nie musisz zmieniać swojego CRM. Zapytania obsługujemy w naszym CRM i przekazujemy handlowcom z oceną i alertem. Handlowcy rozmawiają z osobami z realną szansą zakupu, a nie przepisują kontaktów ręcznie."],
-  ["Jak wygląda rezygnacja ze współpracy?", "Umowa jest krótka: minimum 3 miesiące, potem miesięczne wypowiedzenie. Konta reklamowe i dane zostają u Ciebie, a kontakty z naszego CRM można wyeksportować. Po okresie minimalnym nie ma kar."],
+  ["Jak wygląda rezygnacja ze współpracy?", "Umowę zawieramy na minimum 3 miesiące. Po tym czasie możesz zrezygnować, a jeśli przedłużamy współpracę, obowiązuje miesięczny okres wypowiedzenia. Konta reklamowe i dane zostają u Ciebie, a kontakty z naszego CRM można wyeksportować."],
 ];
 
 const ld = {
