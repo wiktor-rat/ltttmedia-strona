@@ -9,6 +9,10 @@ const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 
 const TITLE = "Marketing dla deweloperów: Silnik Sprzedaży Inwestycji | LTTT MEDIA";
 const DESC = "Agencja marketingowa dla deweloperów mieszkaniowych. Reklamy Meta i Google plus obsługa każdego zapytania do rozmowy handlowca. Od 7 500 zł netto miesięcznie. Bezpłatna rozmowa diagnozująca.";
+// Formularz rezerwacji rozmowy z naszego CRM (osadzany w sekcji "Jak zacząć").
+const CRM_FORM_ID = "W5l05m6THTiEJ2dHwEc8";
+const CRM_FORM_URL = `https://api.leadconnectorhq.com/widget/form/${CRM_FORM_ID}`;
+
 const TOP_BANNER = "Partner w sprzedaży Twojej inwestycji";
 const H1 = "LTTT MEDIA pomaga deweloperom mieszkaniowym szybciej sprzedawać lokale poprzez reklamy Meta i Google oraz obsługę każdego zapytania.";
 const LEAD = "Dla deweloperów z własnym działem sprzedaży i inwestycją od ok. 80 lokali. Po 30 dniach widzisz w jednym raporcie, ile zapytań, spotkań i rezerwacji dały reklamy i ile to kosztowało.";
@@ -341,24 +345,34 @@ const html = `<!DOCTYPE html>
         <h2>Jak zacząć? Umów 20–30-minutową rozmowę diagnozującą.</h2>
         <ol class="lp-cta-steps">
           <li><strong>Krok 1.</strong> Wypełnij formularz albo zadzwoń: <a href="tel:+48511205230">+48 511 205 230</a>.</li>
-          <li><strong>Krok 2.</strong> Odpowiadamy najszybciej, jak się da, i ustalamy termin.</li>
+          <li><strong>Krok 2.</strong> Odpowiadamy w ciągu 24 godzin i ustalamy termin.</li>
           <li><strong>Krok 3.</strong> Na rozmowie sprawdzamy, gdzie hamuje sprzedaż Twojej inwestycji. Potem dostajesz plan pierwszych 30 dni jako krótkie nagranie wideo.</li>
         </ol>
         <p class="lp-contact">Telefon: <a href="tel:+48511205230">+48 511 205 230</a><br>E-mail: <a href="mailto:kontakt@ltttmedia.pl">kontakt@ltttmedia.pl</a></p>
       </div>
       <div class="lp-form-card">
-        <form id="devForm" novalidate>
-          <div class="form-field"><label for="dfName">Imię i nazwisko</label><input type="text" id="dfName" name="name" autocomplete="name" required></div>
-          <div class="form-field"><label for="dfCompany">Firma deweloperska</label><input type="text" id="dfCompany" name="company" autocomplete="organization" required></div>
-          <div class="form-field"><label for="dfPhone">Telefon</label><input type="tel" id="dfPhone" name="phone" autocomplete="tel" required></div>
-          <div class="form-field"><label for="dfEmail">E-mail</label><input type="email" id="dfEmail" name="email" autocomplete="email" required></div>
-          <div class="form-field"><label for="dfMessage">Krótka wiadomość (opcjonalnie)</label><textarea id="dfMessage" name="message" rows="3"></textarea></div>
-          <label class="lp-consent"><input type="checkbox" id="dfConsent" name="consent" required> <span>Zgadzam się na kontakt w sprawie oferty. <a href="/#polityka-prywatnosci">Polityka prywatności</a></span></label>
-          <p class="form-error-message" id="dfError" role="alert"></p>
-          <button type="submit" class="btn btn-primary btn-block" id="dfSubmit">Zarezerwuj rozmowę diagnozującą</button>
-          <p class="lp-form-note">Rozmowa jest bezpłatna i niczego nie zobowiązuje. Ofertę wysyłamy dopiero po akceptacji planu.</p>
-        </form>
-        <div class="lp-form-ok" id="dfOk" hidden><h3>Dziękujemy!</h3><p>Zapytanie zostało zapisane. Odezwiemy się najszybciej, jak to możliwe.</p></div>
+        <!-- Formularz z naszego CRM (osadzony). Wysokość dopasowuje skrypt form_embed.js. -->
+        <div class="lp-crm-form">
+          <iframe
+            src="${CRM_FORM_URL}"
+            style="width:100%;height:100%;border:none;border-radius:8px"
+            id="inline-${CRM_FORM_ID}"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Silnik Sprzedaży Inwestycji"
+            data-height="580"
+            data-layout-iframe-id="inline-${CRM_FORM_ID}"
+            data-form-id="${CRM_FORM_ID}"
+            data-cookie-consent="true"
+            data-cookie-consent-provider="auto"
+            title="Formularz: rezerwacja rozmowy diagnozującej"></iframe>
+        </div>
+        <p class="lp-form-note"><strong>Odpowiadamy w ciągu 24 godzin.</strong> Rozmowa jest bezpłatna i niczego nie zobowiązuje. Ofertę wysyłamy dopiero po akceptacji planu.</p>
       </div>
     </div>
   </section>
@@ -370,30 +384,7 @@ const html = `<!DOCTYPE html>
     <button type="button" class="footer-link" data-cookie-settings>Ustawienia cookies</button>
   </div>
 </footer>
-<script>
-(function(){
-  // TODO: podstaw adres wysyłki (webhook albo formularz z naszego CRM). Puste = tryb "wkrótce".
-  var FORM_ENDPOINT = "";
-  var f = document.getElementById("devForm"); if (!f) return;
-  var err = document.getElementById("dfError"), ok = document.getElementById("dfOk"), btn = document.getElementById("dfSubmit");
-  function show(m){ err.textContent = m; err.classList.add("is-visible"); }
-  f.addEventListener("submit", function(e){
-    e.preventDefault(); err.classList.remove("is-visible");
-    var v = {name:f.name.value.trim(), company:f.company.value.trim(), phone:f.phone.value.trim(), email:f.email.value.trim(), message:f.message.value.trim()};
-    var bad = false;
-    ["name","company","phone","email"].forEach(function(k){ var el=f[k]; if(!v[k]){el.classList.add("is-invalid"); bad=true;} else el.classList.remove("is-invalid"); });
-    if (!bad && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(v.email)) { f.email.classList.add("is-invalid"); bad = true; }
-    if (bad) return show("Uzupełnij wszystkie wymagane pola poprawnymi danymi.");
-    if (!f.consent.checked) return show("Zaznacz zgodę na kontakt, żebyśmy mogli odpowiedzieć.");
-    if (!FORM_ENDPOINT) return show("Formularz zostanie uruchomiony wkrótce, zadzwoń: +48 511 205 230.");
-    btn.disabled = true;
-    fetch(FORM_ENDPOINT, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({source:"landing-deweloperzy", name:v.name, company:v.company, phone:v.phone, email:v.email, message:v.message, consent:true})})
-      .then(function(r){ if(!r.ok) throw new Error(r.status); f.hidden = true; ok.hidden = false; })
-      .catch(function(){ show("Nie udało się wysłać. Zadzwoń: +48 511 205 230 albo napisz na kontakt@ltttmedia.pl."); })
-      .then(function(){ btn.disabled = false; });
-  });
-})();
-</script>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
 `;

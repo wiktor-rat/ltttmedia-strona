@@ -1781,3 +1781,7 @@ button.footer-link {
   .lp-cmp tbody tr:last-child .lp-cmp-ours { border-radius: 0; }
   .lp-cmp tbody tr:hover th, .lp-cmp tbody tr:hover .lp-cmp-theirs { background: transparent; }
 }
+
+/* ---------- Landing: formularz z CRM w sekcji "Jak zacząć" ---------- */
+.lp-crm-form { min-height: 580px; }
+.lp-crm-form iframe { display: block; min-height: 580px; }
