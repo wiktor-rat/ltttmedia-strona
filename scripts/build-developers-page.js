@@ -60,10 +60,15 @@ const STEPS = [
   ["Start kampanii i pierwszy raport", "Uruchamiamy reklamy Meta i Google oraz obsługę każdego zapytania. Po ok. 30 dniach dostajesz pierwszy raport od reklamy do rezerwacji.", "ok. 30 dni do pierwszego raportu"],
 ];
 
-const PRICE = [
-  ["W cenie", "Wszystkie wartości z oferty: plan 30 dni, reklamy Meta i Google, strona inwestycji, obsługa zapytań w naszym CRM, raport od reklamy do rezerwacji, jeden opiekun, spotkanie miesięczne. Spotkania online."],
+const PRICE_NOTE = "Dokładną kwotę dla Twojej inwestycji podajemy w ofercie, po akceptacji planu pierwszych 30 dni.";
+const PRICE_IN = ["Plan pierwszych 30 dni", "Reklamy Meta i Google", "Strona inwestycji", "Obsługa zapytań w naszym CRM", "Raport od reklamy do rezerwacji", "Jeden opiekun", "Spotkanie miesięczne (online)"];
+const PRICE_EXTRA = [
   ["Osobno", "Budżet reklamowy na Meta i Google, płacony platformom reklamowym. Wiadomości SMS do osób pytających o inwestycję: płacicie za faktycznie wysłane."],
   ["Na życzenie", "Wizyty naszego zespołu na inwestycji (dzień startowy, wspólny przegląd): wycena osobno, wraz z dojazdem."],
+];
+const PRICE_TERMS = [
+  ["Umowa", "Minimum 3 miesiące, potem miesięczne wypowiedzenie. Konta reklamowe i dane zostają u dewelopera, kontakty z naszego CRM można wyeksportować, a po okresie minimalnym nie ma kar za zakończenie współpracy."],
+  ["Czy się zwróci?", "Policzymy to na liczbach Waszej inwestycji w planie 30 dni: ile dodatkowo trzeba sprzedać lokali, żeby pakiet się zwrócił, przy wartości jednego lokalu u Was."],
 ];
 
 const COMPARE = [
@@ -75,7 +80,7 @@ const COMPARE = [
 ];
 
 const FAQ = [
-  ["Ile kosztuje współpraca z agencją przy sprzedaży inwestycji deweloperskiej i za co płacę?", "Od 7 500 zł netto miesięcznie, w pierwszym miesiącu 9 000 zł netto (z pełnym wdrożeniem). Osobno płacisz budżet reklamowy Meta i Google bezpośrednio platformom oraz SMS-y po faktycznie wysłanych. Wizyty na inwestycji są opcją za dodatkową opłatą."],
+  ["Ile kosztuje współpraca z agencją przy sprzedaży inwestycji deweloperskiej i za co płacę?", "Od 7 500 zł netto miesięcznie. Dokładną kwotę dla Twojej inwestycji podajemy w ofercie, po akceptacji planu pierwszych 30 dni. Osobno płacisz budżet reklamowy Meta i Google bezpośrednio platformom oraz SMS-y po faktycznie wysłanych. Wizyty na inwestycji są opcją za dodatkową opłatą."],
   ["Czy gwarantujecie sprzedaż lokali?", "Nie obiecujemy liczby sprzedanych lokali, bo zależy od ceny, lokalizacji i pracy handlowców. Gwarantujemy przejrzystość: raport od reklamy do rezerwacji pokazuje, co działa, a gdy coś nie działa, mówimy to wprost."],
   ["Jak szybko zobaczę pierwsze efekty?", "Po rozmowie diagnozującej dostajesz plan pierwszych 30 dni, po wdrożeniu startujemy z kampanią, a pierwszy raport masz po ok. 30 dniach od startu. Dokładne terminy podajemy w planie dla Twojej inwestycji."],
   ["Czy musimy zmieniać nasz CRM i ile pracy spadnie na handlowców?", "Nie musisz zmieniać swojego CRM. Zapytania obsługujemy w naszym CRM i przekazujemy handlowcom z oceną i alertem. Handlowcy rozmawiają z osobami z realną szansą zakupu, a nie przepisują kontaktów ręcznie."],
@@ -284,12 +289,26 @@ const html = `<!DOCTYPE html>
   <!-- TODO: case studies (min. 2: branża i kontekst, liczba przed, liczba po, czas, co zrobiliśmy) -->
 
   <section class="section section--bg" id="cena">
-    <div class="container lp-narrow">
+    <div class="container">
       <div class="section-head section-head--left"><span class="eyebrow">Cena</span><h2>Od 7 500 zł netto miesięcznie</h2></div>
-      <p class="lp-lead"><strong>Pierwszy miesiąc: 9 000 zł netto, z pełnym wdrożeniem.</strong> Od drugiego miesiąca 7 500 zł netto miesięcznie.</p>
-      ${tbl(["", "Co obejmuje"], PRICE)}
-      <p><strong>Umowa:</strong> minimum 3 miesiące, potem miesięczne wypowiedzenie. Konta reklamowe i dane zostają u dewelopera, kontakty z naszego CRM można wyeksportować, a po okresie minimalnym nie ma kar za zakończenie współpracy.</p>
-      <p><strong>Czy się zwróci?</strong> Policzymy to na liczbach Waszej inwestycji w planie 30 dni: ile dodatkowo trzeba sprzedać lokali, żeby pakiet się zwrócił, przy wartości jednego lokalu u Was.</p>
+      <div class="lp-price">
+        <div class="lp-price-main">
+          <p class="lp-price-from">od</p>
+          <p class="lp-price-amount">7 500 zł <span>netto / miesiąc</span></p>
+          <p class="lp-price-note">${esc(PRICE_NOTE)}</p>
+          <a class="btn btn-primary btn-block" href="#rozmowa">Zarezerwuj bezpłatną rozmowę diagnozującą</a>
+        </div>
+        <div class="lp-price-in">
+          <h3>W cenie</h3>
+          <ul>${PRICE_IN.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+        </div>
+        <div class="lp-price-extra">${PRICE_EXTRA.map(([t, d]) => `
+          <div><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join("")}
+        </div>
+      </div>
+      <div class="lp-price-terms">${PRICE_TERMS.map(([t, d]) => `
+        <div><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join("")}
+      </div>
     </div>
   </section>
 
