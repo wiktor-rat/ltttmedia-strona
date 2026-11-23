@@ -33,13 +33,24 @@ const FORWHO = [
 const NOTFOR = ["Dla deweloperów, którzy chcą oddać sprzedaż na zewnątrz (zostawiamy ją Waszemu zespołowi).", "Dla inwestycji, w których problemem jest produkt, cena lub lokalizacja, bo reklamy tego nie naprawią."];
 
 const DELIV = [
-  ["Co naprawić w sprzedaży w pierwszej kolejności?", "Zanim ruszymy z reklamami, sprawdzamy, czy sprzedaż zwolniła przez ruch, ofertę, stronę czy obsługę zapytań, i dajemy plan na 30/60/90 dni. Wiesz, co poprawiać najpierw, i nie przepalasz budżetu na kampanie, które nie mają szans zadziałać."],
-  ["Jak mieć zapytania od osób z budżetem?", "Ustawiamy formularz, wykluczenia i optymalizację pod jakość zapytań, nie pod ich liczbę. Handlowcy rozmawiają z osobami z realną szansą zakupu i zdolnością kredytową, a nie z przypadkowymi kontaktami."],
-  ["Jak zrobić, żeby żadne zapytanie nie zginęło?", "W naszym CRM każde zapytanie dostaje ocenę, natychmiastową pierwszą odpowiedź (SMS i mailing), a handlowiec alert. Przeglądamy też obsługę zapytań u Was i wracamy do osób, które już pytały."],
-  ["Czy da się zobaczyć drogę od reklamy do rezerwacji?", "Tak. Dostajesz raport od reklamy do rezerwacji: wydatki, liczba i koszt zapytań, spotkań i rezerwacji. Zarząd widzi, co przynosi kupujących, i decyduje na liczbach, nie na przeczuciach."],
-  ["Gdzie szukać kupujących, żeby nie polegać na jednym kanale?", "Przygotowujemy stronę inwestycji i prowadzimy kampanie w Meta (dogrzewanie i grupy kupujących) oraz Google (osoby aktywnie szukające mieszkania). Co tydzień optymalizujemy budżet pod to, co daje spotkania."],
-  ["Ile pracy spadnie na Twój zespół?", "Niewiele. Masz jednego opiekuna i odpowiedź w 24 godziny. Start nie wymaga zmiany Waszego CRM ani długich briefów, a dostępy, piksele i formularze ustawiamy za Was."],
+  ["Plan na 30/60/90 dni", "plan", "Co naprawić w sprzedaży w pierwszej kolejności?", "Zanim ruszymy z reklamami, sprawdzamy, czy sprzedaż zwolniła przez ruch, ofertę, stronę czy obsługę zapytań, i dajemy plan na 30/60/90 dni. Wiesz, co poprawiać najpierw, i nie przepalasz budżetu na kampanie, które nie mają szans zadziałać."],
+  ["Zapytania od osób z budżetem", "filter", "Jak mieć zapytania od osób z budżetem?", "Ustawiamy formularz, wykluczenia i optymalizację pod jakość zapytań, nie pod ich liczbę. Handlowcy rozmawiają z osobami z realną szansą zakupu i zdolnością kredytową, a nie z przypadkowymi kontaktami."],
+  ["Żadne zapytanie nie ginie", "bell", "Jak zrobić, żeby żadne zapytanie nie zginęło?", "W naszym CRM każde zapytanie dostaje ocenę, natychmiastową pierwszą odpowiedź (SMS i mailing), a handlowiec alert. Przeglądamy też obsługę zapytań u Was i wracamy do osób, które już pytały."],
+  ["Raport od reklamy do rezerwacji", "chart", "Czy da się zobaczyć drogę od reklamy do rezerwacji?", "Tak. Dostajesz raport od reklamy do rezerwacji: wydatki, liczba i koszt zapytań, spotkań i rezerwacji. Zarząd widzi, co przynosi kupujących, i decyduje na liczbach, nie na przeczuciach."],
+  ["Meta i Google, nie jeden kanał", "target", "Gdzie szukać kupujących, żeby nie polegać na jednym kanale?", "Przygotowujemy stronę inwestycji i prowadzimy kampanie w Meta (dogrzewanie i grupy kupujących) oraz Google (osoby aktywnie szukające mieszkania). Co tydzień optymalizujemy budżet pod to, co daje spotkania."],
+  ["Jeden opiekun, odpowiedź w 24 h", "user", "Ile pracy spadnie na Twój zespół?", "Niewiele. Masz jednego opiekuna i odpowiedź w 24 godziny. Start nie wymaga zmiany Waszego CRM ani długich briefów, a dostępy, piksele i formularze ustawiamy za Was."],
 ];
+
+// Ikony do kart "Co dostajesz" (linie 24x24, kolor z CSS).
+const ICONS = {
+  plan: '<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/>',
+  filter: '<path d="M3 5h18l-7 8v6l-4 2v-8z"/>',
+  bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+  chart: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+};
+const icon = (k) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>`;
 
 const STEPS = [
   ["Rozmowa diagnozująca", "20–30 minut, online. Sprawdzamy, gdzie hamuje sprzedaż inwestycji: ruch, oferta, strona czy obsługa zapytań. Nie przygotowujesz żadnych materiałów.", "20–30 minut"],
@@ -239,7 +250,14 @@ const html = `<!DOCTYPE html>
   <section class="section section--bg" id="co-dostajesz">
     <div class="container">
       <div class="section-head section-head--left"><span class="eyebrow">Co konkretnie dostajesz</span><h2>Efekty, nie funkcje</h2></div>
-      <div class="grid-3 lp-cards">${DELIV.map(([q, a]) => `<article class="card"><h3>${esc(q)}</h3><p>${esc(a)}</p></article>`).join("")}</div>
+      <div class="lp-deliv">${DELIV.map(([tag, ic, q, a]) => `
+        <article class="lp-deliv-card">
+          <span class="lp-deliv-icon">${icon(ic)}</span>
+          <p class="lp-deliv-tag">${esc(tag)}</p>
+          <h3>${esc(q)}</h3>
+          <p class="lp-deliv-text">${esc(a)}</p>
+        </article>`).join("")}
+      </div>
     </div>
   </section>
 

@@ -1674,3 +1674,18 @@ button.footer-link {
   .lp-notfor { grid-template-columns: 1fr; }
   .lp-notfor ul { grid-template-columns: 1fr; }
 }
+
+/* ---------- Landing: sekcja "Co dostajesz" ---------- */
+.lp-deliv { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.lp-deliv-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 28px 26px; display: flex; flex-direction: column; transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.lp-deliv-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+.lp-deliv-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--blue); color: var(--white); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.lp-deliv-tag { font-family: var(--font-display); font-weight: 800; font-size: 21px; line-height: 1.25; color: var(--navy); margin: 0 0 8px; letter-spacing: -0.01em; }
+.lp-deliv-card h3 { font-family: var(--font-body); font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--blue); margin: 0 0 14px; }
+.lp-deliv-text { margin: 0; padding-top: 14px; border-top: 1px solid var(--border); color: var(--muted); font-size: 15px; line-height: 1.6; }
+@media (max-width: 960px) { .lp-deliv { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .lp-deliv { grid-template-columns: 1fr; gap: 14px; }
+  .lp-deliv-card { padding: 22px 20px; }
+  .lp-deliv-tag { font-size: 19px; }
+}
