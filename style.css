@@ -1617,5 +1617,5 @@ button.footer-link {
 .offer-tile h3 { font-size: 22px; }
 .offer-tile p { flex: 1; }
 .offer-tag { align-self: flex-start; font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--blue); background: var(--blue-pale); padding: 4px 10px; border-radius: 999px; margin-bottom: 14px; }
-.lp-hero-how { margin: 24px 0 0; max-width: 780px; color: rgba(255, 255, 255, 0.75); font-size: 15px; line-height: 1.6; }
+.lp-hero-how { margin: 16px 0 0; max-width: 780px; color: rgba(255, 255, 255, 0.75); font-size: 14px; line-height: 1.5; }
 .lp-hero-how a { color: var(--blue-light); font-weight: 700; }
