@@ -24,9 +24,9 @@ const HERO_VIDEO_RATIO = "16 / 9";
 // Opis problemu przeniesiony z hero do sekcji "Dla kogo".
 const FORWHO_PROBLEM = "Pierwsze 30% lokali sprzedaje się samo: z listy zapisów, z poleceń i z bazy dewelopera. Potem zapytań ubywa, handlowcy tracą czas na słabe kontakty, a część dobrych zapytań ginie, bo nikt nie odpowiedział na czas.";
 
-const FORWHO_LEAD = "Deweloperów mieszkaniowych zatrudniających min. 10–25 osób, z własnym działem sprzedaży i inwestycją od ok. 80 lokali, którzy sprzedali ok. 30% lokali i widzą, że tempo sprzedaży nie rośnie tak, jak zakładali.";
+const FORWHO_LEAD = "Deweloperów mieszkaniowych zatrudniających od 10 osób, z własnym działem sprzedaży i inwestycją od ok. 80 lokali, którzy sprzedali ok. 30% lokali i widzą, że tempo sprzedaży nie rośnie tak, jak zakładali.";
 const FORWHO = [
-  ["Deweloperzy mieszkaniowi (rynek pierwotny)", "min. 10–25 pracowników, ok. 50–100 mln zł przychodu rocznie, min. 2 inwestycje, inwestycja 80–100 lokali", "Pierwsza fala sprzedaży (ok. 30% lokali) się wyczerpała, zapytań ubywa, a zarząd pyta o plan"],
+  ["Deweloperzy mieszkaniowi (rynek pierwotny)", "od 10 pracowników, ok. 50–100 mln zł przychodu rocznie, min. 2 inwestycje, inwestycja 80–100 lokali", "Pierwsza fala sprzedaży (ok. 30% lokali) się wyczerpała, zapytań ubywa, a zarząd pyta o plan"],
   ["Deweloperzy z własnym działem sprzedaży", "Zespół handlowców i własny CRM", "Zapytania z reklam trafiają do handlowców z opóźnieniem albo nikt do nich nie wraca"],
   ["Deweloperzy z budżetem marketingowym od ok. 20–25 tys. zł miesięcznie", "Reklamy prowadzone przez agencję lub we własnym zakresie", "Dużo zapytań, mało spotkań, a nikt nie wie, co realnie przynosi kupujących"],
 ];
