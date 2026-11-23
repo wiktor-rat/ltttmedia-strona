@@ -1619,3 +1619,31 @@ button.footer-link {
 .offer-tag { align-self: flex-start; font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--blue); background: var(--blue-pale); padding: 4px 10px; border-radius: 999px; margin-bottom: 14px; }
 .lp-hero-how { margin: 16px 0 0; max-width: 780px; color: rgba(255, 255, 255, 0.75); font-size: 14px; line-height: 1.5; }
 .lp-hero-how a { color: var(--blue-light); font-weight: 700; }
+
+/* ---------- Landing: nagłówek i hero z wideo ---------- */
+.lp-header .container { gap: 20px; }
+.lp-nav { display: flex; gap: 28px; margin: 0 auto; }
+.lp-nav a { font-weight: 600; font-size: 15px; color: var(--navy); padding: 6px 2px; }
+.lp-nav a:hover { color: var(--blue); }
+.lp-header-actions { display: flex; align-items: center; gap: 18px; flex: none; }
+.lp-header-phone { font-weight: 700; font-size: 15px; color: var(--navy); white-space: nowrap; }
+.lp-header-phone:hover { color: var(--blue); }
+.lp-hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.lp-hero { padding: 56px 0 64px; }
+.lp-hero h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.18; max-width: none; }
+.lp-hero-lead { margin: 18px 0 26px; max-width: 560px; }
+.lp-hero-video { width: 100%; max-height: 560px; border-radius: 18px; overflow: hidden; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3); justify-self: center; }
+.lp-hero-video iframe, .lp-hero-video video { width: 100%; height: 100%; border: 0; display: block; object-fit: cover; }
+.lp-video-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.lp-video-play { width: 72px; height: 72px; border-radius: 50%; background: var(--blue); position: relative; box-shadow: 0 8px 24px rgba(47, 95, 224, 0.45); }
+.lp-video-play::after { content: ""; position: absolute; left: 29px; top: 23px; border-style: solid; border-width: 13px 0 13px 21px; border-color: transparent transparent transparent var(--white); }
+@media (max-width: 1100px) { .lp-header-phone { display: none; } }
+@media (max-width: 960px) {
+  .lp-nav { display: none; }
+  .lp-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+@media (max-width: 480px) {
+  .lp-header .btn { padding: 10px 16px; font-size: 14px; }
+  .lp-hero h1 { font-size: 26px; }
+  .lp-hero-lead { font-size: 16px; }
+}

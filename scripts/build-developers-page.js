@@ -9,8 +9,20 @@ const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 
 const TITLE = "Marketing dla deweloperów: Silnik Sprzedaży Inwestycji | LTTT MEDIA";
 const DESC = "Agencja marketingowa dla deweloperów mieszkaniowych. Reklamy Meta i Google plus obsługa każdego zapytania do rozmowy handlowca. Od 7 500 zł netto miesięcznie. Bezpłatna rozmowa diagnozująca.";
-const H1 = "LTTT MEDIA pomaga deweloperom mieszkaniowym przyspieszyć sprzedaż lokali dzięki Silnikowi Sprzedaży Inwestycji: reklamom Meta i Google oraz opiece nad każdym zapytaniem aż do rozmowy handlowca.";
-const LEAD = "Pierwsze 30% lokali sprzedaje się samo: z listy zapisów, z poleceń i z bazy dewelopera. Potem zapytań ubywa, handlowcy tracą czas na słabe kontakty, a część dobrych zapytań ginie, bo nikt nie odpowiedział na czas. Silnik Sprzedaży Inwestycji jest dla deweloperów z własnym działem sprzedaży i inwestycją od ok. 80 lokali, którzy chcą przyspieszyć sprzedaż, zanim zostaną trudniejsze lokale. Po 30 dniach widzisz w jednym raporcie, ile zapytań, spotkań i rezerwacji dały reklamy i ile to kosztowało.";
+const TOP_BANNER = "Partner w sprzedaży Twojej inwestycji";
+const H1 = "LTTT MEDIA pomaga deweloperom mieszkaniowym szybciej sprzedawać lokale poprzez reklamy Meta i Google oraz obsługę każdego zapytania.";
+const LEAD = "Dla deweloperów z własnym działem sprzedaży i inwestycją od ok. 80 lokali. Po 30 dniach widzisz w jednym raporcie, ile zapytań, spotkań i rezerwacji dały reklamy i ile to kosztowało.";
+
+// Wideo w hero. Wklej link Vimeo (np. https://vimeo.com/123456789, a dla filmu niepublicznego
+// https://vimeo.com/123456789/abcdef1234), link YouTube albo adres pliku .mp4.
+// Puste = ramka z ikoną odtwarzania.
+// TODO: podstaw link do wideo.
+const HERO_VIDEO = "";
+// Proporcje ramki: "16 / 9" (poziome) albo "9 / 16" (pionowe, np. rolka z telefonu).
+const HERO_VIDEO_RATIO = "16 / 9";
+
+// Opis problemu przeniesiony z hero do sekcji "Dla kogo".
+const FORWHO_PROBLEM = "Pierwsze 30% lokali sprzedaje się samo: z listy zapisów, z poleceń i z bazy dewelopera. Potem zapytań ubywa, handlowcy tracą czas na słabe kontakty, a część dobrych zapytań ginie, bo nikt nie odpowiedział na czas.";
 
 const FORWHO_LEAD = "Dla deweloperów mieszkaniowych zatrudniających 10–25 osób, z własnym działem sprzedaży i inwestycją od ok. 80 lokali, którzy sprzedali ok. 30% lokali i widzą, że tempo sprzedaży nie rośnie tak, jak zakładali.";
 const FORWHO = [
@@ -112,6 +124,19 @@ const ld = {
   ],
 };
 
+const ytId = (u) => { const m = String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/); return m ? m[1] : ""; };
+const vimeo = (u) => { const m = String(u).match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([0-9a-f]+))?(?:.*[?&]h=([0-9a-f]+))?/i); return m ? { id: m[1], h: m[2] || m[3] || "" } : null; };
+const heroVideo = () => {
+  const label = "Wideo: jak działa Silnik Sprzedaży Inwestycji";
+  if (!HERO_VIDEO) return `<div class="lp-video-ph" role="img" aria-label="${esc(label)}"><span class="lp-video-play" aria-hidden="true"></span></div>`;
+  if (/\.mp4(\?|$)/i.test(HERO_VIDEO)) return `<video src="${esc(HERO_VIDEO)}" controls playsinline preload="metadata" aria-label="${esc(label)}"></video>`;
+  const vm = vimeo(HERO_VIDEO);
+  if (vm) return `<iframe src="https://player.vimeo.com/video/${vm.id}?${vm.h ? "h=" + vm.h + "&amp;" : ""}dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="${esc(label)}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+  const id = ytId(HERO_VIDEO);
+  if (!id) throw new Error("HERO_VIDEO: nie rozpoznano linku Vimeo, YouTube ani pliku .mp4");
+  return `<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${esc(label)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+};
+
 const tbl = (head, rows) =>
   `<div class="lp-table-wrap"><table class="lp-table"><thead><tr>${head.map((h) => `<th scope="col">${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows
     .map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${esc(c)}</th>` : `<td>${esc(c)}</td>`)).join("")}</tr>`)
@@ -147,33 +172,46 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
 <a class="skip-link" href="#main">Przejdź do treści</a>
-<div class="top-banner">Partner w rozwoju Twojej firmy</div>
-<header class="site-header">
+<div class="top-banner">${esc(TOP_BANNER)}</div>
+<header class="site-header lp-header">
   <div class="container">
     <a href="#" class="logo" aria-label="LTTT MEDIA">
       <span class="logo-main">LTTT MEDIA</span>
       <span class="logo-sub">LEAD TO THE TOP</span>
     </a>
-    <div class="header-actions"><a href="#rozmowa" class="btn btn-primary">Umów rozmowę →</a></div>
+    <nav class="lp-nav" aria-label="Sekcje strony">
+      <a href="#dla-kogo">Dla kogo</a>
+      <a href="#jak-to-dziala">Jak to działa</a>
+      <a href="#cena">Cena</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="lp-header-actions">
+      <a href="tel:+48511205230" class="lp-header-phone">+48 511 205 230</a>
+      <a href="#rozmowa" class="btn btn-primary">Umów rozmowę →</a>
+    </div>
   </div>
 </header>
 <main id="main">
   <section class="section--navy subhero lp-hero">
-    <div class="container">
-      <span class="eyebrow eyebrow--light">Dla deweloperów mieszkaniowych</span>
-      <h1>${esc(H1)}</h1>
-      <p class="lp-hero-lead">${esc(LEAD)}</p>
-      <div class="lp-hero-actions">
-        <a class="btn btn-primary btn-primary--lg" href="#rozmowa">Zarezerwuj rozmowę diagnozującą</a>
-        <span class="lp-hero-price">od 7 500 zł netto miesięcznie · rozmowa bezpłatna</span>
+    <div class="container lp-hero-grid">
+      <div class="lp-hero-text">
+        <span class="eyebrow eyebrow--light">Silnik Sprzedaży Inwestycji · dla deweloperów</span>
+        <h1>${esc(H1)}</h1>
+        <p class="lp-hero-lead">${esc(LEAD)}</p>
+        <div class="lp-hero-actions">
+          <a class="btn btn-primary btn-primary--lg" href="#rozmowa">Zarezerwuj rozmowę diagnozującą</a>
+          <span class="lp-hero-price">od 7 500 zł netto / mies. · rozmowa bezpłatna</span>
+        </div>
+        <p class="lp-hero-how">Telefon: <a href="tel:+48511205230">+48 511 205 230</a> · e-mail: <a href="mailto:kontakt@ltttmedia.pl">kontakt@ltttmedia.pl</a></p>
       </div>
-      <p class="lp-hero-how">Telefon: <a href="tel:+48511205230">+48 511 205 230</a> · e-mail: <a href="mailto:kontakt@ltttmedia.pl">kontakt@ltttmedia.pl</a></p>
+      <div class="lp-hero-video" style="aspect-ratio: ${esc(HERO_VIDEO_RATIO)}">${heroVideo()}</div>
     </div>
   </section>
 
   <section class="section section--white" id="dla-kogo">
     <div class="container lp-narrow">
       <div class="section-head section-head--left"><span class="eyebrow">Dla kogo</span><h2>Dla deweloperów, którym tempo sprzedaży przestało rosnąć</h2></div>
+      <p class="lp-lead">${esc(FORWHO_PROBLEM)}</p>
       <p class="lp-lead">${esc(FORWHO_LEAD)}</p>
       ${tbl(["Branża / sektor", "Wielkość firmy", "Symptom problemu"], FORWHO)}
       <h3 class="lp-h3">Dla kogo to nie jest</h3>
