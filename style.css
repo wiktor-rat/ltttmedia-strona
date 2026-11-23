@@ -1846,3 +1846,6 @@ button.footer-link {
   .lp-roi-result { padding: 22px 20px; }
   .lp-roi-rows div { flex-direction: column; gap: 2px; }
 }
+.lp-roi-rows .lp-roi-net dd { color: #4ADE80; font-size: 17px; }
+.lp-roi-rows .lp-roi-net dt { color: var(--white); font-weight: 600; }
+.lp-roi-rows .lp-roi-net dt span { font-weight: 400; color: rgba(255, 255, 255, 0.72); }
