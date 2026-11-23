@@ -340,15 +340,18 @@ const html = `<!DOCTYPE html>
 
   <section class="section section--navy" id="rozmowa">
     <div class="container lp-cta">
-      <div>
+      <div class="lp-cta-left">
         <span class="eyebrow eyebrow--light">Jak zacząć</span>
-        <h2>Jak zacząć? Umów 20–30-minutową rozmowę diagnozującą.</h2>
+        <h2>Jak zacząć? Umów <span class="lp-nowrap">20–30-minutową</span> rozmowę diagnozującą.</h2>
         <ol class="lp-cta-steps">
-          <li><strong>Krok 1.</strong> Wypełnij formularz albo zadzwoń: <a href="tel:+48511205230">+48 511 205 230</a>.</li>
-          <li><strong>Krok 2.</strong> Odpowiadamy w ciągu 24 godzin i ustalamy termin.</li>
-          <li><strong>Krok 3.</strong> Na rozmowie sprawdzamy, gdzie hamuje sprzedaż Twojej inwestycji. Potem dostajesz plan pierwszych 30 dni jako krótkie nagranie wideo.</li>
+          <li><span class="lp-cta-num" aria-hidden="true">1</span><div><strong>Krok 1.</strong> Wypełnij formularz albo zadzwoń: <a href="tel:+48511205230">+48 511 205 230</a>.</div></li>
+          <li><span class="lp-cta-num" aria-hidden="true">2</span><div><strong>Krok 2.</strong> Odpowiadamy w ciągu 24 godzin i ustalamy termin.</div></li>
+          <li><span class="lp-cta-num" aria-hidden="true">3</span><div><strong>Krok 3.</strong> Na rozmowie sprawdzamy, gdzie hamuje sprzedaż Twojej inwestycji. Potem dostajesz plan pierwszych 30 dni jako krótkie nagranie wideo.</div></li>
         </ol>
-        <p class="lp-contact">Telefon: <a href="tel:+48511205230">+48 511 205 230</a><br>E-mail: <a href="mailto:kontakt@ltttmedia.pl">kontakt@ltttmedia.pl</a></p>
+        <div class="lp-cta-contact">
+          <a class="lp-cta-chip" href="tel:+48511205230"><span class="lp-cta-chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span><small>Telefon</small>+48 511 205 230</span></a>
+          <a class="lp-cta-chip" href="mailto:kontakt@ltttmedia.pl"><span class="lp-cta-chip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><span><small>E-mail</small>kontakt@ltttmedia.pl</span></a>
+        </div>
       </div>
       <div class="lp-form-card">
         <!-- Formularz z naszego CRM (osadzony). Wysokość dopasowuje skrypt form_embed.js. -->
