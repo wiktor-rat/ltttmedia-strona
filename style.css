@@ -1807,3 +1807,12 @@ button.footer-link {
 @media (max-width: 1100px) { .lp-cta-contact { grid-template-columns: 1fr; } }
 @media (max-width: 860px) { .lp-cta-contact { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .lp-cta-contact { grid-template-columns: 1fr; } }
+
+/* ---------- Landing: opinie ---------- */
+#opinie .review-card { display: flex; flex-direction: column; }
+.lp-reviews-more { margin: 20px 0 0; text-align: center; }
+.lp-reviews-more a { color: var(--blue); font-weight: 700; }
+@media (max-width: 640px) {
+  #opinie .carousel-arrow { display: none; }
+  #opinie .review-card { flex-basis: 85%; }
+}

@@ -5,6 +5,17 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const SITE = "https://ltttmedia.pl";
 const URL_PAGE = `${SITE}/silnik-sprzedazy-inwestycji/`;
+// Opinie z Google: jedno źródło z stroną główną (tablica `reviews` i ikona Google w script.js).
+const vm = require("vm");
+const mainJs = fs.readFileSync(path.join(root, "script.js"), "utf8");
+const REVIEWS_ALL = vm.runInNewContext(mainJs.match(/const reviews = (\[[\s\S]*?\n\]);/)[1]);
+// Na landingu najpierw opinie z konkretnym wynikiem (liczba leadów, efekty kampanii).
+const REVIEWS_FIRST = ["Artur Buchowicz", "Wiktoria Lakoma"];
+const REVIEWS = [...REVIEWS_FIRST.map((n) => REVIEWS_ALL.find((r) => r.name === n)).filter(Boolean), ...REVIEWS_ALL.filter((r) => !REVIEWS_FIRST.includes(r.name))];
+const GOOGLE_G_SVG = vm.runInNewContext(mainJs.match(/var GOOGLE_G_SVG =([\s\S]*?);\n/)[1]);
+// TODO: link do profilu firmy w Google (wszystkie opinie). Puste = bez linku pod opiniami.
+const GOOGLE_REVIEWS_URL = "";
+const FOUNDER_LINKEDIN = "https://pl.linkedin.com/in/wiktor-rataj-66a68a34b";
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const TITLE = "Marketing dla deweloperów: Silnik Sprzedaży Inwestycji | LTTT MEDIA";
@@ -108,6 +119,7 @@ const ld = {
       address: { "@type": "PostalAddress", streetAddress: "Plac Bankowy 2", postalCode: "00-095", addressLocality: "Warszawa", addressCountry: "PL" },
       areaServed: { "@type": "Country", name: "Polska" },
       knowsAbout: ["marketing nieruchomości", "Meta Ads", "Google Ads", "marketing dla deweloperów", "sprzedaż inwestycji deweloperskich"],
+      founder: { "@type": "Person", name: "Wiktor Rataj", sameAs: [FOUNDER_LINKEDIN] },
       sameAs: ["https://www.instagram.com/ltttmedia/", "https://www.facebook.com/profile.php?id=61555868486029", "https://youtube.com/@ltttmedia"],
     },
     {
@@ -336,7 +348,29 @@ const html = `<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- TODO: opinie (min. 2 z konkretnym wynikiem, autorem, datą z ostatnich 12 miesięcy i źródłem zewnętrznym) -->
+  <section class="section section--white" id="opinie">
+    <div class="container">
+      <div class="section-head section-head--left"><span class="eyebrow">Opinie</span><h2>Co mówią o nas klienci</h2></div>
+      <div class="carousel-wrap">
+        <button class="carousel-arrow carousel-arrow--prev" type="button" aria-label="Poprzednia opinia" data-carousel-target="lpReviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <div class="carousel carousel--reviews" id="lpReviews">${REVIEWS.map((r) => {
+          const rating = Math.max(0, Math.min(5, r.rating || 0));
+          const ini = r.name.split(" ").filter(Boolean).map((x) => x[0]).slice(0, 2).join("");
+          return `
+          <article class="review-card">
+            <div class="review-card-head"><div class="review-avatar" aria-hidden="true">${esc(ini)}</div><div><div class="review-name">${esc(r.name)}</div><div class="review-company">${esc(r.company)}</div></div></div>
+            <div class="review-google-badge" aria-hidden="true">${GOOGLE_G_SVG}</div>
+            <div class="stars" aria-label="Ocena ${rating} na 5 gwiazdek">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</div>
+            <div class="review-date">${esc(r.date)}</div>
+            <p class="review-text">${esc(r.text)}</p>
+          </article>`;
+        }).join("")}
+        </div>
+        <button class="carousel-arrow carousel-arrow--next" type="button" aria-label="Następna opinia" data-carousel-target="lpReviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+      </div>
+      ${GOOGLE_REVIEWS_URL ? `<p class="lp-reviews-more"><a href="${esc(GOOGLE_REVIEWS_URL)}" target="_blank" rel="noopener">Zobacz wszystkie opinie w Google →</a></p>` : ""}
+    </div>
+  </section>
 
   <section class="section section--navy" id="rozmowa">
     <div class="container lp-cta">
@@ -388,6 +422,15 @@ const html = `<!DOCTYPE html>
   </div>
 </footer>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+<script>
+document.querySelectorAll(".carousel-arrow").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var c = document.getElementById(b.getAttribute("data-carousel-target")); if (!c || !c.children[0]) return;
+    var step = c.children[0].getBoundingClientRect().width + 20;
+    c.scrollBy({ left: (b.classList.contains("carousel-arrow--prev") ? -1 : 1) * step, behavior: "smooth" });
+  });
+});
+</script>
 </body>
 </html>
 `;
