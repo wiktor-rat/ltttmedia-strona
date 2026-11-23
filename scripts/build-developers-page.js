@@ -81,9 +81,14 @@ const PRICE_EXTRA = [
   ["Osobno", "Budżet reklamowy na Meta i Google, płacony platformom reklamowym. Wiadomości SMS do osób pytających o inwestycję: płacicie za faktycznie wysłane."],
   ["Na życzenie", "Wizyty naszego zespołu na inwestycji (dzień startowy, wspólny przegląd): wycena osobno, wraz z dojazdem."],
 ];
+// Kalkulator zwrotu w sekcji Cena. Wartości startowe są przykładowe (użytkownik wpisuje swoje).
+const ROI_FEE = 7500; // abonament netto / mies. (cena "od")
+// TODO: potwierdź przykładowe wartości startowe.
+const ROI_DEFAULTS = { price: 650000, margin: 15, budget: 20000, months: 3 };
+
 const PRICE_TERMS = [
   ["Umowa", "Minimum 3 miesiące. Po tym czasie możesz zrezygnować, a przy przedłużeniu współpracy obowiązuje miesięczny okres wypowiedzenia. Konta reklamowe i dane zostają u dewelopera, a kontakty z naszego CRM można wyeksportować."],
-  ["Czy się zwróci?", "Policzymy to na liczbach Waszej inwestycji w planie 30 dni: ile dodatkowo trzeba sprzedać lokali, żeby pakiet się zwrócił, przy wartości jednego lokalu u Was."],
+  ["Czy się zwróci?", "Policzymy to na liczbach Waszej inwestycji w planie 30 dni: ile dodatkowo trzeba sprzedać lokali, żeby pakiet się zwrócił, przy wartości jednego lokalu u Was. Szybki szacunek zrobisz w kalkulatorze poniżej."],
 ];
 
 const COMPARE = [
@@ -322,6 +327,34 @@ const html = `<!DOCTYPE html>
       <div class="lp-price-terms">${PRICE_TERMS.map(([t, d]) => `
         <div><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join("")}
       </div>
+      <div class="lp-roi" id="kalkulator">
+        <div class="lp-roi-head">
+          <span class="eyebrow">Kalkulator zwrotu</span>
+          <h3>Ile lokali trzeba dodatkowo sprzedać, żeby współpraca się zwróciła?</h3>
+          <p>Wpisz liczby swojej inwestycji. Wartości startowe są przykładowe.</p>
+        </div>
+        <div class="lp-roi-grid">
+          <form class="lp-roi-form" id="roiForm" onsubmit="return false">
+            <label class="lp-roi-field"><span>Średnia cena lokalu</span><span class="lp-roi-input"><input type="number" id="roiPrice" min="0" step="10000" value="${ROI_DEFAULTS.price}" inputmode="numeric"><em>zł</em></span></label>
+            <label class="lp-roi-field"><span>Twoja marża na lokalu</span><span class="lp-roi-input"><input type="number" id="roiMargin" min="1" max="100" step="1" value="${ROI_DEFAULTS.margin}" inputmode="decimal"><em>%</em></span></label>
+            <label class="lp-roi-field"><span>Budżet reklamowy Meta i Google miesięcznie</span><span class="lp-roi-input"><input type="number" id="roiBudget" min="0" step="1000" value="${ROI_DEFAULTS.budget}" inputmode="numeric"><em>zł</em></span></label>
+            <label class="lp-roi-field"><span>Okres współpracy</span><span class="lp-roi-input"><input type="number" id="roiMonths" min="3" max="36" step="1" value="${ROI_DEFAULTS.months}" inputmode="numeric"><em>mies.</em></span></label>
+            <p class="lp-roi-fee">Abonament LTTT MEDIA: <strong>od ${String(ROI_FEE).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} zł netto / mies.</strong> (kalkulacja liczy kwotę startową)</p>
+          </form>
+          <div class="lp-roi-result" aria-live="polite">
+            <p class="lp-roi-label">Wystarczy dodatkowo sprzedać</p>
+            <p class="lp-roi-big"><span id="roiUnits">–</span></p>
+            <p class="lp-roi-sub" id="roiSub">w ciągu całego okresu współpracy, żeby koszt się zwrócił.</p>
+            <dl class="lp-roi-rows">
+              <div><dt>Łączny koszt (abonament + budżet)</dt><dd id="roiCost">–</dd></div>
+              <div><dt>Zysk z jednego lokalu</dt><dd id="roiProfit">–</dd></div>
+              <div><dt>Zysk z tylu lokali</dt><dd id="roiGain">–</dd></div>
+            </dl>
+            <a class="btn btn-primary btn-block" href="#rozmowa">Policzmy to na Twojej inwestycji</a>
+          </div>
+        </div>
+        <p class="lp-roi-note">To kalkulacja, a nie gwarancja wyników. Na rozmowie diagnozującej liczymy to na danych Twojej inwestycji.</p>
+      </div>
     </div>
   </section>
 
@@ -423,6 +456,24 @@ const html = `<!DOCTYPE html>
 </footer>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 <script>
+(function () {
+  var FEE = ${ROI_FEE};
+  var $ = function (id) { return document.getElementById(id); };
+  var zl = function (n) { return Math.round(n).toLocaleString("pl-PL") + " zł"; };
+  function units(n) { return n === 1 ? "1 lokal" : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? n + " lokale" : n + " lokali"); }
+  function calc() {
+    var price = +$("roiPrice").value || 0, margin = +$("roiMargin").value || 0, budget = +$("roiBudget").value || 0;
+    var months = Math.max(3, Math.round(+$("roiMonths").value || 3));
+    var cost = (FEE + budget) * months, profit = price * margin / 100;
+    if (profit <= 0) { $("roiUnits").textContent = "–"; $("roiCost").textContent = zl(cost); $("roiProfit").textContent = "–"; $("roiGain").textContent = "–"; return; }
+    var n = Math.max(1, Math.ceil(cost / profit));
+    $("roiUnits").textContent = units(n);
+    $("roiSub").textContent = "w ciągu " + months + " mies. współpracy, żeby koszt się zwrócił.";
+    $("roiCost").textContent = zl(cost); $("roiProfit").textContent = zl(profit); $("roiGain").textContent = zl(n * profit);
+  }
+  var f = $("roiForm"); if (!f) return;
+  f.addEventListener("input", calc); calc();
+})();
 document.querySelectorAll(".carousel-arrow").forEach(function (b) {
   b.addEventListener("click", function () {
     var c = document.getElementById(b.getAttribute("data-carousel-target")); if (!c || !c.children[0]) return;
