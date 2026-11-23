@@ -134,7 +134,7 @@ const html = `<!DOCTYPE html>
 <div class="top-banner">Partner w rozwoju Twojej firmy</div>
 <header class="site-header">
   <div class="container">
-    <a href="/" class="logo" aria-label="LTTT MEDIA">
+    <a href="#" class="logo" aria-label="LTTT MEDIA">
       <span class="logo-main">LTTT MEDIA</span>
       <span class="logo-sub">LEAD TO THE TOP</span>
     </a>
