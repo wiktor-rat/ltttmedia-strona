@@ -348,7 +348,8 @@ const html = `<!DOCTYPE html>
             <dl class="lp-roi-rows">
               <div><dt>Łączny koszt (abonament + budżet)</dt><dd id="roiCost">–</dd></div>
               <div><dt>Zysk z jednego lokalu</dt><dd id="roiProfit">–</dd></div>
-              <div><dt>Zysk z tylu lokali</dt><dd id="roiGain">–</dd></div>
+              <div class="lp-roi-net"><dt>Zysk po odjęciu kosztów <span id="roiNetFor"></span></dt><dd id="roiNet">–</dd></div>
+              <div><dt>Zwrot z inwestycji</dt><dd id="roiX">–</dd></div>
             </dl>
             <a class="btn btn-primary btn-block" href="#rozmowa">Policzmy to na Twojej inwestycji</a>
           </div>
@@ -465,11 +466,15 @@ const html = `<!DOCTYPE html>
     var price = +$("roiPrice").value || 0, margin = +$("roiMargin").value || 0, budget = +$("roiBudget").value || 0;
     var months = Math.max(3, Math.round(+$("roiMonths").value || 3));
     var cost = (FEE + budget) * months, profit = price * margin / 100;
-    if (profit <= 0) { $("roiUnits").textContent = "–"; $("roiCost").textContent = zl(cost); $("roiProfit").textContent = "–"; $("roiGain").textContent = "–"; return; }
+    if (profit <= 0) { $("roiUnits").textContent = "–"; $("roiCost").textContent = zl(cost); ["roiProfit", "roiNet", "roiX"].forEach(function (i) { $(i).textContent = "–"; }); $("roiNetFor").textContent = ""; return; }
     var n = Math.max(1, Math.ceil(cost / profit));
     $("roiUnits").textContent = units(n);
     $("roiSub").textContent = "w ciągu " + months + " mies. współpracy, żeby koszt się zwrócił.";
-    $("roiCost").textContent = zl(cost); $("roiProfit").textContent = zl(profit); $("roiGain").textContent = zl(n * profit);
+    var gain = n * profit, x = cost > 0 ? gain / cost : 0;
+    $("roiCost").textContent = zl(cost); $("roiProfit").textContent = zl(profit);
+    $("roiNetFor").textContent = "(z " + n + (n === 1 ? " lokalu" : " lokali") + ")";
+    $("roiNet").textContent = "+" + zl(gain - cost);
+    $("roiX").textContent = cost > 0 ? x.toLocaleString("pl-PL", { maximumFractionDigits: 1 }) + " × koszt" : "–";
   }
   var f = $("roiForm"); if (!f) return;
   f.addEventListener("input", calc); calc();
