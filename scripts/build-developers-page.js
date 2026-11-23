@@ -13,8 +13,8 @@ const REVIEWS_ALL = vm.runInNewContext(mainJs.match(/const reviews = (\[[\s\S]*?
 const REVIEWS_FIRST = ["Artur Buchowicz", "Wiktoria Lakoma"];
 const REVIEWS = [...REVIEWS_FIRST.map((n) => REVIEWS_ALL.find((r) => r.name === n)).filter(Boolean), ...REVIEWS_ALL.filter((r) => !REVIEWS_FIRST.includes(r.name))];
 const GOOGLE_G_SVG = vm.runInNewContext(mainJs.match(/var GOOGLE_G_SVG =([\s\S]*?);\n/)[1]);
-// TODO: link do profilu firmy w Google (wszystkie opinie). Puste = bez linku pod opiniami.
-const GOOGLE_REVIEWS_URL = "";
+// Link do wizytówki firmy w Google (wszystkie opinie). Puste = bez linku pod opiniami.
+const GOOGLE_REVIEWS_URL = "https://share.google/TbJWB8WzyjgWP5Did";
 const FOUNDER_LINKEDIN = "https://pl.linkedin.com/in/wiktor-rataj-66a68a34b";
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
