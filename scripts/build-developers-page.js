@@ -199,10 +199,9 @@ const html = `<!DOCTYPE html>
         <h1>${esc(H1)}</h1>
         <p class="lp-hero-lead">${esc(LEAD)}</p>
         <div class="lp-hero-actions">
-          <a class="btn btn-primary btn-primary--lg" href="#rozmowa">Zarezerwuj rozmowę diagnozującą</a>
-          <span class="lp-hero-price">od 7 500 zł netto / mies. · rozmowa bezpłatna</span>
+          <a class="btn btn-primary btn-primary--lg" href="#rozmowa">Zarezerwuj bezpłatną rozmowę diagnozującą</a>
+          <span class="lp-hero-price">od 7 500 zł netto / mies.</span>
         </div>
-        <p class="lp-hero-how">Telefon: <a href="tel:+48511205230">+48 511 205 230</a> · e-mail: <a href="mailto:kontakt@ltttmedia.pl">kontakt@ltttmedia.pl</a></p>
       </div>
       <div class="lp-hero-video" style="aspect-ratio: ${esc(HERO_VIDEO_RATIO)}">${heroVideo()}</div>
     </div>
@@ -269,7 +268,7 @@ const html = `<!DOCTYPE html>
         <span class="eyebrow eyebrow--light">Jak zacząć</span>
         <h2>Jak zacząć? Umów 20–30-minutową rozmowę diagnozującą.</h2>
         <ol class="lp-cta-steps">
-          <li><strong>Krok 1.</strong> Wybierz termin rozmowy online albo wypełnij formularz.</li>
+          <li><strong>Krok 1.</strong> Wypełnij formularz albo zadzwoń: <a href="tel:+48511205230">+48 511 205 230</a>.</li>
           <li><strong>Krok 2.</strong> Odpowiadamy najszybciej, jak się da, i ustalamy termin.</li>
           <li><strong>Krok 3.</strong> Na rozmowie sprawdzamy, gdzie hamuje sprzedaż Twojej inwestycji. Potem dostajesz plan pierwszych 30 dni jako krótkie nagranie wideo.</li>
         </ol>
