@@ -262,10 +262,22 @@ const html = `<!DOCTYPE html>
   </section>
 
   <section class="section section--white" id="jak-to-dziala">
-    <div class="container lp-narrow">
-      <div class="section-head section-head--left"><span class="eyebrow">Jak to działa</span><h2>Pięć kroków od pierwszej rozmowy do pierwszego raportu</h2></div>
-      ${tbl(["Krok", "Co się dzieje", "Czas trwania"], STEPS.map(([t, d, c], i) => [`${i + 1}. ${t}`, d, c]))}
-      <p class="lp-note">Po starcie spotykamy się raz w miesiącu, żeby omówić wyniki i plan na kolejny miesiąc. Wszystkie spotkania odbywają się online.</p>
+    <div class="container lp-how">
+      <div class="lp-how-head">
+        <div class="section-head section-head--left"><span class="eyebrow">Jak to działa</span><h2>Pięć kroków od pierwszej rozmowy do pierwszego raportu</h2></div>
+        <p class="lp-how-note"><span class="lp-how-note-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><span>Po starcie spotykamy się raz w miesiącu, żeby omówić wyniki i plan na kolejny miesiąc. Wszystkie spotkania odbywają się online.</span></p>
+      </div>
+      <table class="lp-tl">
+        <caption class="lp-sr">Kroki współpracy i czas trwania każdego z nich</caption>
+        <thead class="lp-sr"><tr><th scope="col">Krok</th><th scope="col">Co się dzieje</th><th scope="col">Czas trwania</th></tr></thead>
+        <tbody>${STEPS.map(([t, d, c], i) => `
+          <tr>
+            <th scope="row"><span class="lp-tl-num" aria-hidden="true">${i + 1}</span><span class="lp-tl-title"><span class="lp-sr">${i + 1}. </span>${esc(t)}</span></th>
+            <td class="lp-tl-time"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>${esc(c)}</td>
+            <td class="lp-tl-desc">${esc(d)}</td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
     </div>
   </section>
 
