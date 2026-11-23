@@ -1609,3 +1609,11 @@ button.footer-link {
   .lp-hero { padding: 52px 0 56px; }
   .lp-form-card { padding: 22px; }
 }
+
+/* ---------- Oferta: usługi i produkty ---------- */
+.offer-grid { align-items: stretch; }
+.offer-sub { font-size: 20px; margin: 44px 0 16px; }
+.offer-tile { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+.offer-tile h3 { font-size: 22px; }
+.offer-tile p { flex: 1; }
+.offer-tag { align-self: flex-start; font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--blue); background: var(--blue-pale); padding: 4px 10px; border-radius: 999px; margin-bottom: 14px; }
