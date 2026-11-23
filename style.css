@@ -1596,7 +1596,7 @@ button.footer-link {
 .lp-cta h2 { color: var(--white); font-size: clamp(26px, 3.6vw, 36px); margin: 8px 0 22px; }
 .lp-cta-steps { margin: 0 0 26px; padding-left: 0; list-style: none; color: rgba(255, 255, 255, 0.85); display: grid; gap: 12px; }
 .lp-contact { color: rgba(255, 255, 255, 0.85); }
-.lp-contact a { color: var(--blue-light); font-weight: 700; }
+.lp-contact a, .lp-cta-steps a { color: var(--blue-light); font-weight: 700; }
 .lp-form-card { background: var(--white); border-radius: 18px; padding: 28px; box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25); }
 .form-field textarea { width: 100%; border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-family: inherit; font-size: 15px; background: var(--bg); resize: vertical; }
 .form-field textarea:focus { outline: 3px solid var(--blue-light); outline-offset: 1px; border-color: var(--blue); }
