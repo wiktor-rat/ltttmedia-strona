@@ -61,7 +61,7 @@ const STEPS = [
 ];
 
 const PRICE_NOTE = "Dokładną kwotę dla Twojej inwestycji podajemy w ofercie, po akceptacji planu pierwszych 30 dni.";
-const PRICE_IN = ["Plan pierwszych 30 dni", "Reklamy Meta i Google", "Strona inwestycji", "Obsługa zapytań w naszym CRM", "Raport od reklamy do rezerwacji", "Jeden opiekun", "Spotkanie miesięczne (online)"];
+const PRICE_IN = ["Plan pierwszych 30 dni", "Reklamy Meta i Google", "Obsługa zapytań w naszym CRM", "Raport od reklamy do rezerwacji", "Jeden opiekun", "Spotkanie miesięczne (online)"];
 const PRICE_EXTRA = [
   ["Osobno", "Budżet reklamowy na Meta i Google, płacony platformom reklamowym. Wiadomości SMS do osób pytających o inwestycję: płacicie za faktycznie wysłane."],
   ["Na życzenie", "Wizyty naszego zespołu na inwestycji (dzień startowy, wspólny przegląd): wycena osobno, wraz z dojazdem."],
