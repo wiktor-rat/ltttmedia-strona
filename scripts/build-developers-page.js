@@ -9,7 +9,7 @@ const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 
 const TITLE = "Marketing dla deweloperów: Silnik Sprzedaży Inwestycji | LTTT MEDIA";
 const DESC = "Agencja marketingowa dla deweloperów mieszkaniowych. Reklamy Meta i Google plus obsługa każdego zapytania do rozmowy handlowca. Od 7 500 zł netto miesięcznie. Bezpłatna rozmowa diagnozująca.";
-const H1 = "Silnik Sprzedaży Inwestycji: pomagamy deweloperom mieszkaniowym przyspieszyć sprzedaż lokali dzięki reklamom Meta i Google oraz opiece nad każdym zapytaniem aż do rozmowy handlowca.";
+const H1 = "LTTT MEDIA pomaga deweloperom mieszkaniowym przyspieszyć sprzedaż lokali dzięki Silnikowi Sprzedaży Inwestycji: reklamom Meta i Google oraz opiece nad każdym zapytaniem aż do rozmowy handlowca.";
 const LEAD = "Pierwsze 30% lokali sprzedaje się samo: z listy zapisów, z poleceń i z bazy dewelopera. Potem zapytań ubywa, handlowcy tracą czas na słabe kontakty, a część dobrych zapytań ginie, bo nikt nie odpowiedział na czas. Silnik Sprzedaży Inwestycji jest dla deweloperów z własnym działem sprzedaży i inwestycją od ok. 80 lokali, którzy chcą przyspieszyć sprzedaż, zanim zostaną trudniejsze lokale. Po 30 dniach widzisz w jednym raporcie, ile zapytań, spotkań i rezerwacji dały reklamy i ile to kosztowało.";
 
 const FORWHO_LEAD = "Dla deweloperów mieszkaniowych zatrudniających 10–25 osób, z własnym działem sprzedaży i inwestycją od ok. 80 lokali, którzy sprzedali ok. 30% lokali i widzą, że tempo sprzedaży nie rośnie tak, jak zakładali.";
@@ -30,11 +30,11 @@ const DELIV = [
 ];
 
 const STEPS = [
-  ["Rozmowa diagnozująca", "20–30 minut, online. Sprawdzamy, gdzie hamuje sprzedaż inwestycji: ruch, oferta, strona czy obsługa zapytań. Nie przygotowujesz żadnych materiałów."],
-  ["Plan pierwszych 30 dni", "Dostajesz plan jako krótkie nagranie wideo e-mailem: co zmieniamy, w jakiej kolejności i jak to wpłynie na zapytania. Możesz go przesłać zarządowi."],
-  ["Oferta i krótka umowa", "Dopiero po akceptacji planu wysyłamy jedną ofertę z ceną, zakresem, harmonogramem i zasadami wyjścia."],
-  ["Wdrożenie", "Zbieramy dostępy, analizujemy dane, konfigurujemy nasz CRM, formularze i pomiar, ustalamy dzień startowy."],
-  ["Start kampanii i pierwszy raport", "Uruchamiamy reklamy Meta i Google oraz obsługę każdego zapytania. Po ok. 30 dniach dostajesz pierwszy raport od reklamy do rezerwacji."],
+  ["Rozmowa diagnozująca", "20–30 minut, online. Sprawdzamy, gdzie hamuje sprzedaż inwestycji: ruch, oferta, strona czy obsługa zapytań. Nie przygotowujesz żadnych materiałów.", "20–30 minut"],
+  ["Plan pierwszych 30 dni", "Dostajesz plan jako krótkie nagranie wideo e-mailem: co zmieniamy, w jakiej kolejności i jak to wpłynie na zapytania. Możesz go przesłać zarządowi.", "do 3 dni roboczych od rozmowy"],
+  ["Oferta i krótka umowa", "Dopiero po akceptacji planu wysyłamy jedną ofertę z ceną, zakresem, harmonogramem i zasadami wyjścia.", "1–2 dni robocze od akceptacji planu"],
+  ["Wdrożenie", "Zbieramy dostępy, analizujemy dane, konfigurujemy nasz CRM, formularze i pomiar, ustalamy dzień startowy.", "ok. 7–10 dni roboczych"],
+  ["Start kampanii i pierwszy raport", "Uruchamiamy reklamy Meta i Google oraz obsługę każdego zapytania. Po ok. 30 dniach dostajesz pierwszy raport od reklamy do rezerwacji.", "ok. 30 dni do pierwszego raportu"],
 ];
 
 const PRICE = [
@@ -65,6 +65,22 @@ const FAQ = [
 const ld = {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": SITE + "/#organization",
+      name: "LTTT MEDIA",
+      legalName: "Lead To The Top Media Sp. z o.o.",
+      url: SITE + "/",
+      logo: SITE + "/favicon-192.png",
+      image: SITE + "/og-image.png",
+      description: "Wyspecjalizowana agencja marketingowa dla firm z branży nieruchomości w Polsce: Meta Ads, Google Ads, lejki i automatyzacje w modelu abonamentowym.",
+      telephone: "+48511205230",
+      email: "kontakt@ltttmedia.pl",
+      address: { "@type": "PostalAddress", streetAddress: "Plac Bankowy 2", postalCode: "00-095", addressLocality: "Warszawa", addressCountry: "PL" },
+      areaServed: { "@type": "Country", name: "Polska" },
+      knowsAbout: ["marketing nieruchomości", "Meta Ads", "Google Ads", "marketing dla deweloperów", "sprzedaż inwestycji deweloperskich"],
+      sameAs: ["https://www.instagram.com/ltttmedia/", "https://www.facebook.com/profile.php?id=61555868486029", "https://youtube.com/@ltttmedia"],
+    },
     {
       "@type": "Service",
       "@id": URL_PAGE + "#service",
@@ -151,6 +167,7 @@ const html = `<!DOCTYPE html>
         <a class="btn btn-primary btn-primary--lg" href="#rozmowa">Zarezerwuj rozmowę diagnozującą</a>
         <span class="lp-hero-price">od 7 500 zł netto miesięcznie · rozmowa bezpłatna</span>
       </div>
+      <p class="lp-hero-how"><strong>Jak zacząć:</strong> 1) rozmowa online 20–30 minut, 2) plan pierwszych 30 dni w nagraniu wideo, 3) oferta po akceptacji planu. Telefon: <a href="tel:+48511205230">+48 511 205 230</a>, e-mail: <a href="mailto:kontakt@ltttmedia.pl">kontakt@ltttmedia.pl</a>.</p>
     </div>
   </section>
 
@@ -174,7 +191,7 @@ const html = `<!DOCTYPE html>
   <section class="section section--white" id="jak-to-dziala">
     <div class="container lp-narrow">
       <div class="section-head section-head--left"><span class="eyebrow">Jak to działa</span><h2>Pięć kroków od pierwszej rozmowy do pierwszego raportu</h2></div>
-      <ol class="process-list lp-steps">${STEPS.map(([t, d], i) => `<li><span class="process-number">${i + 1}</span><span><strong>${esc(t)}.</strong> ${esc(d)}</span></li>`).join("")}</ol>
+      ${tbl(["Krok", "Co się dzieje", "Czas trwania"], STEPS.map(([t, d, c], i) => [`${i + 1}. ${t}`, d, c]))}
       <p class="lp-note">Po starcie spotykamy się raz w miesiącu, żeby omówić wyniki i plan na kolejny miesiąc. Wszystkie spotkania odbywają się online.</p>
     </div>
   </section>
