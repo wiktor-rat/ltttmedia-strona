@@ -200,7 +200,6 @@ const html = `<!DOCTYPE html>
         <p class="lp-hero-lead">${esc(LEAD)}</p>
         <div class="lp-hero-actions">
           <a class="btn btn-primary btn-primary--lg" href="#rozmowa">Zarezerwuj bezpłatną rozmowę diagnozującą</a>
-          <span class="lp-hero-price">od 7 500 zł netto / mies.</span>
         </div>
       </div>
       <div class="lp-hero-video" style="aspect-ratio: ${esc(HERO_VIDEO_RATIO)}">${heroVideo()}</div>
