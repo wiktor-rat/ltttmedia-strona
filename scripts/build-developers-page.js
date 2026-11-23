@@ -313,10 +313,18 @@ const html = `<!DOCTYPE html>
   </section>
 
   <section class="section section--white" id="dlaczego-my">
-    <div class="container lp-narrow">
-      <div class="section-head section-head--left"><span class="eyebrow">Dlaczego my</span><h2>Czym różnimy się od innych sposobów na przyspieszenie sprzedaży</h2></div>
-      ${tbl(["Alternatywa", "Ich podejście", "Nasze podejście"], COMPARE)}
-      <p class="lp-note">Lead To The Top Media Sp. z o.o., Plac Bankowy 2, 00-095 Warszawa. Tel. <a href="tel:+48511205230">+48 511 205 230</a>, <a href="mailto:kontakt@ltttmedia.pl">kontakt@ltttmedia.pl</a>.</p>
+    <div class="container">
+      <div class="section-head section-head--left lp-cmp-head"><span class="eyebrow">Dlaczego my</span><h2>Czym różnimy się od innych sposobów na przyspieszenie sprzedaży</h2></div>
+      <table class="lp-cmp">
+        <thead><tr><th scope="col">Alternatywa</th><th scope="col">Ich podejście</th><th scope="col" class="lp-cmp-ours">Nasze podejście <span>LTTT MEDIA</span></th></tr></thead>
+        <tbody>${COMPARE.map(([alt, theirs, ours]) => `
+          <tr>
+            <th scope="row">${esc(alt)}</th>
+            <td class="lp-cmp-theirs" data-label="Ich podejście">${esc(theirs)}</td>
+            <td class="lp-cmp-ours" data-label="Nasze podejście">${esc(ours)}</td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
     </div>
   </section>
 
