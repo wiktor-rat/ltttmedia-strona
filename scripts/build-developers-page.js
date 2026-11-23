@@ -30,7 +30,7 @@ const FORWHO = [
   ["Deweloperzy z własnym działem sprzedaży", "Zespół handlowców i własny CRM", "Zapytania z reklam trafiają do handlowców z opóźnieniem albo nikt do nich nie wraca"],
   ["Deweloperzy z budżetem marketingowym od ok. 20–25 tys. zł miesięcznie", "Reklamy prowadzone przez agencję lub we własnym zakresie", "Dużo zapytań, mało spotkań, a nikt nie wie, co realnie przynosi kupujących"],
 ];
-const NOTFOR = ["dla deweloperów, którzy chcą oddać sprzedaż na zewnątrz (zostawiamy ją Waszemu zespołowi),", "dla inwestycji, w których problemem jest produkt, cena lub lokalizacja, bo reklamy tego nie naprawią."];
+const NOTFOR = ["Dla deweloperów, którzy chcą oddać sprzedaż na zewnątrz (zostawiamy ją Waszemu zespołowi).", "Dla inwestycji, w których problemem jest produkt, cena lub lokalizacja, bo reklamy tego nie naprawią."];
 
 const DELIV = [
   ["Co naprawić w sprzedaży w pierwszej kolejności?", "Zanim ruszymy z reklamami, sprawdzamy, czy sprzedaż zwolniła przez ruch, ofertę, stronę czy obsługę zapytań, i dajemy plan na 30/60/90 dni. Wiesz, co poprawiać najpierw, i nie przepalasz budżetu na kampanie, które nie mają szans zadziałać."],
@@ -208,13 +208,32 @@ const html = `<!DOCTYPE html>
   </section>
 
   <section class="section section--white" id="dla-kogo">
-    <div class="container lp-narrow">
-      <div class="section-head section-head--left"><span class="eyebrow">Dla kogo</span><h2>Dla deweloperów, którym tempo sprzedaży przestało rosnąć</h2></div>
-      <p class="lp-lead">${esc(FORWHO_PROBLEM)}</p>
-      <p class="lp-lead">${esc(FORWHO_LEAD)}</p>
-      ${tbl(["Branża / sektor", "Wielkość firmy", "Symptom problemu"], FORWHO)}
-      <h3 class="lp-h3">Dla kogo to nie jest</h3>
-      <ul class="lp-list">${NOTFOR.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>
+    <div class="container">
+      <div class="lp-who-head">
+        <div>
+          <span class="eyebrow">Dla kogo</span>
+          <h2>Dla deweloperów, którym tempo sprzedaży przestało rosnąć</h2>
+          <p class="lp-who-problem">${esc(FORWHO_PROBLEM)}</p>
+        </div>
+        <aside class="lp-who-fit">
+          <span class="lp-who-fit-label">Najlepiej pasujemy, jeśli</span>
+          <p>${esc(FORWHO_LEAD)}</p>
+        </aside>
+      </div>
+      <div class="lp-who-grid">${FORWHO.map(([sector, size, symptom], i) => `
+        <article class="lp-who-card">
+          <span class="lp-who-num">0${i + 1}</span>
+          <h3>${esc(sector)}</h3>
+          <dl>
+            <dt>Wielkość firmy</dt><dd>${esc(size)}</dd>
+            <dt>Symptom problemu</dt><dd class="lp-who-symptom">${esc(symptom)}</dd>
+          </dl>
+        </article>`).join("")}
+      </div>
+      <div class="lp-notfor">
+        <h3>Dla kogo to nie jest</h3>
+        <ul>${NOTFOR.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>
+      </div>
     </div>
   </section>
 
