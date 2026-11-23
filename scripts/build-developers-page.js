@@ -249,7 +249,7 @@ const html = `<!DOCTYPE html>
 
   <section class="section section--bg" id="co-dostajesz">
     <div class="container">
-      <div class="section-head section-head--left"><span class="eyebrow">Co konkretnie dostajesz</span><h2>Efekty, nie funkcje</h2></div>
+      <div class="section-head section-head--left"><span class="eyebrow">Co konkretnie dostajesz</span><h2>Efekty współpracy z LTTT MEDIA</h2></div>
       <div class="lp-deliv">${DELIV.map(([tag, ic, q, a]) => `
         <article class="lp-deliv-card">
           <span class="lp-deliv-icon">${icon(ic)}</span>
