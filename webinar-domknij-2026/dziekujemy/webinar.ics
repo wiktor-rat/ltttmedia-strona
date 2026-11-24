@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//LTTT MEDIA//Webinar//PL
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:webinar-domknij-2026@ltttmedia.pl
+DTSTAMP:20261124T000000Z
+DTSTART:20261203T180000Z
+DTEND:20261203T190000Z
+SUMMARY:Webinar: Domknij 2026 w 4 krokach: jak wrócić do bazy zapytań i 
+ zamienić ją w rezerwacje
+DESCRIPTION:Bezpłatny webinar na żywo LTTT MEDIA. Link do transmisji dost
+ aniesz e-mailem i SMS-em.
+URL:https://ltttmedia.pl/webinar-domknij-2026/
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Webinar LTTT MEDIA za 30 minut
+END:VALARM
+END:VEVENT
+END:VCALENDAR

@@ -63,6 +63,10 @@ const ICONS = {
   file: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h4"/>',
   message: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
   linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+  calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
   play: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/>',
 };
 const icon = (k) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>`;
@@ -252,33 +256,104 @@ ${WEBINAR_FORM_ID ? '<script src="https://link.msgsndr.com/js/form_embed.js"></s
 </html>
 `;
 
+const CAL_DETAILS = "Bezpłatny webinar na żywo LTTT MEDIA. Link do transmisji dostaniesz e-mailem i SMS-em.";
 const calUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("Webinar: " + TITLE_PAGE) +
-  "&dates=" + EVENT_ISO_START + "/" + EVENT_ISO_END + "&details=" + encodeURIComponent("Webinar na żywo na YouTube. Link do transmisji dostaniesz e-mailem i SMS-em.") + "&ctz=Europe/Warsaw";
+  "&dates=" + EVENT_ISO_START + "/" + EVENT_ISO_END + "&details=" + encodeURIComponent(CAL_DETAILS) + "&ctz=Europe/Warsaw";
+// Plik .ics dla Outlooka i kalendarza Apple
+const icsEsc = (t) => String(t).replace(/\\/g, "\\\\").replace(/[,;]/g, (m) => "\\" + m);
+// Zawijanie linii do 75 bajtów (RFC 5545)
+const icsFold = (line) => {
+  const out = []; let cur = ""; let len = 0;
+  for (const ch of line) {
+    const b = Buffer.byteLength(ch);
+    if (len + b > (out.length ? 74 : 75)) { out.push(cur); cur = ""; len = 0; }
+    cur += ch; len += b;
+  }
+  out.push(cur);
+  return out.join("\r\n ");
+};
+const ICS = [
+  "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//LTTT MEDIA//Webinar//PL", "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+  "BEGIN:VEVENT",
+  `UID:${SLUG}@ltttmedia.pl`, "DTSTAMP:20261124T000000Z",
+  `DTSTART:${EVENT_ISO_START}`, `DTEND:${EVENT_ISO_END}`,
+  `SUMMARY:${icsEsc("Webinar: " + TITLE_PAGE)}`,
+  `DESCRIPTION:${icsEsc(CAL_DETAILS)}`,
+  `URL:${URL_PAGE}`,
+  "BEGIN:VALARM", "TRIGGER:-PT30M", "ACTION:DISPLAY", "DESCRIPTION:Webinar LTTT MEDIA za 30 minut", "END:VALARM",
+  "END:VEVENT", "END:VCALENDAR", "",
+].map(icsFold).join("\r\n");
+
+// Kroki po zapisie: [ikona, kiedy, tytuł, opis]
+const NEXT = [
+  ["message", "Teraz", "Sprawdź e-mail i SMS", "W ciągu kilku minut dostaniesz potwierdzenie zapisu. Jeśli e-maila nie ma, zajrzyj do folderu spam lub „Oferty”."],
+  ["bell", "Przed webinarem", "Przypomnienia z linkiem", "Wyślemy przypomnienia z linkiem do transmisji, także w dniu webinaru. Wystarczy kliknąć o 19:00."],
+  ["play", "Po webinarze", "Nagranie i materiały", "Dostaniesz nagranie, checklistę „5 miejsc, w których deweloper traci kupujących” i wzory wiadomości."],
+];
 
 const thanks = `${head("Dziękujemy za zapis na webinar | LTTT MEDIA", "Dziękujemy za zapis na webinar LTTT MEDIA.", URL_THANKS, "noindex, nofollow", "")}
 <body data-meta-event="CompleteRegistration">
 ${header(`<a href="tel:+48511205230" class="lp-header-phone">+48 511 205 230</a>`)}
 <main id="main">
-  <section class="section--navy subhero lp-hero">
-    <div class="container lp-narrow">
+  <section class="section--navy ty-hero">
+    <div class="container ty-hero-inner">
+      <span class="ty-check" aria-hidden="true">${icon("check")}</span>
       <span class="eyebrow eyebrow--light">Zapis potwierdzony</span>
       <h1>Dziękujemy, jesteś zapisany na webinar</h1>
-      <p class="lp-hero-lead">${esc(TITLE_PAGE)}<br><strong>${esc(EVENT_DATE_LABEL)}</strong>, YouTube Live.</p>
-      <div class="lp-hero-actions">
-        <a class="btn btn-primary btn-primary--lg" href="${calUrl}" target="_blank" rel="noopener noreferrer">Dodaj do kalendarza</a>
-        ${LIVE_URL ? `<a class="btn btn-secondary" href="${esc(LIVE_URL)}" target="_blank" rel="noopener noreferrer">Link do transmisji</a>` : ""}
+      <p class="ty-lead">Zarezerwuj ten termin w kalendarzu, żeby nic Ci nie umknęło.</p>
+
+      <div class="ty-ticket">
+        <div class="ty-date" aria-hidden="true">
+          <span class="ty-date-month">gru</span>
+          <span class="ty-date-day">3</span>
+          <span class="ty-date-dow">czw</span>
+        </div>
+        <div class="ty-ticket-body">
+          <p class="ty-ticket-label">Webinar na żywo · bezpłatnie</p>
+          <p class="ty-ticket-title">${esc(TITLE_PAGE)}</p>
+          <p class="ty-ticket-meta">${icon("clock")}<span>${esc(EVENT_DATE_LABEL)} · ok. 45 min + pytania</span></p>
+          <div class="ty-actions">
+            <a class="btn btn-primary" href="${calUrl}" target="_blank" rel="noopener noreferrer">${icon("calendar")}Dodaj do Google Calendar</a>
+            <a class="btn ty-btn-ghost" href="webinar.ics" download="webinar-lttt-3-12-2026.ics">${icon("calendar")}Outlook / Apple (.ics)</a>
+            ${LIVE_URL ? `<a class="btn ty-btn-ghost" href="${esc(LIVE_URL)}" target="_blank" rel="noopener noreferrer">${icon("play")}Link do transmisji</a>` : ""}
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
   <section class="section section--white">
-    <div class="container lp-narrow">
+    <div class="container">
       <div class="section-head section-head--left"><span class="eyebrow">Co dalej</span><h2>Co będzie się działo po zapisie</h2></div>
-      <ol class="lp-list">
-        <li>W ciągu kilku minut dostaniesz potwierdzenie e-mailem i SMS-em.</li>
-        <li>Przed webinarem wyślemy przypomnienia z linkiem do transmisji.</li>
-        <li>Po webinarze dostaniesz nagranie, checklistę i wzory wiadomości.</li>
+      <ol class="wb-steps wb-steps--3">${NEXT.map(([ic, when, t, d]) => `
+        <li class="wb-step">
+          <div class="wb-step-marker"><span class="wb-step-icon">${icon(ic)}</span></div>
+          <div class="wb-step-body">
+            <p class="wb-step-num">${esc(when)}</p>
+            <h3>${esc(t)}</h3>
+            <p>${esc(d)}</p>
+          </div>
+        </li>`).join("")}
       </ol>
-      <p>Pytania? Zadzwoń: <a href="tel:+48511205230">+48 511 205 230</a> lub napisz: <a href="mailto:kontakt@ltttmedia.pl">kontakt@ltttmedia.pl</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section--bg">
+    <div class="container">
+      <div class="ty-contact">
+        <picture>
+          <source srcset="${HOST_PHOTO}.webp" type="image/webp">
+          <img class="ty-avatar" src="${HOST_PHOTO}.jpg" width="900" height="1125" loading="lazy" decoding="async" alt="${esc(HOST_NAME)}">
+        </picture>
+        <div class="ty-contact-text">
+          <p class="ty-contact-title">Do zobaczenia w czwartek!</p>
+          <p class="ty-contact-sub">${esc(HOST_NAME)}, ${esc(HOST_ROLE)}. Masz pytanie przed webinarem? Napisz lub zadzwoń.</p>
+        </div>
+        <div class="ty-contact-actions">
+          <a class="btn btn-primary" href="tel:+48511205230">${icon("phone")}+48 511 205 230</a>
+          <a class="btn ty-btn-line" href="mailto:kontakt@ltttmedia.pl">${icon("mail")}kontakt@ltttmedia.pl</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
@@ -290,4 +365,5 @@ ${footer}
 fs.mkdirSync(path.join(root, SLUG, "dziekujemy"), { recursive: true });
 fs.writeFileSync(path.join(root, SLUG, "index.html"), page);
 fs.writeFileSync(path.join(root, SLUG, "dziekujemy", "index.html"), thanks);
+fs.writeFileSync(path.join(root, SLUG, "dziekujemy", "webinar.ics"), ICS);
 console.log(`Wygenerowano /${SLUG}/ i /${SLUG}/dziekujemy/`);
