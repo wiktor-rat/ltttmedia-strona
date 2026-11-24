@@ -52,7 +52,7 @@ const FAQ = [
 
 // Sekcja prowadzącego
 const HOST_NAME = "Wiktor Rataj";
-const HOST_ROLE = "Founder & CEO LTTT MEDIA";
+const HOST_ROLE = "Founder & Owner LTTT MEDIA";
 const HOST_BIO = [
   "Przedsiębiorca i założyciel LTTT MEDIA – agencji marketingowej specjalizującej się w sektorze nieruchomości, która obsłużyła ponad 200 firm z branży. Specjalizuje się w tworzeniu strategii marketingowych oraz systemów pozyskiwania klientów wspierających sprzedaż nieruchomości.",
   "Realizowane przez jego agencję kampanie pozwoliły m.in. pozyskać kupującego na nieruchomość o wartości 1,29 mln zł w ciągu 7 dni, przy wydatkach na reklamę wynoszących zaledwie 455 zł.",
