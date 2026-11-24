@@ -195,13 +195,19 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
   </section>
 
   <section class="section section--bg" id="o-wydarzeniu">
-    <div class="container lp-narrow wb-about">
-      <div class="section-head section-head--left"><h2>O wydarzeniu</h2></div>
-      ${ABOUT_INTRO.map((t) => `<p>${esc(t)}</p>`).join("\n      ")}
-      <ul class="lp-list">${ABOUT_POINTS.map((t) => `
-        <li>${esc(t)}</li>`).join("")}
-      </ul>
-      ${ABOUT_OUTRO.map((t) => `<p>${esc(t)}</p>`).join("\n      ")}
+    <div class="container wb-about">
+      <div class="wb-about-head">
+        <div class="section-head section-head--left"><h2>O wydarzeniu</h2></div>
+        <p class="wb-about-lead">${esc(ABOUT_INTRO[0])}</p>
+      </div>
+      <div class="wb-about-body">
+        <p class="wb-about-intro">${esc(ABOUT_INTRO[1])}</p>
+        <ol class="lp-list wb-about-list">${ABOUT_POINTS.map((t, i) => `
+          <li><span class="wb-about-num" aria-hidden="true">${i + 1}</span><span>${esc(t).replace(/e-mail/g, "e&#8209;mail")}</span></li>`).join("")}
+        </ol>
+        <p class="wb-about-note">${icon("message")}<span>${esc(ABOUT_OUTRO[0])}</span></p>
+        <p class="wb-about-callout">${esc(ABOUT_OUTRO[1])}</p>
+      </div>
     </div>
   </section>
 
