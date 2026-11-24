@@ -166,7 +166,7 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
         <span class="eyebrow eyebrow--light">Webinar na żywo · dla deweloperów</span>
         <h1>${esc(TITLE_PAGE)}</h1>
         <p class="lp-hero-lead">${esc(LEAD)}</p>
-        <p class="lp-hero-price">${esc(EVENT_DATE_LABEL)} · YouTube Live · bezpłatnie</p>
+        <p class="lp-hero-price">${esc(EVENT_DATE_LABEL)} · bezpłatnie</p>
       </div>
       <div class="lp-form-card" id="zapis">
         <h2 class="lp-form-title">Zapisz się na webinar</h2>
