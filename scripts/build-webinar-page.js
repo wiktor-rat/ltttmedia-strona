@@ -179,14 +179,16 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
   <section class="section section--white" id="program">
     <div class="container">
       <div class="section-head section-head--left"><span class="eyebrow">Program</span><h2>4 kroki, które pokażę na webinarze</h2></div>
-      <div class="lp-deliv">${STEPS.map(([ic, tag, q, a]) => `
-        <article class="lp-deliv-card">
-          <span class="lp-deliv-icon">${icon(ic)}</span>
-          <p class="lp-deliv-tag">${esc(tag)}</p>
-          <h3>${esc(q)}</h3>
-          <p class="lp-deliv-text">${esc(a)}</p>
-        </article>`).join("")}
-      </div>
+      <ol class="wb-steps">${STEPS.map(([ic, tag, q, a]) => `
+        <li class="wb-step">
+          <div class="wb-step-marker"><span class="wb-step-icon">${icon(ic)}</span></div>
+          <div class="wb-step-body">
+            <p class="wb-step-num">${esc(tag)}</p>
+            <h3>${esc(q)}</h3>
+            <p>${esc(a)}</p>
+          </div>
+        </li>`).join("")}
+      </ol>
     </div>
   </section>
 
