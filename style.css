@@ -1875,3 +1875,31 @@ button.footer-link {
 .lp-form-title { font-size: 22px; margin: 0 0 14px; color: var(--navy, #0B1830); }
 .lp-hero-grid .lp-form-card { align-self: start; }
 .lp-hero-price { margin-top: 8px; }
+
+/* ---------- Webinar: program w 4 krokach (oś procesu) ---------- */
+.wb-steps { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.wb-step { display: flex; flex-direction: column; min-width: 0; }
+.wb-step-marker { display: flex; align-items: center; margin-bottom: 20px; }
+.wb-step:not(:last-child) .wb-step-marker::after { content: ""; flex: 1; height: 2px; margin: 0 -24px 0 14px; background: linear-gradient(90deg, var(--blue-light), var(--border)); border-radius: 2px; }
+.wb-step-icon { flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--blue); color: var(--white); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 6px var(--blue-pale); }
+.wb-step-body { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 24px 22px 26px; transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease; }
+.wb-step:hover .wb-step-body { transform: translateY(-3px); background: var(--white); box-shadow: var(--shadow-card-hover); }
+.wb-step-num { margin: 0 0 8px; font-family: var(--font-display); font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
+.wb-step-body h3 { margin: 0 0 12px; font-family: var(--font-display); font-size: 20px; font-weight: 800; line-height: 1.25; letter-spacing: -0.01em; color: var(--navy); }
+.wb-step-body p:last-child { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+@media (max-width: 1023px) {
+  .wb-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+  .wb-step:nth-child(2n) .wb-step-marker::after { display: none; }
+}
+@media (max-width: 680px) {
+  .wb-steps { grid-template-columns: 1fr; gap: 0; }
+  .wb-step { display: grid; grid-template-columns: 48px minmax(0, 1fr); column-gap: 16px; }
+  .wb-step-marker { flex-direction: column; margin: 0; }
+  .wb-step-icon { width: 48px; height: 48px; box-shadow: 0 0 0 5px var(--blue-pale); }
+  .wb-step-icon svg { width: 22px; height: 22px; }
+  .wb-step:not(:last-child) .wb-step-marker::after { display: block; content: ""; flex: 1; width: 2px; height: auto; margin: 10px 0 0; background: linear-gradient(180deg, var(--blue-light), var(--border)); }
+  .wb-step-body { background: none; border: 0; padding: 10px 0 30px; }
+  .wb-step:last-child .wb-step-body { padding-bottom: 0; }
+  .wb-step:hover .wb-step-body { transform: none; box-shadow: none; }
+  .wb-step-body h3 { font-size: 19px; }
+}
