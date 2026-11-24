@@ -1904,34 +1904,6 @@ button.footer-link {
   .wb-step-body h3 { font-size: 19px; }
 }
 
-/* ---------- Webinar: dla kogo + bonusy (dwie karty) ---------- */
-.wb-fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
-.wb-fit-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 40px 38px; min-width: 0; }
-.wb-fit-cta { align-self: flex-start; margin-top: auto; }
-.wb-fit-card .wb-fit-list { margin-bottom: 28px; }
-.wb-fit-card h2 { margin: 10px 0 28px; font-size: 28px; line-height: 1.2; }
-.wb-fit-list, .wb-bonus-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.wb-fit-list li, .wb-bonus-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.55; }
-.wb-fit-list li { color: var(--navy); padding-bottom: 14px; border-bottom: 1px solid var(--border); }
-.wb-fit-list li:last-child { padding-bottom: 0; border-bottom: 0; }
-.wb-fit-check { flex: none; width: 28px; height: 28px; margin-top: -1px; border-radius: 50%; background: var(--blue-pale); color: var(--blue); display: flex; align-items: center; justify-content: center; }
-.wb-fit-check svg { width: 16px; height: 16px; stroke-width: 3; }
-.wb-fit-card--dark { background: var(--navy); border-color: var(--navy); color: rgba(255, 255, 255, 0.88); background-image: radial-gradient(120% 90% at 100% 0%, rgba(47, 95, 224, 0.35), transparent 60%); }
-.wb-fit-card--dark h2 { color: var(--white); }
-.wb-bonus-list li { align-items: center; padding: 14px 16px; border-radius: 14px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); }
-.wb-bonus-icon { flex: none; width: 44px; height: 44px; border-radius: 12px; background: var(--blue); color: var(--white); display: flex; align-items: center; justify-content: center; }
-.wb-bonus-icon svg { width: 22px; height: 22px; }
-@media (max-width: 900px) {
-  .wb-fit { grid-template-columns: 1fr; gap: 16px; }
-}
-@media (max-width: 680px) {
-  .wb-fit-card { padding: 28px 22px; }
-  .wb-fit-card h2 { font-size: 24px; margin-bottom: 22px; }
-  .wb-fit-list li, .wb-bonus-list li { font-size: 15px; }
-  .wb-bonus-list li { padding: 12px; gap: 12px; }
-  .wb-bonus-icon { width: 40px; height: 40px; }
-}
-
 /* ---------- Webinar: prowadzący ---------- */
 .wb-host { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: center; }
 .wb-host-photo { position: relative; margin: 0; }
@@ -1943,9 +1915,6 @@ button.footer-link {
 .wb-host-text h2 { margin: 10px 0 6px; font-size: 40px; line-height: 1.1; }
 .wb-host-role { margin: 0 0 24px; padding-bottom: 22px; border-bottom: 1px solid var(--border); font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--blue); }
 .wb-host-text p:not(.wb-host-role) { margin: 0 0 16px; color: var(--muted); font-size: 16px; line-height: 1.7; }
-.wb-host-link { display: inline-flex; align-items: center; gap: 10px; margin-top: 8px; padding: 11px 18px; border: 1px solid var(--border); border-radius: var(--radius-pill); color: var(--navy); font-weight: 600; font-size: 15px; text-decoration: none; transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease; }
-.wb-host-link svg { width: 18px; height: 18px; color: #0A66C2; }
-.wb-host-link:hover { border-color: #0A66C2; color: #0A66C2; background: #F3F8FD; }
 @media (max-width: 900px) {
   .wb-host { grid-template-columns: 1fr; gap: 48px; }
   .wb-host-photo { max-width: 420px; width: calc(100% - 24px); }
@@ -2011,4 +1980,27 @@ button.footer-link {
   .ty-contact-text { flex-basis: calc(100% - 80px); }
   .ty-contact-title { font-size: 19px; }
   .ty-contact-actions .btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ---------- Webinar: O wydarzeniu ---------- */
+.wb-about p { margin: 0 0 16px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+.wb-about .lp-list { list-style: none; padding: 0; margin: 4px 0 24px; display: grid; gap: 12px; }
+.wb-about .lp-list li { position: relative; margin: 0; padding: 14px 18px 14px 46px; background: var(--white); border: 1px solid var(--border); border-radius: 14px; color: var(--navy); font-size: 16px; line-height: 1.55; }
+.wb-about .lp-list li::before { content: ""; position: absolute; left: 18px; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px var(--blue-pale); }
+.wb-about p:last-child { margin-bottom: 0; }
+
+/* ---------- Webinar: kontakt prowadzącego ---------- */
+.wb-host-contact { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.wb-host-contact a { display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; border: 1px solid var(--border); border-radius: var(--radius-pill); color: var(--navy); font-weight: 600; font-size: 15px; text-decoration: none; transition: border-color 0.18s ease, color 0.18s ease; }
+.wb-host-contact a:hover { border-color: var(--blue); color: var(--blue); }
+.wb-host-contact svg { width: 18px; height: 18px; flex: none; color: var(--blue); }
+
+/* ---------- Webinar: podziękowanie, prośba o przekazanie linku ---------- */
+.ty-share { margin: 0 auto 14px; max-width: 620px; color: var(--white); font-size: 18px; line-height: 1.6; font-weight: 500; }
+@media (max-width: 680px) {
+  .wb-about p { font-size: 16px; }
+  .wb-about .lp-list li { font-size: 15px; padding: 12px 14px 12px 40px; }
+  .wb-about .lp-list li::before { left: 15px; top: 19px; }
+  .wb-host-contact a { flex: 1 1 100%; justify-content: center; }
+  .ty-share { font-size: 16px; }
 }
