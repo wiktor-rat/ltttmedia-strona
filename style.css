@@ -1903,3 +1903,31 @@ button.footer-link {
   .wb-step:hover .wb-step-body { transform: none; box-shadow: none; }
   .wb-step-body h3 { font-size: 19px; }
 }
+
+/* ---------- Webinar: dla kogo + bonusy (dwie karty) ---------- */
+.wb-fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.wb-fit-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 40px 38px; min-width: 0; }
+.wb-fit-cta { align-self: flex-start; margin-top: auto; }
+.wb-fit-card .wb-fit-list { margin-bottom: 28px; }
+.wb-fit-card h2 { margin: 10px 0 28px; font-size: 28px; line-height: 1.2; }
+.wb-fit-list, .wb-bonus-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.wb-fit-list li, .wb-bonus-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 16px; line-height: 1.55; }
+.wb-fit-list li { color: var(--navy); padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.wb-fit-list li:last-child { padding-bottom: 0; border-bottom: 0; }
+.wb-fit-check { flex: none; width: 28px; height: 28px; margin-top: -1px; border-radius: 50%; background: var(--blue-pale); color: var(--blue); display: flex; align-items: center; justify-content: center; }
+.wb-fit-check svg { width: 16px; height: 16px; stroke-width: 3; }
+.wb-fit-card--dark { background: var(--navy); border-color: var(--navy); color: rgba(255, 255, 255, 0.88); background-image: radial-gradient(120% 90% at 100% 0%, rgba(47, 95, 224, 0.35), transparent 60%); }
+.wb-fit-card--dark h2 { color: var(--white); }
+.wb-bonus-list li { align-items: center; padding: 14px 16px; border-radius: 14px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); }
+.wb-bonus-icon { flex: none; width: 44px; height: 44px; border-radius: 12px; background: var(--blue); color: var(--white); display: flex; align-items: center; justify-content: center; }
+.wb-bonus-icon svg { width: 22px; height: 22px; }
+@media (max-width: 900px) {
+  .wb-fit { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 680px) {
+  .wb-fit-card { padding: 28px 22px; }
+  .wb-fit-card h2 { font-size: 24px; margin-bottom: 22px; }
+  .wb-fit-list li, .wb-bonus-list li { font-size: 15px; }
+  .wb-bonus-list li { padding: 12px; gap: 12px; }
+  .wb-bonus-icon { width: 40px; height: 40px; }
+}

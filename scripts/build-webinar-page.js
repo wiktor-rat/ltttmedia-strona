@@ -31,10 +31,11 @@ const STEPS = [
   ["bell", "Krok 3", "Powrót do bazy z prawdziwym powodem", "Telefon, SMS i e-mail w kolejności, która działa, plus reklama w Meta do osób z Twojej listy. Dostajesz gotowe wzory wiadomości."],
   ["chart", "Krok 4", "Domknięcie i pomiar", "Spotkania, kredyt, rezerwacja. Jak sprawdzić w jednym raporcie, które źródło faktycznie sprzedało, i co zostawić na pierwszy kwartał."],
 ];
+// [ikona, tekst]
 const BONUS = [
-  "Checklista „5 miejsc, w których deweloper traci kupujących” (PDF).",
-  "Wzory wiadomości do powrotu do bazy: SMS, e-mail i skrypt rozmowy.",
-  "Nagranie webinaru dla wszystkich, którzy się zapiszą.",
+  ["file", "Checklista „5 miejsc, w których deweloper traci kupujących” (PDF)."],
+  ["message", "Wzory wiadomości do powrotu do bazy: SMS, e\u2011mail i skrypt rozmowy."],
+  ["play", "Nagranie webinaru dla wszystkich, którzy się zapiszą."],
 ];
 const FORWHO = [
   "Masz inwestycję od ok. 80 lokali i własny dział sprzedaży.",
@@ -54,6 +55,10 @@ const ICONS = {
   filter: '<path d="M3 5h18l-7 8v6l-4 2v-8z"/>',
   bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
   chart: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  file: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h4"/>',
+  message: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
+  play: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/>',
 };
 const icon = (k) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>`;
 
@@ -193,11 +198,22 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
   </section>
 
   <section class="section section--bg" id="dla-kogo">
-    <div class="container lp-narrow">
-      <div class="section-head section-head--left"><span class="eyebrow">Dla kogo</span><h2>Ten webinar jest dla Ciebie, jeśli</h2></div>
-      <ul class="lp-list">${FORWHO.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-      <div class="section-head section-head--left" style="margin-top:36px"><span class="eyebrow">Po webinarze</span><h2>Co dostajesz oprócz wiedzy</h2></div>
-      <ul class="lp-list">${BONUS.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+    <div class="container wb-fit">
+      <div class="wb-fit-card">
+        <span class="eyebrow">Dla kogo</span>
+        <h2>Ten webinar jest dla Ciebie, jeśli</h2>
+        <ul class="wb-fit-list">${FORWHO.map((t) => `
+          <li><span class="wb-fit-check">${icon("check")}</span><span>${esc(t)}</span></li>`).join("")}
+        </ul>
+        <a class="btn btn-primary wb-fit-cta" href="#zapis">Zapisz się na webinar</a>
+      </div>
+      <div class="wb-fit-card wb-fit-card--dark">
+        <span class="eyebrow eyebrow--light">Po webinarze</span>
+        <h2>Co dostajesz oprócz wiedzy</h2>
+        <ul class="wb-bonus-list">${BONUS.map(([ic, t]) => `
+          <li><span class="wb-bonus-icon">${icon(ic)}</span><span>${esc(t)}</span></li>`).join("")}
+        </ul>
+      </div>
     </div>
   </section>
 
