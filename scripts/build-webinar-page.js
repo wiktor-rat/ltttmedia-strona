@@ -25,44 +25,47 @@ const TITLE = "Webinar dla deweloperów: Domknij 2026 w 4 krokach | LTTT MEDIA";
 const DESC = "Bezpłatny webinar na żywo dla deweloperów mieszkaniowych, 3.12.2026 o 19:00. 4 kroki, jak wrócić do bazy zapytań i zamienić ją w rezerwacje przed końcem roku.";
 const LEAD = "Bezpłatny webinar na żywo dla deweloperów z własnym działem sprzedaży. Dostaniesz plan na ostatnie tygodnie roku: jak przejrzeć zapytania z ostatnich miesięcy, do kogo zadzwonić w pierwszej kolejności i jak sprawdzić, które działania faktycznie kończą się rezerwacją.";
 
-const STEPS = [
-  ["list", "Krok 1", "Spis bazy zapytań", "Zbierasz w jednym miejscu zapytania, listy zapisów i osoby po prezentacjach z ostatnich 6 miesięcy. Pokażę, jakie dane zapisać przy każdym kontakcie."],
-  ["filter", "Krok 2", "Podział na gorące, ciepłe i zimne", "Każda grupa wymaga innego pierwszego ruchu. Pokażę, po czym je rozpoznać i kto powinien zadzwonić w ciągu 48 godzin."],
-  ["bell", "Krok 3", "Powrót do bazy z prawdziwym powodem", "Telefon, SMS i e-mail w kolejności, która działa, plus reklama w Meta do osób z Twojej listy. Dostajesz gotowe wzory wiadomości."],
-  ["chart", "Krok 4", "Domknięcie i pomiar", "Spotkania, kredyt, rezerwacja. Jak sprawdzić w jednym raporcie, które źródło faktycznie sprzedało, i co zostawić na pierwszy kwartał."],
+// Sekcja „O wydarzeniu”: akapity przed listą, punkty listy, akapity po liście
+const ABOUT_INTRO = [
+  "Koniec roku to ostatni moment, żeby poprawić wynik sprzedaży inwestycji w 2026. Większość deweloperów szuka go w nowych reklamach. Tymczasem w bazie zapytań z ostatnich miesięcy leżą osoby, które już pytały o mieszkanie, a nikt do nich nie wrócił albo wrócił za późno.",
+  "Wiktor Rataj pokaże w czterech krokach, jak wrócić do tej bazy i zamienić ją w rezerwacje przed końcem roku. Powie między innymi o tym:",
 ];
-// [ikona, tekst]
-const BONUS = [
-  ["file", "Checklista „5 miejsc, w których deweloper traci kupujących” (PDF)."],
-  ["message", "Wzory wiadomości do powrotu do bazy: SMS, e\u2011mail i skrypt rozmowy."],
-  ["play", "Nagranie webinaru dla wszystkich, którzy się zapiszą."],
+const ABOUT_POINTS = [
+  "jak w ciągu jednego-dwóch dni zebrać zapytania z ostatnich 6 miesięcy w jednym miejscu i zobaczyć, do ilu z nich nikt nie wrócił,",
+  "jak podzielić je na gorące, ciepłe i zimne i od kogo zacząć,",
+  "z jakim powodem wrócić do osoby, która już pytała (telefon, SMS, e-mail), żeby wiadomość nie wyglądała na masową,",
+  "jak domknąć spotkania i rezerwacje oraz mierzyć, które źródło zapytań naprawdę sprzedało.",
 ];
-const FORWHO = [
-  "Masz inwestycję od ok. 80 lokali i własny dział sprzedaży.",
-  "W Twojej bazie leżą zapytania z ostatnich miesięcy, do których nikt już nie wrócił.",
-  "Sprzedałeś pierwsze ok. 30% lokali i tempo sprzedaży przestało rosnąć.",
+const ABOUT_OUTRO = [
+  "Na końcu kilka minut o tym, jak LTTT MEDIA może pomóc, jeśli będziesz chciał, oraz czas na pytania na czacie.",
+  "Webinar jest dla dyrektorów sprzedaży i marketingu oraz zarządów deweloperów, którzy chcą wejść w styczeń z uporządkowaną bazą zapytań, a nie z listą postanowień.",
+];
+
+// FAQ (te same teksty trafiają do JSON-LD FAQPage)
+const FAQ = [
+  ["Czy to będzie godzina sprzedaży Waszej agencji?", "Nie. Ok. 45 minut to konkrety, które możesz wdrożyć sam, bez nas. Na końcu jest kilka minut o tym, jak możemy pomóc, bez żadnych zobowiązań."],
+  ["Gdzie odbędzie się webinar?", "Na żywo na YouTube. Link dostaniesz w e-mailu po zapisie i w przypomnieniach, nie musisz niczego instalować ani się logować."],
+  ["Czy podczas webinaru będzie można zadać pytanie?", "Tak, na czacie w trakcie transmisji. Na końcu odpowiem na pytania. Jeśli chcesz zapytać o coś wcześniej, napisz na kontakt@ltttmedia.pl lub zadzwoń: +48 511 205 230."],
+  ["Na co mogę liczyć po webinarze?", "Pokażę, jak wdrożyć każdy z czterech kroków. Po webinarze napisz na kontakt@ltttmedia.pl, a wyślę Ci checklistę w PDF i wzory wiadomości."],
+  ["Czy mogę zaprosić dyrektora sprzedaży lub handlowców?", "Tak, webinar jest bezpłatny. Każdy powinien zapisać się własnym adresem e-mail, żeby dostać link i przypomnienia."],
 ];
 
 // Sekcja prowadzącego
 const HOST_NAME = "Wiktor Rataj";
 const HOST_ROLE = "Founder & CEO LTTT MEDIA";
 const HOST_BIO = [
-  "Przedsiębiorca i założyciel LTTT MEDIA – agencji marketingowej specjalizującej się w branży nieruchomości. Ekspert w zakresie pozyskiwania klientów, strategii marketingowych oraz budowania skutecznych systemów wspierających sprzedaż nieruchomości.",
-  "Na co dzień pomaga firmom z sektora nieruchomości wykorzystywać nowoczesne technologie i marketing internetowy do zwiększania efektywności działań sprzedażowych oraz budowania przewagi konkurencyjnej.",
-  "W swojej pracy stawia na podejście oparte na danych, mierzalnych rezultatach i realnym zwrocie z inwestycji. Łączy kompetencje marketingowe z biznesowym spojrzeniem na rozwój przedsiębiorstw.",
+  "Przedsiębiorca i założyciel LTTT MEDIA – agencji marketingowej specjalizującej się w sektorze nieruchomości, która obsłużyła ponad 200 firm z branży. Specjalizuje się w tworzeniu strategii marketingowych oraz systemów pozyskiwania klientów wspierających sprzedaż nieruchomości.",
+  "Realizowane przez jego agencję kampanie pozwoliły m.in. pozyskać kupującego na nieruchomość o wartości 1,29 mln zł w ciągu 7 dni, przy wydatkach na reklamę wynoszących zaledwie 455 zł.",
+  "W swojej pracy koncentruje się na całym procesie pozyskiwania klienta – od analizy grupy docelowej i komunikacji oferty, przez realizację kampanii reklamowych i kwalifikację kontaktów, aż po przekazanie potencjalnego nabywcy do działu sprzedaży.",
+  "Pomaga firmom z sektora nieruchomości rozwiązywać problemy związane z wysokimi kosztami pozyskania klientów, niską jakością zapytań oraz brakiem przewidywalności w pozyskiwaniu potencjalnych nabywców.",
 ];
-const HOST_LINKEDIN = "https://pl.linkedin.com/in/wiktor-rataj-66a68a34b";
 const HOST_PHOTO = "/img/wiktor-rataj"; // .webp + .jpg, 900x1125
 
 const ICONS = {
-  list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
-  filter: '<path d="M3 5h18l-7 8v6l-4 2v-8z"/>',
   bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
-  chart: '<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',
   file: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h4"/>',
   message: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
-  linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
   calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
@@ -112,8 +115,12 @@ const ld = {
       isAccessibleForFree: true,
       inLanguage: "pl",
       organizer: { "@type": "Organization", name: "LTTT MEDIA", url: SITE + "/" },
-      performer: { "@type": "Person", name: HOST_NAME, jobTitle: HOST_ROLE, image: SITE + HOST_PHOTO + ".jpg", sameAs: [HOST_LINKEDIN] },
+      performer: { "@type": "Person", name: HOST_NAME, jobTitle: HOST_ROLE, image: SITE + HOST_PHOTO + ".jpg" },
       url: URL_PAGE,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
     },
   ],
 };
@@ -174,7 +181,7 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
   <section class="section--navy subhero lp-hero">
     <div class="container lp-hero-grid">
       <div class="lp-hero-text">
-        <span class="eyebrow eyebrow--light">Webinar na żywo · dla deweloperów</span>
+        <span class="eyebrow eyebrow--light">Bezpłatny webinar na żywo dla deweloperów z 80+ lokali</span>
         <h1>${esc(TITLE_PAGE)}</h1>
         <p class="lp-hero-lead">${esc(LEAD)}</p>
         <p class="lp-hero-price">${esc(EVENT_DATE_LABEL)} · bezpłatnie</p>
@@ -182,44 +189,19 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
       <div class="lp-form-card" id="zapis">
         <h2 class="lp-form-title">Zapisz się na webinar</h2>
         ${formBlock()}
-        <p class="lp-form-note">Zapis jest bezpłatny. Dostaniesz potwierdzenie e-mailem i SMS-em oraz link do transmisji. Webinar trwa ok. 45 minut plus pytania. Nie możesz być na żywo? Wyślemy nagranie.</p>
+        <p class="lp-form-note">Zapis jest bezpłatny. Dostaniesz potwierdzenie e-mailem i SMS-em oraz link do transmisji. Webinar trwa ok. 45 minut plus pytania.</p>
       </div>
     </div>
   </section>
 
-  <section class="section section--white" id="program">
-    <div class="container">
-      <div class="section-head section-head--left"><span class="eyebrow">Program</span><h2>4 kroki, które pokażę na webinarze</h2></div>
-      <ol class="wb-steps">${STEPS.map(([ic, tag, q, a]) => `
-        <li class="wb-step">
-          <div class="wb-step-marker"><span class="wb-step-icon">${icon(ic)}</span></div>
-          <div class="wb-step-body">
-            <p class="wb-step-num">${esc(tag)}</p>
-            <h3>${esc(q)}</h3>
-            <p>${esc(a)}</p>
-          </div>
-        </li>`).join("")}
-      </ol>
-    </div>
-  </section>
-
-  <section class="section section--bg" id="dla-kogo">
-    <div class="container wb-fit">
-      <div class="wb-fit-card">
-        <span class="eyebrow">Dla kogo</span>
-        <h2>Ten webinar jest dla Ciebie, jeśli</h2>
-        <ul class="wb-fit-list">${FORWHO.map((t) => `
-          <li><span class="wb-fit-check">${icon("check")}</span><span>${esc(t)}</span></li>`).join("")}
-        </ul>
-        <a class="btn btn-primary wb-fit-cta" href="#zapis">Zapisz się na webinar</a>
-      </div>
-      <div class="wb-fit-card wb-fit-card--dark">
-        <span class="eyebrow eyebrow--light">Po webinarze</span>
-        <h2>Co dostajesz oprócz wiedzy</h2>
-        <ul class="wb-bonus-list">${BONUS.map(([ic, t]) => `
-          <li><span class="wb-bonus-icon">${icon(ic)}</span><span>${esc(t)}</span></li>`).join("")}
-        </ul>
-      </div>
+  <section class="section section--bg" id="o-wydarzeniu">
+    <div class="container lp-narrow wb-about">
+      <div class="section-head section-head--left"><h2>O wydarzeniu</h2></div>
+      ${ABOUT_INTRO.map((t) => `<p>${esc(t)}</p>`).join("\n      ")}
+      <ul class="lp-list">${ABOUT_POINTS.map((t) => `
+        <li>${esc(t)}</li>`).join("")}
+      </ul>
+      ${ABOUT_OUTRO.map((t) => `<p>${esc(t)}</p>`).join("\n      ")}
     </div>
   </section>
 
@@ -237,15 +219,25 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
         <h2>${esc(HOST_NAME)}</h2>
         <p class="wb-host-role">${esc(HOST_ROLE)}</p>
         ${HOST_BIO.map((t) => `<p>${esc(t)}</p>`).join("\n        ")}
-        <a class="wb-host-link" href="${HOST_LINKEDIN}" target="_blank" rel="noopener noreferrer">${icon("linkedin")}Profil na LinkedIn</a>
+        <ul class="wb-host-contact">
+          <li><a href="tel:+48511205230">${icon("phone")}+48 511 205 230</a></li>
+          <li><a href="mailto:kontakt@ltttmedia.pl">${icon("mail")}kontakt@ltttmedia.pl</a></li>
+        </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="section section--bg" id="faq">
+    <div class="container lp-narrow">
+      <div class="section-head section-head--left"><span class="eyebrow">FAQ</span><h2>Najczęstsze pytania</h2></div>
+      <div class="lp-faq">${FAQ.map(([q, a]) => `<details class="lp-faq-item"><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join("")}</div>
     </div>
   </section>
 
   <section class="section section--navy">
     <div class="container lp-narrow" style="text-align:center">
       <h2>Zarezerwuj miejsce na ${esc(EVENT_DATE_LABEL)}</h2>
-      <p class="lp-hero-lead" style="margin:16px auto 24px">Zapis trwa mniej niż minutę. Jeśli nie możesz być na żywo, wyślemy nagranie.</p>
+      <p class="lp-hero-lead" style="margin:16px auto 24px">Zapis trwa mniej niż minutę.</p>
       <a class="btn btn-primary btn-primary--lg" href="#zapis">Zapisz się na webinar</a>
     </div>
   </section>
@@ -288,7 +280,7 @@ const ICS = [
 const NEXT = [
   ["message", "Teraz", "Sprawdź e-mail i SMS", "W ciągu kilku minut dostaniesz potwierdzenie zapisu. Jeśli e-maila nie ma, zajrzyj do folderu spam lub „Oferty”."],
   ["bell", "Przed webinarem", "Przypomnienia z linkiem", "Wyślemy przypomnienia z linkiem do transmisji, także w dniu webinaru. Wystarczy kliknąć o 19:00."],
-  ["play", "Po webinarze", "Nagranie i materiały", "Dostaniesz nagranie, checklistę „5 miejsc, w których deweloper traci kupujących” i wzory wiadomości."],
+  ["file", "Po webinarze", "Checklista i wzory wiadomości", "Po webinarze napisz na kontakt@ltttmedia.pl, a wyślę Ci checklistę w PDF i wzory wiadomości."],
 ];
 
 const thanks = `${head("Dziękujemy za zapis na webinar | LTTT MEDIA", "Dziękujemy za zapis na webinar LTTT MEDIA.", URL_THANKS, "noindex, nofollow", "")}
@@ -300,6 +292,7 @@ ${header("")}
       <span class="ty-check" aria-hidden="true">${icon("check")}</span>
       <span class="eyebrow eyebrow--light">Zapis potwierdzony</span>
       <h1>Dziękujemy, jesteś zapisany na webinar</h1>
+      <p class="ty-share">Prześlij link do webinaru dyrektorowi sprzedaży lub marketingu w swojej firmie, bo najwięcej zyskacie, gdy na transmisji będą osoby decyzyjne i handlowcy.</p>
       <p class="ty-lead">Zarezerwuj ten termin w kalendarzu, żeby nic Ci nie umknęło.</p>
 
       <div class="ty-ticket">
