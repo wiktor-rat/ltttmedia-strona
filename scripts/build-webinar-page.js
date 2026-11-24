@@ -50,6 +50,17 @@ const FAQ = [
   ["Czy to sprzedaż usług?", "Większość webinaru to konkretna wiedza do zastosowania od razu. Na końcu jest ok. 5 minut o tym, jak możemy pomóc, jeśli chcesz."],
 ];
 
+// Sekcja prowadzącego
+const HOST_NAME = "Wiktor Rataj";
+const HOST_ROLE = "Founder & CEO LTTT MEDIA";
+const HOST_BIO = [
+  "Przedsiębiorca i założyciel LTTT MEDIA – agencji marketingowej specjalizującej się w branży nieruchomości. Ekspert w zakresie pozyskiwania klientów, strategii marketingowych oraz budowania skutecznych systemów wspierających sprzedaż nieruchomości.",
+  "Na co dzień pomaga firmom z sektora nieruchomości wykorzystywać nowoczesne technologie i marketing internetowy do zwiększania efektywności działań sprzedażowych oraz budowania przewagi konkurencyjnej.",
+  "W swojej pracy stawia na podejście oparte na danych, mierzalnych rezultatach i realnym zwrocie z inwestycji. Łączy kompetencje marketingowe z biznesowym spojrzeniem na rozwój przedsiębiorstw.",
+];
+const HOST_LINKEDIN = "https://pl.linkedin.com/in/wiktor-rataj-66a68a34b";
+const HOST_PHOTO = "/img/wiktor-rataj"; // .webp + .jpg, 900x1125
+
 const ICONS = {
   list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
   filter: '<path d="M3 5h18l-7 8v6l-4 2v-8z"/>',
@@ -58,6 +69,7 @@ const ICONS = {
   check: '<path d="M20 6 9 17l-5-5"/>',
   file: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h4"/>',
   message: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
+  linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
   play: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/>',
 };
 const icon = (k) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>`;
@@ -103,6 +115,7 @@ const ld = {
       isAccessibleForFree: true,
       inLanguage: "pl",
       organizer: { "@type": "Organization", name: "LTTT MEDIA", url: SITE + "/" },
+      performer: { "@type": "Person", name: HOST_NAME, jobTitle: HOST_ROLE, image: SITE + HOST_PHOTO + ".jpg", sameAs: [HOST_LINKEDIN] },
       url: URL_PAGE,
     },
     {
@@ -218,10 +231,21 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
   </section>
 
   <section class="section section--white" id="prowadzacy">
-    <div class="container lp-narrow">
-      <div class="section-head section-head--left"><span class="eyebrow">Prowadzący</span><h2>Wiktor Rataj, założyciel LTTT MEDIA</h2></div>
-      <p>LTTT MEDIA to wyspecjalizowana agencja marketingowa dla branży nieruchomości. Zaufało nam ponad 200 firm z branży nieruchomości. Pomagamy deweloperom sprzedawać inwestycje dzięki reklamom Meta i Google oraz obsłudze każdego zapytania do rozmowy handlowca. Wiktor prowadzi webinar sam i odpowiada na pytania na żywo.</p>
-      <p><a href="https://pl.linkedin.com/in/wiktor-rataj-66a68a34b" target="_blank" rel="noopener noreferrer">Profil na LinkedIn: Wiktor Rataj</a></p>
+    <div class="container wb-host">
+      <figure class="wb-host-photo">
+        <picture>
+          <source srcset="${HOST_PHOTO}.webp" type="image/webp">
+          <img src="${HOST_PHOTO}.jpg" width="900" height="1125" loading="lazy" decoding="async" alt="${esc(HOST_NAME)} podczas wystąpienia z mikrofonem">
+        </picture>
+        <figcaption class="wb-host-badge"><span class="wb-host-dot" aria-hidden="true"></span>Prowadzący webinar</figcaption>
+      </figure>
+      <div class="wb-host-text">
+        <span class="eyebrow">Prowadzący</span>
+        <h2>${esc(HOST_NAME)}</h2>
+        <p class="wb-host-role">${esc(HOST_ROLE)}</p>
+        ${HOST_BIO.map((t) => `<p>${esc(t)}</p>`).join("\n        ")}
+        <a class="wb-host-link" href="${HOST_LINKEDIN}" target="_blank" rel="noopener noreferrer">${icon("linkedin")}Profil na LinkedIn</a>
+      </div>
     </div>
   </section>
 
