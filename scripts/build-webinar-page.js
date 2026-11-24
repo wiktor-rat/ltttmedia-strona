@@ -42,13 +42,6 @@ const FORWHO = [
   "W Twojej bazie leżą zapytania z ostatnich miesięcy, do których nikt już nie wrócił.",
   "Sprzedałeś pierwsze ok. 30% lokali i tempo sprzedaży przestało rosnąć.",
 ];
-const FAQ = [
-  ["Czy webinar jest płatny?", "Nie. Udział jest bezpłatny. Na końcu zapraszamy na bezpłatną rozmowę diagnozującą, ale nie ma żadnego obowiązku."],
-  ["Gdzie odbędzie się webinar?", "Na żywo na YouTube. Link do transmisji dostaniesz e-mailem i SMS-em po zapisie oraz przed rozpoczęciem."],
-  ["Ile to trwa?", "Ok. 45 minut treści i czas na pytania. Całość nie powinna zająć dłużej niż godzinę."],
-  ["Co jeśli nie będę mógł być na żywo?", "Zapisz się, a wyślemy Ci nagranie wraz z checklistą."],
-  ["Czy to sprzedaż usług?", "Większość webinaru to konkretna wiedza do zastosowania od razu. Na końcu jest ok. 5 minut o tym, jak możemy pomóc, jeśli chcesz."],
-];
 
 // Sekcja prowadzącego
 const HOST_NAME = "Wiktor Rataj";
@@ -118,10 +111,6 @@ const ld = {
       performer: { "@type": "Person", name: HOST_NAME, jobTitle: HOST_ROLE, image: SITE + HOST_PHOTO + ".jpg", sameAs: [HOST_LINKEDIN] },
       url: URL_PAGE,
     },
-    {
-      "@type": "FAQPage",
-      mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
-    },
   ],
 };
 
@@ -189,7 +178,7 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
       <div class="lp-form-card" id="zapis">
         <h2 class="lp-form-title">Zapisz się na webinar</h2>
         ${formBlock()}
-        <p class="lp-form-note">Dostaniesz potwierdzenie e-mailem i SMS-em oraz link do transmisji. Zapis jest bezpłatny.</p>
+        <p class="lp-form-note">Zapis jest bezpłatny. Dostaniesz potwierdzenie e-mailem i SMS-em oraz link do transmisji. Webinar trwa ok. 45 minut plus pytania. Nie możesz być na żywo? Wyślemy nagranie.</p>
       </div>
     </div>
   </section>
@@ -246,13 +235,6 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
         ${HOST_BIO.map((t) => `<p>${esc(t)}</p>`).join("\n        ")}
         <a class="wb-host-link" href="${HOST_LINKEDIN}" target="_blank" rel="noopener noreferrer">${icon("linkedin")}Profil na LinkedIn</a>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--bg" id="faq">
-    <div class="container lp-narrow">
-      <div class="section-head section-head--left"><span class="eyebrow">FAQ</span><h2>Najczęstsze pytania</h2></div>
-      <div class="lp-faq">${FAQ.map(([q, a]) => `<details class="lp-faq-item"><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join("")}</div>
     </div>
   </section>
 
