@@ -38,7 +38,7 @@ const ABOUT_POINTS = [
 ];
 const ABOUT_OUTRO = [
   "Na końcu kilka minut o tym, jak LTTT MEDIA może pomóc, jeśli będziesz chciał, oraz czas na pytania na czacie.",
-  "Webinar jest dla dyrektorów sprzedaży i marketingu oraz zarządów deweloperów, którzy chcą wejść w styczeń z uporządkowaną bazą zapytań, a nie z listą postanowień.",
+  "Webinar jest dla dyrektorów sprzedaży i marketingu oraz zarządów deweloperów, którzy chcą wykorzystać ostatnią szansę w tym roku na domknięcie sprzedaży z zapytań, które już mają w bazie.",
 ];
 
 // FAQ (te same teksty trafiają do JSON-LD FAQPage)
