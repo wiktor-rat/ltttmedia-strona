@@ -1867,3 +1867,6 @@ button.footer-link {
   .main-nav a.nav-highlight { padding: 6px 10px; }
   .header-actions .btn { padding: 10px 16px; font-size: 14px; }
 }
+.lp-form-title { font-size: 22px; margin: 0 0 14px; color: var(--navy, #0B1830); }
+.lp-hero-grid .lp-form-card { align-self: start; }
+.lp-hero-price { margin-top: 8px; }
