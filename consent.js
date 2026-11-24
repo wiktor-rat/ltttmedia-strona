@@ -1,16 +1,26 @@
-/* Zgoda na cookies: dwie osobne zgody (Consent Mode v2).
-   - Statystyki: Google Analytics 4
-   - Marketing: Meta Pixel
-   Żadne z narzędzi nie ładuje się przed zgodą. Wybór jest zapisany w localStorage,
-   zmienia się go przyciskiem „Ustawienia cookies” w stopce (atrybut data-cookie-settings).
-   Zdarzenie Meta na konkretnej stronie: <body data-meta-event="CompleteRegistration">. */
+/* Zgoda na cookies: dwie osobne zgody (Consent Mode v2) + Google Tag Manager.
+   - Statystyki: Google Analytics 4 (ładowany bezpośrednio, dopiero po zgodzie)
+   - Marketing: tagi reklamowe w GTM (np. Meta Pixel) – w GTM muszą wymagać zgody ad_storage
+   Kolejność: consent default = denied → zapisana wcześniej zgoda (update) → GTM.
+   GTM ładuje się na każdej stronie, ale tagi w nim respektują stan zgód.
+   Po każdej decyzji na banerze do dataLayer trafia zdarzenie „cookie_consent_update”.
+   Wybór jest zapisany w localStorage, zmienia się go przyciskiem „Ustawienia cookies”
+   w stopce (atrybut data-cookie-settings).
+   Zdarzenie Meta na konkretnej stronie (tylko przy Pixelu wpiętym tu, nie w GTM):
+   <body data-meta-event="CompleteRegistration">. */
 (function () {
   var GA_ID = "G-28GQYBY4RZ";
   // ID Pixela Meta (sam numer). Puste = Pixel wyłączony, a baner nie pyta o zgodę marketingową.
+  // Pixel docelowo konfigurowany w GTM, więc tu zostaje pusty.
   var META_PIXEL_ID = "";
+  var GTM_ID = "GTM-MW8FG9PM";
+  // Baner pyta o zgodę marketingową (tagi reklamowe w GTM).
+  var MARKETING_ENABLED = true;
+  var WITH_MARKETING = MARKETING_ENABLED || !!META_PIXEL_ID;
 
-  var KEY = "lttt_consent_v2";
-  var OLD_KEY = "lttt_cookie_consent"; // dawna zgoda: tylko Google Analytics
+  var KEY = "lttt_consent_v3";
+  // Starsze zapisy: v2 powstawał, gdy baner nie pytał o marketing, więc bierzemy z niego tylko statystyki.
+  var OLD_KEYS = ["lttt_consent_v2", "lttt_cookie_consent"];
 
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
@@ -26,17 +36,22 @@
     var v = null;
     try { v = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
     if (v && typeof v === "object") return v;
-    var old = null;
-    try { old = localStorage.getItem(OLD_KEY); } catch (e) {}
+    var v2 = null, old = null;
+    try { v2 = JSON.parse(localStorage.getItem(OLD_KEYS[0])); } catch (e) {}
+    if (v2 && typeof v2.analytics === "boolean") return { analytics: v2.analytics };
+    try { old = localStorage.getItem(OLD_KEYS[1]); } catch (e) {}
     if (old === "granted" || old === "denied") return { analytics: old === "granted" };
     return {};
   }
   function save(v) {
-    try { localStorage.setItem(KEY, JSON.stringify(v)); localStorage.removeItem(OLD_KEY); } catch (e) {}
+    try {
+      localStorage.setItem(KEY, JSON.stringify(v));
+      OLD_KEYS.forEach(function (k) { localStorage.removeItem(k); });
+    } catch (e) {}
   }
-  // Czy trzeba zapytać: brak decyzji o statystykach albo (gdy Pixel jest ustawiony) o marketingu.
+  // Czy trzeba zapytać: brak decyzji o statystykach albo o marketingu.
   function needsAsking(v) {
-    return typeof v.analytics !== "boolean" || (META_PIXEL_ID && typeof v.marketing !== "boolean");
+    return typeof v.analytics !== "boolean" || (WITH_MARKETING && typeof v.marketing !== "boolean");
   }
 
   function clearCookies(prefixes) {
@@ -73,11 +88,14 @@
     clearCookies(["_ga"]);
   }
 
-  // ----- Meta Pixel -----
+  // ----- Marketing (Consent Mode dla tagów reklamowych w GTM) + opcjonalny Pixel -----
   var pixelLoaded = false;
+  function grantMarketing() {
+    gtag("consent", "update", { ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted" });
+    loadPixel();
+  }
   function loadPixel() {
     if (!META_PIXEL_ID) return;
-    gtag("consent", "update", { ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted" });
     if (pixelLoaded) { window.fbq("consent", "grant"); return; }
     pixelLoaded = true;
     /* Standardowy kod bazowy Meta Pixel */
@@ -99,7 +117,27 @@
 
   function apply(v) {
     if (v.analytics === true) loadGA(); else if (v.analytics === false) denyGA();
-    if (v.marketing === true) loadPixel(); else if (v.marketing === false) denyPixel();
+    if (v.marketing === true) grantMarketing(); else if (v.marketing === false) denyPixel();
+  }
+
+  // Zgoda zapisana przy poprzedniej wizycie trafia do dataLayer jeszcze przed GTM,
+  // żeby tagi z GTM od razu widziały właściwy stan (skrypt ma „defer”, więc DOM już istnieje).
+  var stored = read();
+  apply(stored);
+
+  // ----- Google Tag Manager (jeden raz na stronę) -----
+  if (GTM_ID && !window.__ltttGtmLoaded && !document.querySelector('script[src*="gtm.js?id=' + GTM_ID + '"]')) {
+    window.__ltttGtmLoaded = true;
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',GTM_ID);
+  }
+
+  // Zdarzenie dla wyzwalaczy w GTM po decyzji na banerze.
+  function pushConsentEvent(v) {
+    window.dataLayer.push({
+      event: "cookie_consent_update",
+      consent_analytics: v.analytics ? "granted" : "denied",
+      consent_marketing: v.marketing ? "granted" : "denied"
+    });
   }
 
   // Strona główna działa na # (podstrony bez przeładowania): liczymy odsłony przy zmianie #.
@@ -116,7 +154,7 @@
   function showBanner(openSettings) {
     hideBanner();
     var v = read();
-    var withMarketing = !!META_PIXEL_ID;
+    var withMarketing = WITH_MARKETING;
     banner = document.createElement("div");
     banner.className = "cookie-banner";
     banner.setAttribute("role", "dialog");
@@ -164,14 +202,13 @@
       save(choice);
       hideBanner();
       apply(choice);
+      pushConsentEvent(choice);
     });
     document.body.appendChild(banner);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    var v = read();
-    apply(v);
-    if (needsAsking(v)) showBanner(false);
+    if (needsAsking(stored)) showBanner(false);
     document.addEventListener("click", function (e) {
       var t = e.target && e.target.closest && e.target.closest("[data-cookie-settings]");
       if (t) { e.preventDefault(); showBanner(true); }
