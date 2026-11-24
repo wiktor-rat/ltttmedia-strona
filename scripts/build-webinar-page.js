@@ -232,7 +232,7 @@ const calUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE&text
   "&dates=" + EVENT_ISO_START + "/" + EVENT_ISO_END + "&details=" + encodeURIComponent("Webinar na żywo na YouTube. Link do transmisji dostaniesz e-mailem i SMS-em.") + "&ctz=Europe/Warsaw";
 
 const thanks = `${head("Dziękujemy za zapis na webinar | LTTT MEDIA", "Dziękujemy za zapis na webinar LTTT MEDIA.", URL_THANKS, "noindex, nofollow", "")}
-<body>
+<body data-meta-event="CompleteRegistration">
 ${header(`<a href="tel:+48511205230" class="lp-header-phone">+48 511 205 230</a>`)}
 <main id="main">
   <section class="section--navy subhero lp-hero">

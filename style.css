@@ -1554,6 +1554,11 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.45);
 }
 .cookie-banner .cookie-reject:hover { background: rgba(255, 255, 255, 0.1); }
+.cookie-settings { flex: 1 1 100%; display: grid; gap: 10px; }
+.cookie-settings[hidden] { display: none; }
+.cookie-option { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.cookie-option input { flex: none; width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--blue-light); }
+.cookie-option strong { color: #fff; }
 button.footer-link {
   background: none;
   border: 0;
