@@ -225,10 +225,6 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
         <h2>${esc(HOST_NAME)}</h2>
         <p class="wb-host-role">${esc(HOST_ROLE)}</p>
         ${HOST_BIO.map((t) => `<p>${esc(t)}</p>`).join("\n        ")}
-        <ul class="wb-host-contact">
-          <li><a href="tel:+48511205230">${icon("phone")}+48 511 205 230</a></li>
-          <li><a href="mailto:kontakt@ltttmedia.pl">${icon("mail")}kontakt@ltttmedia.pl</a></li>
-        </ul>
       </div>
     </div>
   </section>

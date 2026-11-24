@@ -2007,15 +2007,8 @@ button.footer-link {
   .wb-about-note, .wb-about-callout { font-size: 15px; }
 }
 
-/* ---------- Webinar: kontakt prowadzącego ---------- */
-.wb-host-contact { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.wb-host-contact a { display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; border: 1px solid var(--border); border-radius: var(--radius-pill); color: var(--navy); font-weight: 600; font-size: 15px; text-decoration: none; transition: border-color 0.18s ease, color 0.18s ease; }
-.wb-host-contact a:hover { border-color: var(--blue); color: var(--blue); }
-.wb-host-contact svg { width: 18px; height: 18px; flex: none; color: var(--blue); }
-
 /* ---------- Webinar: podziękowanie, prośba o przekazanie linku ---------- */
 .ty-share { margin: 0 auto 14px; max-width: 620px; color: var(--white); font-size: 18px; line-height: 1.6; font-weight: 500; }
 @media (max-width: 680px) {
-  .wb-host-contact a { flex: 1 1 100%; justify-content: center; }
   .ty-share { font-size: 16px; }
 }
