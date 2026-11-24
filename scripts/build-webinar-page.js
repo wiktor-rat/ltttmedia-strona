@@ -12,7 +12,7 @@ const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 
 // ===== USTAWIENIA DO UZUPEŁNIENIA =====
 // ID formularza z CRM (GoHighLevel): wklej ID z kodu osadzenia (…/widget/form/<ID>). Puste = strona pokaże telefon zamiast formularza.
-const WEBINAR_FORM_ID = "";
+const WEBINAR_FORM_ID = "FKaCnZv9rd6orNCFerGI";
 // Link do transmisji na YouTube (niepubliczny). Używany tylko na stronie "dziękujemy", jeśli podany.
 const LIVE_URL = "";
 
@@ -58,11 +58,13 @@ const ICONS = {
 const icon = (k) => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[k]}</svg>`;
 
 const FORM_URL = `https://api.leadconnectorhq.com/widget/form/${WEBINAR_FORM_ID}`;
+const FORM_NAME = "Webinar 3.12 g. 19;00"; // nazwa formularza z kodu osadzenia w CRM
+const FORM_HEIGHT = 604; // wysokość z kodu osadzenia (data-height)
 const formBlock = () => WEBINAR_FORM_ID
-  ? `<div class="lp-crm-form">
+  ? `<div class="lp-crm-form" style="min-height:${FORM_HEIGHT}px">
           <iframe
             src="${FORM_URL}"
-            style="width:100%;height:100%;border:none;border-radius:8px"
+            style="width:100%;height:100%;min-height:${FORM_HEIGHT}px;border:none;border-radius:8px"
             id="inline-${WEBINAR_FORM_ID}"
             data-layout="{'id':'INLINE'}"
             data-trigger-type="alwaysShow"
@@ -71,8 +73,8 @@ const formBlock = () => WEBINAR_FORM_ID
             data-activation-value=""
             data-deactivation-type="neverDeactivate"
             data-deactivation-value=""
-            data-form-name="Webinar 3.12"
-            data-height="560"
+            data-form-name="${esc(FORM_NAME)}"
+            data-height="${FORM_HEIGHT}"
             data-layout-iframe-id="inline-${WEBINAR_FORM_ID}"
             data-form-id="${WEBINAR_FORM_ID}"
             data-cookie-consent="true"
