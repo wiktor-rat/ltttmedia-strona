@@ -293,7 +293,7 @@ const NEXT = [
 
 const thanks = `${head("Dziękujemy za zapis na webinar | LTTT MEDIA", "Dziękujemy za zapis na webinar LTTT MEDIA.", URL_THANKS, "noindex, nofollow", "")}
 <body data-meta-event="CompleteRegistration">
-${header(`<a href="tel:+48511205230" class="lp-header-phone">+48 511 205 230</a>`)}
+${header("")}
 <main id="main">
   <section class="section--navy ty-hero">
     <div class="container ty-hero-inner">
