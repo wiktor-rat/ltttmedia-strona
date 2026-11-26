@@ -2012,3 +2012,12 @@ button.footer-link {
 @media (max-width: 680px) {
   .ty-share { font-size: 16px; }
 }
+
+/* ---------- Webinar: pytanie w hero ---------- */
+.wb-hero-q { position: relative; margin: 36px 0 0; max-width: 560px; padding: 22px 26px 22px 30px; border-radius: 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); font-family: "Instrument Serif", Georgia, "Times New Roman", serif; font-style: italic; font-weight: 400; font-size: 34px; line-height: 1.2; letter-spacing: 0.005em; color: var(--white); }
+.wb-hero-q::before { content: ""; position: absolute; left: 0; top: 18px; bottom: 18px; width: 3px; border-radius: 3px; background: var(--blue-light); }
+.wb-hero-q span { color: var(--blue-light); }
+@media (max-width: 680px) {
+  .wb-hero-q { margin-top: 28px; padding: 18px 18px 18px 22px; font-size: 27px; }
+  .wb-hero-q::before { top: 14px; bottom: 14px; }
+}
