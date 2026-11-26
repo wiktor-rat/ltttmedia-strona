@@ -194,7 +194,7 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
       <div class="lp-form-card" id="zapis">
         <h2 class="lp-form-title">Zapisz się na webinar</h2>
         ${formBlock()}
-        <p class="lp-form-note">Zapis jest bezpłatny. Dostaniesz potwierdzenie e-mailem i SMS-em oraz link do transmisji. Webinar trwa ok. 45 minut plus pytania.</p>
+        <p class="lp-form-note">Dostaniesz potwierdzenie e-mailem oraz link do transmisji.</p>
       </div>
     </div>
   </section>
