@@ -23,6 +23,9 @@ const EVENT_DATE_LABEL = "czwartek 3.12.2026, godz. 19:00";
 const TITLE_PAGE = "Domknij 2026 w 4 krokach: jak wrócić do bazy zapytań i zamienić ją w rezerwacje";
 const TITLE = "Webinar dla deweloperów: Domknij 2026 w 4 krokach | LTTT MEDIA";
 const DESC = "Bezpłatny webinar na żywo dla deweloperów mieszkaniowych, 3.12.2026 o 19:00. 4 kroki, jak wrócić do bazy zapytań i zamienić ją w rezerwacje przed końcem roku.";
+// Pytanie w hero (pod datą). HERO_Q_ACCENT = końcówka wyróżniona kolorem.
+const HERO_Q = "Jak domknąć otwarte leady w CRM";
+const HERO_Q_ACCENT = "przed końcem 2026?";
 const LEAD = "Bezpłatny webinar na żywo dla deweloperów z własnym działem sprzedaży. Dostaniesz plan na ostatnie tygodnie roku: jak przejrzeć zapytania z ostatnich miesięcy, do kogo zadzwonić w pierwszej kolejności i jak sprawdzić, które działania faktycznie kończą się rezerwacją.";
 
 // Sekcja „O wydarzeniu”: akapity przed listą, punkty listy, akapity po liście
@@ -174,7 +177,8 @@ const footer = `<footer class="site-footer">
   </div>
 </footer>`;
 
-const page = `${head(TITLE, DESC, URL_PAGE, "index, follow, max-image-preview:large", `<script type="application/ld+json">${JSON.stringify(ld)}</script>`)}
+const page = `${head(TITLE, DESC, URL_PAGE, "index, follow, max-image-preview:large", `<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<script type="application/ld+json">${JSON.stringify(ld)}</script>`)}
 <body>
 ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
 <main id="main">
@@ -185,6 +189,7 @@ ${header(`<a href="#zapis" class="btn btn-primary">Zapisz się →</a>`)}
         <h1>${esc(TITLE_PAGE)}</h1>
         <p class="lp-hero-lead">${esc(LEAD)}</p>
         <p class="lp-hero-price">${esc(EVENT_DATE_LABEL)} · bezpłatnie</p>
+        <p class="wb-hero-q">${esc(HERO_Q)} <span>${esc(HERO_Q_ACCENT)}</span></p>
       </div>
       <div class="lp-form-card" id="zapis">
         <h2 class="lp-form-title">Zapisz się na webinar</h2>
